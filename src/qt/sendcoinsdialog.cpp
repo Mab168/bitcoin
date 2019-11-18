@@ -219,7 +219,7 @@ SendCoinsDialog::~SendCoinsDialog()
     delete ui;
 }
 
-void SendCoinsDialog::on_sendButton_clicked()
+void SendCoinsDialog::PrepareSendText(bool& ok, std::unique_ptr<WalletModelTransaction>& current_transaction, QString& questionString, QString& informative_text, QString& detailed_text)
 {
     if(!model || !model->getOptionsModel())
         return;
@@ -261,7 +261,8 @@ void SendCoinsDialog::on_sendButton_clicked()
     }
 
     // prepare transaction for getting txFee earlier
-    WalletModelTransaction currentTransaction(recipients);
+    current_transaction = MakeUnique<WalletModelTransaction>(recipients);
+    WalletModelTransaction& currentTransaction = *current_transaction;
     WalletModel::SendCoinsReturn prepareStatus;
 
     // Always use a CCoinControl instance, use the CoinControlDialog instance if CoinControl has been enabled
@@ -391,7 +392,6 @@ void SendCoinsDialog::on_sendButton_clicked()
         formatted.append(recipientElement);
     }
 
-    QString questionString;
     if (model->privateKeysDisabled()) {
         questionString.append(tr("Do you want to draft this transaction?"));
     } else {
@@ -445,8 +445,6 @@ void SendCoinsDialog::on_sendButton_clicked()
     questionString.append(QString("<br /><span style='font-size:10pt; font-weight:normal;'>(=%1)</span>")
         .arg(alternativeUnits.join(" " + tr("or") + " ")));
 
-    QString informative_text;
-    QString detailed_text;
     if (formatted.size() > 1) {
         questionString = questionString.arg("");
         informative_text = tr("To review recipient list click \"Show Details...\"");
@@ -454,6 +452,20 @@ void SendCoinsDialog::on_sendButton_clicked()
     } else {
         questionString = questionString.arg("<br /><br />" + formatted.at(0));
     }
+
+    ok = true;
+}
+
+void SendCoinsDialog::on_sendButton_clicked()
+{
+    bool ok = false;
+    std::unique_ptr<WalletModelTransaction> current_transaction;
+    QString questionString, informative_text, detailed_text;
+    PrepareSendText(ok, current_transaction, questionString, informative_text, detailed_text);
+    if (!ok) return;
+    assert(current_transaction);
+    WalletModelTransaction& currentTransaction = *current_transaction;
+
     const QString confirmation = model->privateKeysDisabled() ? tr("Confirm transaction proposal") : tr("Confirm send coins");
     const QString confirmButtonText = model->privateKeysDisabled() ? tr("Copy PSBT to clipboard") : tr("Send");
     SendConfirmationDialog confirmationDialog(QMessageBox::Question, confirmation, questionString, QMessageBox::Yes, confirmButtonText, QMessageBox::Cancel, informative_text, detailed_text, SEND_CONFIRM_DELAY, this);
