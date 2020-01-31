@@ -28,6 +28,8 @@
 
 #include <QAction>
 #include <QActionGroup>
+#include <QApplication>
+#include <QClipboard>
 #include <QFileDialog>
 #include <QHBoxLayout>
 #include <QProgressDialog>
@@ -226,20 +228,34 @@ void WalletView::gotoVerifyMessageTab(QString addr)
         signVerifyMessageDialog->setAddress_VM(addr);
 }
 
-void WalletView::gotoLoadPSBT()
+void WalletView::gotoLoadPSBT(bool from_clipboard)
 {
-    QString filename = GUIUtil::getOpenFileName(this,
-        tr("Load Transaction Data"), QString(),
-        tr("Partially Signed Transaction (*.psbt)"), nullptr);
-    if (filename.isEmpty()) return;
-    std::ifstream in(filename.toLocal8Bit().data(), std::ios::binary);
-    // https://stackoverflow.com/questions/116038/what-is-the-best-way-to-read-an-entire-file-into-a-stdstring-in-c
-    std::string data(std::istreambuf_iterator<char>{in}, {});
+    std::string data;
+
+    if (from_clipboard) {
+        std::string raw = QApplication::clipboard()->text().toStdString();
+        bool invalid;
+        data = DecodeBase64(raw, &invalid);
+        if (invalid) {
+            Q_EMIT message(tr("Error"), tr("Unable to decode PSBT from clipboard (invalid base64)"), CClientUIInterface::MSG_ERROR);
+            return;
+        }
+    } else {
+        QString filename = GUIUtil::getOpenFileName(this,
+            tr("Load Transaction Data"), QString(),
+            tr("Partially Signed Transaction (*.psbt)"), nullptr);
+        if (filename.isEmpty()) return;
+        std::ifstream in(filename.toLocal8Bit().data(), std::ios::binary);
+        // https://stackoverflow.com/questions/116038/what-is-the-best-way-to-read-an-entire-file-into-a-stdstring-in-c
+        std::stringstream sstr;
+        sstr << in.rdbuf();
+        data = sstr.str();
+    }
 
     std::string error;
     PartiallySignedTransaction psbtx;
     if (!DecodeRawPSBT(psbtx, data, error)) {
-        Q_EMIT message(tr("Error"), tr("Unable to decode PSBT file") + "\n" + QString::fromStdString(error), CClientUIInterface::MSG_ERROR);
+        Q_EMIT message(tr("Error"), tr("Unable to decode PSBT") + "\n" + QString::fromStdString(error), CClientUIInterface::MSG_ERROR);
         return;
     }
 
