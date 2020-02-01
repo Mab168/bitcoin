@@ -11,6 +11,7 @@
 #include <qt/bitcoingui.h>
 #include <qt/clientmodel.h>
 #include <qt/guiutil.h>
+#include <qt/psbtoperationsdialog.h>
 #include <qt/optionsmodel.h>
 #include <qt/overviewpage.h>
 #include <qt/platformstyle.h>
@@ -242,50 +243,10 @@ void WalletView::gotoLoadPSBT()
         return;
     }
 
-    PSBTAnalysis analysis = AnalyzePSBT(psbtx);
-    bool have_all_sigs = (analysis.next == PSBTRole::FINALIZER) || (analysis.next == PSBTRole::EXTRACTOR);
-
-    CMutableTransaction mtx;
-    bool complete = FinalizeAndExtractPSBT(psbtx, mtx);
-
-    QMessageBox msgBox;
-    msgBox.setText("Partially Signed Bitcoin Transaction");
-
-    if (complete) {
-        msgBox.setInformativeText("Would you like to send this transaction?");
-    } else if (!have_all_sigs) {
-        msgBox.setInformativeText("Transaction needs more signatures. Copy to clipboard?");
-    } else {
-        msgBox.setInformativeText("Transaction is incomplete. Copy to clipboard?");
-    }
-    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
-    switch (msgBox.exec()) {
-    case QMessageBox::Yes: {
-        if (complete) {
-            std::string err_string;
-            CTransactionRef tx = MakeTransactionRef(mtx);
-
-            TransactionError result = BroadcastTransaction(tx, err_string, COIN / 10, /* relay */ true, /* await_callback */ false);
-            if (result == TransactionError::OK) {
-                Q_EMIT message(tr("Success"), tr("Broadcast transaction sucessfully."), CClientUIInterface::MSG_INFORMATION | CClientUIInterface::MODAL);
-            } else {
-                Q_EMIT message(tr("Error"), QString::fromStdString(err_string), CClientUIInterface::MSG_ERROR);
-            }
-        } else {
-            // Serialize the PSBT
-            CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
-            ssTx << psbtx;
-            GUIUtil::setClipboard(EncodeBase64(ssTx.str()).c_str());
-            Q_EMIT message(tr("PSBT copied"), "Copied to clipboard", CClientUIInterface::MSG_INFORMATION);
-            return;
-        }
-    }
-    case QMessageBox::Cancel:
-        break;
-    default:
-        // should never be reached
-        break;
-    }
+    PSBTOperationsDialog* dlg = new PSBTOperationsDialog(this, walletModel, clientModel);
+    dlg->openWithPSBT(psbtx);
+    dlg->setAttribute(Qt::WA_DeleteOnClose);
+    dlg->exec();
 }
 
 bool WalletView::handlePaymentRequest(const SendCoinsRecipient& recipient)
