@@ -4,8 +4,11 @@
 
 #include <wallet/psbtwallet.h>
 
-TransactionError FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& psbtx, bool& complete, int sighash_type, bool sign, bool bip32derivs)
+TransactionError FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& psbtx, bool& complete, int sighash_type, bool sign, bool bip32derivs, size_t* n_signed)
 {
+    if (n_signed) {
+        *n_signed = 0;
+    }
     LOCK(pwallet->cs_wallet);
     // Get all of the previous transactions
     complete = true;
@@ -46,7 +49,13 @@ TransactionError FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& ps
             }
         }
 
-        complete &= SignPSBTInput(HidingSigningProvider(pwallet, !sign, !bip32derivs), psbtx, i, sighash_type);
+        bool signed_one = SignPSBTInput(HidingSigningProvider(pwallet, !sign, !bip32derivs), psbtx, i, sighash_type);
+        complete &= signed_one;
+        if (n_signed && (signed_one || !sign)) {
+            // If sign is false, we assume that we _could_ sign as long as we got a SigningProvider successfully. This
+            // will never have false negatives; it is hard to tell under what circumstances it could have false positives.
+            (*n_signed)++;
+        }
     }
 
     // Fill in the bip32 keypaths and redeemscripts for the outputs so that hardware wallets can identify change

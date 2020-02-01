@@ -22,6 +22,7 @@
  * @param[in]  sighash_type the sighash type to use when signing (if PSBT does not specify)
  * @param[in]  sign whether to sign or not
  * @param[in]  bip32derivs whether to fill in bip32 derivation information if available
+ * @param[out] n_signed number of inputs we signed this call (or could sign, if !sign)
  * return error
  */
 NODISCARD TransactionError FillPSBT(const CWallet* pwallet,
@@ -29,6 +30,8 @@ NODISCARD TransactionError FillPSBT(const CWallet* pwallet,
               bool& complete,
               int sighash_type = 1 /* SIGHASH_ALL */,
               bool sign = true,
-              bool bip32derivs = false);
+              bool bip32derivs = false,
+              size_t* n_signed = nullptr
+              );
 
 #endif // BITCOIN_WALLET_PSBTWALLET_H
