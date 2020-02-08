@@ -11,6 +11,7 @@
 
 #include <qt/bantablemodel.h>
 #include <qt/clientmodel.h>
+#include <qt/pairingpage.h>
 #include <qt/platformstyle.h>
 #include <qt/walletmodel.h>
 #include <chainparams.h>
@@ -447,6 +448,12 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty
     platformStyle(_platformStyle)
 {
     ui->setupUi(this);
+
+    // Default tabs are identified by their UI index
+    for (int i = ui->tabWidget->count(); i--; ) {
+        m_tabs[TabTypes(i)] = ui->tabWidget->widget(i);
+    }
+
     QSettings settings;
     if (!restoreGeometry(settings.value("RPCConsoleWindowGeometry").toByteArray())) {
         // Restore failed (perhaps missing setting), center the window
@@ -569,6 +576,7 @@ void RPCConsole::setClientModel(ClientModel *model)
     }
 
     ui->trafficGraph->setClientModel(model);
+    if (m_tab_pairing) m_tab_pairing->setClientModel(model);
     if (model && clientModel->getPeerTableModel() && clientModel->getBanTableModel()) {
         // Keep up to date with client
         setNumConnections(model->getNumConnections());
@@ -691,6 +699,15 @@ void RPCConsole::setClientModel(ClientModel *model)
         thread.quit();
         thread.wait();
     }
+}
+
+void RPCConsole::addPairingTab()
+{
+    assert(!m_tab_pairing);
+    m_tab_pairing = new PairingPage(this);
+    ui->tabWidget->insertTab(1, m_tab_pairing, tr("&Pairing"));
+    m_tabs[TAB_PAIRING] = m_tab_pairing;
+    if (clientModel) m_tab_pairing->setClientModel(clientModel);
 }
 
 #ifdef ENABLE_WALLET
@@ -1266,14 +1283,45 @@ void RPCConsole::showOrHideBanTableIfRequired()
     ui->banHeading->setVisible(visible);
 }
 
+std::vector<RPCConsole::TabTypes> RPCConsole::tabs() const
+{
+    std::vector<TabTypes> ret;
+    ret.reserve(m_tabs.size());
+
+    std::map<QWidget*, TabTypes> tabtype_map;
+    for (const auto& tab : m_tabs) {
+        tabtype_map[tab.second] = tab.first;
+    }
+
+    for (int i = 0; i < ui->tabWidget->count(); ++i) {
+        auto tabtype = tabtype_map.find(ui->tabWidget->widget(i));
+        if (tabtype != tabtype_map.end()) {
+            ret.push_back(tabtype->second);
+        }
+    }
+    return ret;
+}
+
 void RPCConsole::setTabFocus(enum TabTypes tabType)
 {
-    ui->tabWidget->setCurrentIndex(tabType);
+    ui->tabWidget->setCurrentWidget(m_tabs[tabType]);
 }
 
 QString RPCConsole::tabTitle(TabTypes tab_type) const
 {
-    return ui->tabWidget->tabText(tab_type);
+    const int tab_index = ui->tabWidget->indexOf(m_tabs.at(tab_type));
+    return ui->tabWidget->tabText(tab_index);
+}
+
+QKeySequence RPCConsole::tabShortcut(TabTypes tab_type) const
+{
+    switch (tab_type) {
+    case TAB_INFO: return QKeySequence(Qt::CTRL + Qt::Key_I);
+    case TAB_CONSOLE: return QKeySequence(Qt::CTRL + Qt::Key_T);
+    case TAB_GRAPH: return QKeySequence(Qt::CTRL + Qt::Key_N);
+    case TAB_PAIRING: return QKeySequence(Qt::ALT + Qt::Key_5);  // Only used in disablewallet mode - matches wallet GUI's pairing shortcut
+    case TAB_PEERS: return QKeySequence(Qt::CTRL + Qt::Key_P);
+    }
 }
 
 void RPCConsole::updateAlerts(const QString& warnings)

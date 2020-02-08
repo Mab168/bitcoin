@@ -22,6 +22,7 @@
 class BanMan;
 class CCoinControl;
 class CFeeRate;
+class CNetAddr;
 class CNodeStats;
 class Coin;
 class RPCTimerInterface;
@@ -105,6 +106,9 @@ public:
 
     //! Get proxy.
     virtual bool getProxy(Network net, proxyType& proxy_info) = 0;
+
+    //! Get local network addresses.
+    virtual std::vector<CNetAddr> getNetLocalAddresses() = 0;
 
     //! Get number of connections.
     virtual size_t getNodeCount(CConnman::NumConnections flags) = 0;
@@ -239,6 +243,10 @@ public:
     //! Register handler for network active messages.
     using NotifyNetworkActiveChangedFn = std::function<void(bool network_active)>;
     virtual std::unique_ptr<Handler> handleNotifyNetworkActiveChanged(NotifyNetworkActiveChangedFn fn) = 0;
+
+    //! Register handler for network local changed messages.
+    using NotifyNetworkLocalChangedFn = std::function<void()>;
+    virtual std::unique_ptr<Handler> handleNotifyNetworkLocalChanged(NotifyNetworkLocalChangedFn fn) = 0;
 
     //! Register handler for notify alert messages.
     using NotifyAlertChangedFn = std::function<void()>;

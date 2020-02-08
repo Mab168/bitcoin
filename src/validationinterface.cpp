@@ -25,6 +25,7 @@ struct ValidationInterfaceConnections {
     boost::signals2::scoped_connection ChainStateFlushed;
     boost::signals2::scoped_connection BlockChecked;
     boost::signals2::scoped_connection NewPoWValidBlock;
+    boost::signals2::scoped_connection ValidationInterfaceUnregistering;
 };
 
 struct MainSignalsInstance {
@@ -36,6 +37,7 @@ struct MainSignalsInstance {
     boost::signals2::signal<void (const CBlockLocator &)> ChainStateFlushed;
     boost::signals2::signal<void (const CBlock&, const CValidationState&)> BlockChecked;
     boost::signals2::signal<void (const CBlockIndex *, const std::shared_ptr<const CBlock>&)> NewPoWValidBlock;
+    boost::signals2::signal<void ()> ValidationInterfaceUnregistering;
 
     // We are not allowed to assume the scheduler only runs in one thread,
     // but must ensure all callbacks happen in-order, so we end up creating
@@ -99,9 +101,12 @@ void RegisterValidationInterface(CValidationInterface* pwalletIn) {
     conns.ChainStateFlushed = g_signals.m_internals->ChainStateFlushed.connect(std::bind(&CValidationInterface::ChainStateFlushed, pwalletIn, std::placeholders::_1));
     conns.BlockChecked = g_signals.m_internals->BlockChecked.connect(std::bind(&CValidationInterface::BlockChecked, pwalletIn, std::placeholders::_1, std::placeholders::_2));
     conns.NewPoWValidBlock = g_signals.m_internals->NewPoWValidBlock.connect(std::bind(&CValidationInterface::NewPoWValidBlock, pwalletIn, std::placeholders::_1, std::placeholders::_2));
+    conns.ValidationInterfaceUnregistering = g_signals.m_internals->ValidationInterfaceUnregistering.connect(std::bind(&CValidationInterface::ValidationInterfaceUnregistering, pwalletIn));
 }
 
 void UnregisterValidationInterface(CValidationInterface* pwalletIn) {
+    pwalletIn->ValidationInterfaceUnregistering();
+
     if (g_signals.m_internals) {
         g_signals.m_internals->m_connMainSignals.erase(pwalletIn);
     }
@@ -111,6 +116,9 @@ void UnregisterAllValidationInterfaces() {
     if (!g_signals.m_internals) {
         return;
     }
+
+    g_signals.m_internals->ValidationInterfaceUnregistering();
+
     g_signals.m_internals->m_connMainSignals.clear();
 }
 
