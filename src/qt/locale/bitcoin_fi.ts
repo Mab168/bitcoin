@@ -70,10 +70,6 @@
         <translation>Nämä ovat Bitcoin-osoitteesi maksujen lähettämistä varten. Tarkista aina määrä ja vastaanotto-osoite ennen kolikoiden lähettämistä.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>Nämä ovat sinun Bitcoin osoitteesi maksujen vastaanottamista varten. Käytä 'Luo uusi vastaanotto-osoite' painiketta vastaantto tabissä luodaksesi uuden osoitteen.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;Kopioi osoite</translation>
     </message>
@@ -522,10 +518,6 @@
         <translation>Näytä %1 ohjeet saadaksesi listan mahdollisista Bitcoinin komentorivivalinnoista</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>oletuslompakko</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Lompakoita ei ole saatavilla</translation>
     </message>
@@ -910,6 +902,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -945,10 +940,6 @@
     <message>
         <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
         <translation>Kun valitset OK, %1 aloittaa lataamaan ja käsittelemään koko %4 lohkoketjua (%2GB) aloittaen ensimmäisestä siirrosta %3 jolloin %4 käynnistettiin ensimmäistä kertaa.</translation>
-    </message>
-    <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>Tämän asetuksen peruuttaminen vaatii koko lohkoketjun uudelleenlataamisen. On nopeampaa ladata koko ketju ensin ja karsia se myöhemmin. Tämä myös poistaa käytöstä joitain edistyneitä toimintoja.</translation>
     </message>
     <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
@@ -1001,6 +992,13 @@
     <message numerus="yes">
         <source>(of %n GB needed)</source>
         <translation><numerusform>(tarvitaan %n GB)</numerusform><numerusform>(tarvitaan %n GB)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>Ei saatavilla</translation>
     </message>
     </context>
 <context>
@@ -1055,6 +1053,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Laatu</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Osoite</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1071,6 +1082,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Valitse maksupyynnön tiedosto</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Liitä osoite leikepöydältä</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1173,10 +1192,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Karsi lohkovaraston kooksi</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>Gt</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1331,6 +1346,10 @@
         <translation>ei mitään</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin-ydin</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>Varmista asetusten palautus</translation>
     </message>
@@ -1441,7 +1460,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Nykyinen tase seurantaosoitetteissa</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Sulje</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Yhteensä</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>tai</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1673,6 +1710,16 @@
     <message>
         <source>unknown</source>
         <translation>tuntematon</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>Lko</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Rso</translation>
     </message>
 </context>
 <context>
@@ -2056,6 +2103,10 @@
         <translation>Valinnainen pyyntömäärä. Jätä tyhjäksi tai nollaksi jos et pyydä tiettyä määrää.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Vastaanota maksu</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
@@ -2261,10 +2312,6 @@
         <translation>Varoitus: Kulujen arviointi ei ole juuri nyt mahdollista.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>pudota kulujen asetukset</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2413,6 +2460,10 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
         <translation>Vahvista kolikoiden lähetys</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Lähetä</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>Vastaanottajan osoite ei ole kelvollinen. Tarkista osoite.</translation>
     </message>
@@ -2490,10 +2541,6 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
     <message>
         <source>Choose previously used address</source>
         <translation>Valitse aikaisemmin käytetty osoite</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Tämä on normaali maksu.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3044,10 +3091,6 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
         <translation>Lähetetty vastaanottajalle</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Itsellesi</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Louhittu</translation>
     </message>
@@ -3178,6 +3221,10 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
         <translation>Sulje lompakko</translation>
     </message>
     <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Haluatko varmasti sulkea lompakon &lt;i&gt;%1&lt;/i&gt;?</translation>
+    </message>
+    <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Lompakon sulkeminen liian pitkäksi aikaa saattaa johtaa tarpeeseen synkronoida koko ketju uudelleen, mikäli karsinta on käytössä.</translation>
     </message>
@@ -3245,6 +3292,10 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Vie auki olevan välilehden tiedot tiedostoon</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3450,6 +3501,12 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
         <translation>Määrättyä lohkohakemistoa "%s" ei ole olemassa.</translation>
     </message>
     <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>Määriteltyä R/W asetustiedostoa %s ei löytynyt
+</translation>
+    </message>
+    <message>
         <source>Upgrading txindex database</source>
         <translation>Päivitetään txindex -tietokantaa</translation>
     </message>
@@ -3638,6 +3695,10 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
     <message>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>Tämän siirtomaksun maksat, kun siirtomaksun arviointi ei ole käytettävissä.</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Tämä tuote sisältää ohjelmistoa, jonka on kehittänyt OpenSSL Project käytettäväksi OpenSSL Toolkit -ohjelmistossa %s, ja Eric Youngin kirjoittamaa salausohjelmistoa sekä Thomas Bernardin kirjoittamaa UPnP-ohjelmistoa.</translation>
     </message>
     <message>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>

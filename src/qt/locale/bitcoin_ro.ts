@@ -172,6 +172,14 @@
         <translation>Portofel criptat</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Introduceti o parola noua pentru portofel.&lt;br/&gt;Va rugam sa folositi o parola de  &lt;b&gt; zece sau mai multe caractere&lt;/b&gt;, sau &lt;b&gt;mai mult de opt cuvinte&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>Introdu parola veche si parola nouă pentru portofel</translation>
+    </message>
+    <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>IMPORTANT: Orice copie de siguranţă făcută anterior portofelului dumneavoastră ar trebui înlocuită cu cea generată cel mai recent, fişier criptat al portofelului. Pentru siguranţă, copiile de siguranţă vechi ale portofelului ne-criptat vor deveni inutile imediat ce veţi începe folosirea noului fişier criptat al portofelului.</translation>
     </message>
@@ -454,12 +462,16 @@
         <translation>Actualizat</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
-        <translation>Arată mesajul de ajutor %1 pentru a obţine o listă cu opţiunile posibile de linii de comandă Bitcoin</translation>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;Trimite adresele</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>portofel implicit</translation>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;Primește adresele</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
+        <translation>Arată mesajul de ajutor %1 pentru a obţine o listă cu opţiunile posibile de linii de comandă Bitcoin</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -706,6 +718,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">Criptează portofelul</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -785,6 +801,9 @@
         <translation>Nu se poate crea un dosar de date aici.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -874,6 +893,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(din %n GB necesar)</numerusform><numerusform>(din %n GB necesari)</numerusform><numerusform>(din %n GB necesari)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>Nespecificat</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -923,6 +949,19 @@
     </message>
     </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>tip</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adresă</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -939,6 +978,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Selectaţi fişierul cerere de plată</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Lipeşte adresa copiată din clipboard</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1033,10 +1080,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Reductie &amp;block storage la</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1183,6 +1226,10 @@
         <translation>nimic</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>Nucleul Bitcoin</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>Confirmă resetarea opţiunilor</translation>
     </message>
@@ -1293,7 +1340,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Soldul dvs. total în adresele doar-supraveghere</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Închide</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Suma totală</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>sau</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1517,6 +1582,16 @@
     <message>
         <source>unknown</source>
         <translation>necunoscut</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>Blc</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tze</translation>
     </message>
 </context>
 <context>
@@ -1884,6 +1959,10 @@
         <translation>O sumă opţională de cerut. Lăsaţi gol sau zero pentru a nu cere o sumă anume.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Cerere plată</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Curăţă toate cîmpurile formularului.</translation>
     </message>
@@ -2089,10 +2168,6 @@
         <translation>Avertisment: Estimarea comisionului nu s-a putut efectua.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>inchide setarile de taxare</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2197,6 +2272,10 @@ Nota: Cum taxa este calculata per byte, o taxa de "100 satoshi per kB" pentru o 
         <translation>%1(%2 blocuri)</translation>
     </message>
     <message>
+        <source> from wallet '%1'</source>
+        <translation> de la portofelul '%1'</translation>
+    </message>
+    <message>
         <source>%1 to %2</source>
         <translation>%1 la %2</translation>
     </message>
@@ -2231,6 +2310,10 @@ Nota: Cum taxa este calculata per byte, o taxa de "100 satoshi per kB" pentru o 
     <message>
         <source>Confirm send coins</source>
         <translation>Confirmă trimiterea monedelor</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">Trimite</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
@@ -2310,10 +2393,6 @@ Nota: Cum taxa este calculata per byte, o taxa de "100 satoshi per kB" pentru o 
     <message>
         <source>Choose previously used address</source>
         <translation>Alegeţi adrese folosite anterior</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Aceasta este o tranzacţie normală.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2868,10 +2947,6 @@ Nota: Cum taxa este calculata per byte, o taxa de "100 satoshi per kB" pentru o 
         <translation>Trimis către</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Către dvs.</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Minat</translation>
     </message>
@@ -3061,6 +3136,10 @@ Nota: Cum taxa este calculata per byte, o taxa de "100 satoshi per kB" pentru o 
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Exportă datele din tab-ul curent într-un fişier</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Eroare</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3280,6 +3359,10 @@ Nota: Cum taxa este calculata per byte, o taxa de "100 satoshi per kB" pentru o 
     <message>
         <source>Loading P2P addresses...</source>
         <translation>Încărcare adrese P2P...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Eroare: Spaţiu pe disc redus!</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

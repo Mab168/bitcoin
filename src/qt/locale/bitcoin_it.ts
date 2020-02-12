@@ -70,10 +70,6 @@
         <translation>Questi sono i tuoi indirizzi Bitcoin per l'invio di pagamenti. Controlla sempre l'importo e l'indirizzo del beneficiario prima di inviare bitcoin.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>Questi sono i tuoi indirizzi Bitcoin per ricevere pagamenti. Usa il tasto "Crea nuovo indirizzo ricevente" nella schermata "Ricevi" per creare nuovi indirizzi.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;Copia indirizzo</translation>
     </message>
@@ -522,10 +518,6 @@
         <translation>Mostra il messaggio di aiuto di %1 per ottenere una lista di opzioni di comando per Bitcoin</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>Portafoglio predefinito:</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Nessun portafoglio disponibile</translation>
     </message>
@@ -918,6 +910,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -955,10 +950,6 @@
         <translation>Quando fai click su OK, %1 comincerà a scaricare e processare l'intera %4 block chain (%2GB) a partire dalla prime transazioni del %3 quando %4 venne inaugurato.</translation>
     </message>
     <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>Cambiare questa impostazione richiede di riscaricare l'intera blockchain. E' più veloce scaricare prima tutta la chain e poi fare prune. Disabilita alcune impostazioni avanzate.</translation>
-    </message>
-    <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation>La sincronizzazione iniziale è molto dispendiosa e potrebbe mettere in luce problemi di harware del tuo computer che erano prima passati inosservati. Ogni volta che lanci %1 continuerà a scaricare da dove l'avevi lasciato.</translation>
     </message>
@@ -977,10 +968,6 @@
     <message>
         <source>Bitcoin</source>
         <translation>Bitcoin</translation>
-    </message>
-    <message>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation>Scarta blocchi dopo la verifica, eccetto i più recenti %1 GB(prune)</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1014,11 +1001,14 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(di %nGB richiesti)</numerusform><numerusform>(%n GB richiesti)</numerusform></translation>
     </message>
-    <message numerus="yes">
-        <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB richiesti per la catena completa)</numerusform><numerusform>(%n GB richiesti per la catena completa)</numerusform></translation>
-    </message>
 </context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/D</translation>
+    </message>
+    </context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1071,6 +1061,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Indirizzo</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1087,6 +1090,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Seleziona il file di richiesta di pagamento</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Incollare l'indirizzo dagli appunti</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1194,10 +1205,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Eliminare e bloccare l'archiviazione su</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1462,7 +1469,25 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <source>Current total balance in watch-only addresses</source>
         <translation>Saldo corrente totale negli indirizzi di sola lettura</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Chiudi</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Importo totale</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>o</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1702,6 +1727,16 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <message>
         <source>unknown</source>
         <translation>sconosciuto</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>Blc</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tso</translation>
     </message>
 </context>
 <context>
@@ -2085,8 +2120,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Un importo opzionale da associare alla richiesta. Lasciare vuoto o a zero per non richiedere un importo specifico.</translation>
     </message>
     <message>
-        <source>&amp;Create new receiving address</source>
-        <translation>Crea nuovo indirizzo ricevente.</translation>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Richiedi pagamento</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2294,10 +2329,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Attenzione: Il calcolo delle commissioni non è attualmente disponibile.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>minimizza le impostazioni di commissione</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2458,6 +2489,10 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
         <translation>Conferma invio coins</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Invia</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>L'indirizzo del destinatario non è valido. Si prega di ricontrollare.</translation>
     </message>
@@ -2495,7 +2530,7 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Inizio delle conferme stimato entro %n blocchi.</numerusform><numerusform>Inizio delle conferme stimato entro %n blocchi.</numerusform></translation>
+        <translation><numerusform>Inizio delle conferme stimato entro %n blocco.</numerusform><numerusform>Inizio delle conferme stimato entro %n blocchi.</numerusform></translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2535,10 +2570,6 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     <message>
         <source>Choose previously used address</source>
         <translation>Scegli un indirizzo usato precedentemente</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Questo è un normale pagamento.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2773,7 +2804,7 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Aperto per altri %n blocchi</numerusform><numerusform>Aperto per altri %n blocchi</numerusform></translation>
+        <translation><numerusform>Aperto per %n altro blocco</numerusform><numerusform>Aperto per altri %n blocchi</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2853,7 +2884,7 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>matura tra %n blocchi</numerusform><numerusform>matura tra %n blocchi</numerusform></translation>
+        <translation><numerusform>matura tra %n blocco</numerusform><numerusform>matura tra %n blocchi</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2967,7 +2998,7 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Aperto per altri %n blocchi</numerusform><numerusform>Aperto per altri %n blocchi</numerusform></translation>
+        <translation><numerusform>Aperto per %n altro blocco</numerusform><numerusform>Aperto per altri %n blocchi</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3095,10 +3126,6 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     <message>
         <source>Sent to</source>
         <translation>Inviato a</translation>
-    </message>
-    <message>
-        <source>To yourself</source>
-        <translation>A te stesso</translation>
     </message>
     <message>
         <source>Mined</source>
@@ -3302,6 +3329,10 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Esporta su file i dati contenuti nella tabella corrente</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Errore</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3525,6 +3556,12 @@ Nota: poiché la commissione è calcolata su base per byte, una commissione di "
     <message>
         <source>Specified blocks directory "%s" does not exist.</source>
         <translation>La cartella specificata "%s" non esiste.</translation>
+    </message>
+    <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>Lo specificato archivio di R/W configurazione %s non esiste
+</translation>
     </message>
     <message>
         <source>Unknown address type '%s'</source>

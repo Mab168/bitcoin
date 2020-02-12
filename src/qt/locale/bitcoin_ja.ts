@@ -70,10 +70,6 @@
         <translation>これらは、あなたが知っている支払い送り先の Bitcoin アドレスです。コインを送る前に、必ず金額と送金先アドレスを確認してください。</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>これらは支払いを受け取るための、あなたの Bitcoin アドレスです。新しいアドレスを作成するには受取タブ内の「新しい受取用アドレスを作成」ボタンを使用します。</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>アドレスをコピー(&amp;C)</translation>
     </message>
@@ -523,10 +519,6 @@
         <translation>%1 のヘルプ メッセージを表示して、使用可能な XPChain のコマンドライン オプションの一覧を見る。</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>デフォルトウォレット</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>ウォレットは利用できません</translation>
     </message>
@@ -919,6 +911,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -956,10 +951,6 @@
         <translation>OKをクリックすると、%1 は %4 がリリースされた%3年最初の取引からの完全な %4 ブロックチェーン（%2GB）のダウンロードおよび処理を開始します。</translation>
     </message>
     <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>この設定を元に戻すには、ブロックチェーン全体を再ダウンロードする必要があります。先にチェーン全体をダウンロードしてから、剪定する方が高速です。一部の高度な機能を無効にします。</translation>
-    </message>
-    <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation>この初回同期には多大なリソースを消費し、あなたのコンピュータでこれまで見つからなかったハードウェア上の問題が発生する場合があります。%1 を実行する度に、中断された時点からダウンロードを再開します。</translation>
     </message>
@@ -978,10 +969,6 @@
     <message>
         <source>Bitcoin</source>
         <translation>Bitcoin</translation>
-    </message>
-    <message>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation>最新の%1 GBを除いて、検証後にブロックを破棄 (剪定する)</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1015,11 +1002,14 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(%n GB必要)</numerusform></translation>
     </message>
-    <message numerus="yes">
-        <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(完全なチェーンには%n GB必要です)</numerusform></translation>
-    </message>
 </context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    </context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1072,6 +1062,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>アドレス</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1088,6 +1091,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>支払いリクエストファイルを選択</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>クリップボードからアドレスを貼り付け</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1194,10 +1205,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>ブロックの保存容量を次の値までに剪定する(&amp;amp;B):</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1352,6 +1359,10 @@
         <translation>なし</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin のコア</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>設定リセットの確認</translation>
     </message>
@@ -1462,7 +1473,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>ウォッチ限定アドレスの現在の残高の総計</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>合計</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>または</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1702,6 +1731,16 @@
     <message>
         <source>unknown</source>
         <translation>不明</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>ブロック</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>取引</translation>
     </message>
 </context>
 <context>
@@ -2085,8 +2124,8 @@
         <translation>リクエストする金額（任意）。特定の金額をリクエストしない場合は、この欄は空白のままかゼロにしてください。</translation>
     </message>
     <message>
-        <source>&amp;Create new receiving address</source>
-        <translation>新しい受取用アドレスを作成</translation>
+        <source>&amp;Request payment</source>
+        <translation>支払いをリクエスト(&amp;R)</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2294,10 +2333,6 @@
         <translation>警告: 手数料推定機能は現在利用できません。</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>手数料設定を折りたたむ</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2458,6 +2493,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>送金の確認</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">送金</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>送金先アドレスが不正です。再確認してください。</translation>
     </message>
@@ -2535,10 +2574,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Choose previously used address</source>
         <translation>これまでに送金したことがあるアドレスから選択</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>これは通常の支払いです。</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3097,10 +3132,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>送金</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>自己送金</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>発掘</translation>
     </message>
@@ -3302,6 +3333,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>現在のタブのデータをファイルにエクスポート</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>エラー</translation>
     </message>
     <message>
         <source>Backup Wallet</source>

@@ -173,6 +173,14 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <translation>Billetera encriptada</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Introduce la nueva contraseña para la billetera.&lt;br/&gt;Por favor utiliza una  contraseña de&lt;b&gt;10 o más caracteres aleatorios&lt;/b&gt;, u &lt;b&gt;ocho o más palabras&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>Introduzca la contraseña antigua y la nueva para la billetera.</translation>
+    </message>
+    <message>
         <source>Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
         <translation>Recuerda que codificando tu billetera no garantiza mantener a salvo tus bitcoins en caso de tener virus en el computador.</translation>
     </message>
@@ -459,6 +467,14 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <translation>A hoy</translation>
     </message>
     <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;Enviando direcciones</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;Recibiendo direcciones</translation>
+    </message>
+    <message>
         <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
         <translation>Muestre el mensaje de ayuda %1 para obtener una lista con posibles opciones de línea de comandos de Bitcoin</translation>
     </message>
@@ -715,6 +731,10 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">Codificar la billetera</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -786,6 +806,9 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <translation>No se puede crear el directorio de datos aquí.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -875,6 +898,13 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <source>(of %n GB needed)</source>
         <translation><numerusform>(de %n GB requerido)</numerusform><numerusform>(de %n GB requeridos)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/D</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -928,6 +958,19 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Dirección</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -944,6 +987,14 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     <message>
         <source>Select payment request file</source>
         <translation>Seleccionar archivo de solicitud de pago</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Pega dirección desde portapapeles</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1168,6 +1219,10 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <translation>ninguno</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>bitcoin core</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>Confirmar restablecimiento de opciones</translation>
     </message>
@@ -1278,7 +1333,21 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <source>Current total balance in watch-only addresses</source>
         <translation>Saldo total actual en direcciones de solo reloj</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Cerrar</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>o</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1437,7 +1506,7 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n segundos</numerusform><numerusform>%n segundos</numerusform></translation>
+        <translation><numerusform>%n segundo</numerusform><numerusform>%n segundos</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
@@ -1494,6 +1563,16 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     <message>
         <source>unknown</source>
         <translation>desconocido</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>Blq</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tsn</translation>
     </message>
 </context>
 <context>
@@ -1584,6 +1663,10 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     <message>
         <source>Memory usage</source>
         <translation>Uso de memoria</translation>
+    </message>
+    <message>
+        <source>Wallet: </source>
+        <translation type="unfinished">Cartera: </translation>
     </message>
     <message>
         <source>&amp;Reset</source>
@@ -1837,6 +1920,10 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <translation>Un monto opcional para solicitar. Deje esto vacío o en cero para no solicitar una cantidad específica.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>Solicitud de pago</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Borre todos los campos del formulario.</translation>
     </message>
@@ -2026,10 +2113,6 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <translation>Advertencia: En este momento no se puede estimar la cuota.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>Colapsar ajustes de comisión.</translation>
-    </message>
-    <message>
         <source>per kilobyte</source>
         <translation>por kilobyte</translation>
     </message>
@@ -2135,6 +2218,10 @@ Tarifa de copia</translation>
         <translation>Confirmar el envió de monedas</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Envía</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>La dirección de envío no es válida. Por favor revisala.</translation>
     </message>
@@ -2204,10 +2291,6 @@ Tarifa de copia</translation>
     <message>
         <source>Choose previously used address</source>
         <translation>Seleccionar dirección usada anteriormente</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Este es un pago normal</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2714,10 +2797,6 @@ Tarifa de copia</translation>
         <translation>Enviado a</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>A ti mismo</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Minado</translation>
     </message>
@@ -2898,6 +2977,10 @@ Tarifa de copia</translation>
 Exportar los datos en la pestaña actual a un archivo</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
         <source>Backup Wallet</source>
         <translation>Respaldar monedero</translation>
     </message>
@@ -2921,7 +3004,11 @@ Exportar los datos en la pestaña actual a un archivo</translation>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>Los datos del monedero se han guardado con éxito en %1.</translation>
     </message>
-    </context>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancela</translation>
+    </message>
+</context>
 <context>
     <name>bitcoin-core</name>
     <message>
@@ -3047,6 +3134,10 @@ Exportar los datos en la pestaña actual a un archivo</translation>
     <message>
         <source>Loading P2P addresses...</source>
         <translation>Cargando direcciones P2P...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Atención: Poco espacio en el disco duro</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

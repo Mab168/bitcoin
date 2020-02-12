@@ -172,6 +172,14 @@
         <translation>Lommeboken er kryptert</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Oppgi adgangsfrasen til lommeboken.&lt;br/&gt;Vennligst bruk en adgangsfrase med &lt;b&gt;ti eller flere tilfeldige tegn&lt;/b&gt;, eller &lt;b&gt;åtte eller flere ord&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>Angi den gamle og en ny adgangsfrase til lommeboken.</translation>
+    </message>
+    <message>
         <source>Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
         <translation>Husk at å kryptere lommeboken ikke vil beskytte dine bitcoins fullstendig fra å bli stjålet av skadevare som infiserer datamaskinen din.</translation>
     </message>
@@ -486,10 +494,6 @@
         <translation>Vis %1-hjelpemeldingen for å få en liste over mulige Bitcoin-kommandolinjealternativer</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>standard lommebok</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Ingen lommebøker tilgjengelig</translation>
     </message>
@@ -750,6 +754,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">Krypter lommebok</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -825,6 +833,9 @@
         <translation>Kan ikke lage datamappe her.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -914,6 +925,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(av %n GB som trengs)</numerusform><numerusform>(av %n GB som trengs)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>-</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -961,7 +979,24 @@
         <source>Hide</source>
         <translation>Skjul</translation>
     </message>
-    </context>
+    <message>
+        <source>Unknown. Syncing Headers (%1, %2%)...</source>
+        <translation>Ukjent. Synkroniserer hoder (%1, %2%)…</translation>
+    </message>
+</context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adresse</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -979,6 +1014,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Velg fil for betalingsetterspørring</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Lim inn adresse fra utklippstavlen</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1069,10 +1112,6 @@
     <message>
         <source>&amp;Network</source>
         <translation>&amp;Nettverk</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>MiB</source>
@@ -1329,7 +1368,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Nåværende totale balanse i kun observerbare adresser</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Lukk</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Totalbeløp</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>eller</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1545,6 +1602,11 @@
     <message>
         <source>unknown</source>
         <translation>ukjent</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tsn</translation>
     </message>
 </context>
 <context>
@@ -1904,6 +1966,10 @@
         <translation>Et valgfritt beløp å etterspørre. La stå tomt eller null for ikke å etterspørre et spesifikt beløp.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Etterspør betaling</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Fjern alle felter fra skjemaet.</translation>
     </message>
@@ -2101,10 +2167,6 @@
         <translation>Advarsel: Gebyroverslag er ikke tilgjengelig for tiden.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>Legg ned gebyrinnstillinger</translation>
-    </message>
-    <message>
         <source>per kilobyte</source>
         <translation>per kilobyte</translation>
     </message>
@@ -2199,6 +2261,10 @@
     <message>
         <source>%1 (%2 blocks)</source>
         <translation>%1 (%2 blokker)</translation>
+    </message>
+    <message>
+        <source> from wallet '%1'</source>
+        <translation> fra lommebok '%1'</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2314,10 +2380,6 @@
     <message>
         <source>Choose previously used address</source>
         <translation>Velg tidligere brukt adresse</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Dette er en normal betaling.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2872,10 +2934,6 @@
         <translation>Sendt til</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Til deg selv</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Utvunnet</translation>
     </message>
@@ -3069,6 +3127,10 @@
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Eksporter data i den valgte fliken til en fil</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Feilmelding</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3274,12 +3336,22 @@
         <translation>Ugyldig beløp for -fallbackfee=&lt;amount&gt;: "%s"</translation>
     </message>
     <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>R/W Konfigurasjonsfilen %s eksisterer ikke
+</translation>
+    </message>
+    <message>
         <source>Upgrading txindex database</source>
         <translation>Oppgraderer txindex databasen</translation>
     </message>
     <message>
         <source>Loading P2P addresses...</source>
         <translation>Laster maskin-til-maskin -adresser…</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Feil: Lite ledig lagringsplass!</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

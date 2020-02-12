@@ -172,6 +172,14 @@
         <translation>Cüzdan Şifrelendi</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Cüzdan için yeni parolayı giriniz.&lt;br/&gt;Lütfen &lt;b&gt;on ya da daha fazla rastgele karakter&lt;/b&gt; veya &lt;b&gt;sekiz ya da daha fazla kelime&lt;/b&gt; içeren bir parola kullanınız.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>Eski ve yeni parolanızı cüzdana giriniz.</translation>
+    </message>
+    <message>
         <source>Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
         <translation>Cüzdanınızı şifrelemenin, bitcoinlerinizin bilgisayara bulaşan kötücül bir yazılım tarafından çalınmaya karşı tamamen koruyamayacağını unutmayınız.</translation>
     </message>
@@ -458,6 +466,14 @@
         <translation>Güncel</translation>
     </message>
     <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;Gönderme adresleri</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;Alma adresleri</translation>
+    </message>
+    <message>
         <source>Open Wallet</source>
         <translation>Cüzdanı Aç</translation>
     </message>
@@ -476,10 +492,6 @@
     <message>
         <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
         <translation>Olası Bitcoin komut satırı seçeneklerinin listesini görmek için %1 yardım mesajını göster</translation>
-    </message>
-    <message>
-        <source>default wallet</source>
-        <translation>varsayılan cüzdan</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -725,6 +737,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">Cüzdanı Şifrele</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -804,6 +820,9 @@
         <translation>Burada veri klasörü oluşturulamaz.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -890,6 +909,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(gereken %n GB alandan)</numerusform><numerusform>(gereken %n GB alandan)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>Mevcut değil</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -937,7 +963,24 @@
         <source>Hide</source>
         <translation>Gizle</translation>
     </message>
-    </context>
+    <message>
+        <source>Unknown. Syncing Headers (%1, %2%)...</source>
+        <translation>Bilinmeyen. Üstbilgiler Senkronize Ediliyor (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Tür</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adres</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -955,6 +998,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Ödeme talebi dosyasını seç</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Panodaki adresi yapıştırın</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1049,10 +1100,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Temizle &amp;block depolamasını</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1199,6 +1246,10 @@
         <translation>boş</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Çekirdeği</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>Seçeneklerin sıfırlanmasını teyit et</translation>
     </message>
@@ -1309,7 +1360,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Sadece görüntülenebilir adreslerdeki mevcut toplam miktar</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Kapat</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Toplam Tutar</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>ya da</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1533,6 +1602,11 @@
     <message>
         <source>unknown</source>
         <translation>bilinmiyor</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>İşlem</translation>
     </message>
 </context>
 <context>
@@ -1900,6 +1974,10 @@
         <translation>Seçiminize dayalı talep edilecek tutar. Belli bir tutar talep etmemek için bunu boş bırakın veya sıfır değerini kullanın.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>Ödeme &amp;talep et</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Formdaki tüm alanları temizle.</translation>
     </message>
@@ -2097,10 +2175,6 @@
         <translation>Uyarı: Ücret tahmini şu anda mümkün değildir.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>ücret-ayarlarını-küçült</translation>
-    </message>
-    <message>
         <source>per kilobyte</source>
         <translation>kilobyte başına</translation>
     </message>
@@ -2189,6 +2263,10 @@
         <translation>%1 (%2 blok)</translation>
     </message>
     <message>
+        <source> from wallet '%1'</source>
+        <translation> cüzdan %1'den</translation>
+    </message>
+    <message>
         <source>%1 to %2</source>
         <translation>%1'den %2'e</translation>
     </message>
@@ -2215,6 +2293,10 @@
     <message>
         <source>Confirm send coins</source>
         <translation>Coin gönderimini onaylayın</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">Gönder</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
@@ -2294,10 +2376,6 @@
     <message>
         <source>Choose previously used address</source>
         <translation>Önceden kullanılmış adres seç</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Bu, normal bir ödemedir.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2852,10 +2930,6 @@
         <translation>Gönderildiği adres</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Kendinize</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Kazıldı</translation>
     </message>
@@ -3041,6 +3115,10 @@
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Mevcut sekmedeki verileri bir dosyaya aktar</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Hata</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3249,6 +3327,10 @@
     <message>
         <source>Loading P2P addresses...</source>
         <translation>P2P adresleri yükleniyor...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Hata: Disk alanı düşük!</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

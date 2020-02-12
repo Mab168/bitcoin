@@ -168,6 +168,14 @@
         <translation>錢包已加密</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>輸入錢包的新密碼。&lt;br/&gt;密碼請用&lt;b&gt;10 個或以上的隨機字元&lt;/b&gt;，或是&lt;b&gt;8 個或以上的字詞&lt;/b&gt;。</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>輸入舊密碼和新密碼至錢包。</translation>
+    </message>
+    <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>重要: 請改用新產生的加密錢包檔，來取代所以舊錢包檔的備份。為安全計，當你開始使用新的加密錢包檔後，舊錢包檔的備份就不能再使用了。</translation>
     </message>
@@ -290,6 +298,10 @@
         <translation>開啓網址... &amp;U</translation>
     </message>
     <message>
+        <source>Wallet:</source>
+        <translation type="unfinished">錢包:</translation>
+    </message>
+    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>正在為磁碟區塊重建索引...</translation>
     </message>
@@ -366,6 +378,14 @@
         <translation>資訊</translation>
     </message>
     <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;付款地址</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;收款地址</translation>
+    </message>
+    <message>
         <source>Date: %1
 </source>
         <translation>日期: %1
@@ -384,15 +404,34 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation>加密錢包</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
+    <message>
+        <source>&amp;Label</source>
+        <translation>&amp;標記</translation>
+    </message>
+    <message>
+        <source>&amp;Address</source>
+        <translation>&amp;位址</translation>
+    </message>
     </context>
 <context>
     <name>FreespaceChecker</name>
     </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
+    <message>
+        <source>About %1</source>
+        <translation type="unfinished">關於 %1 A</translation>
+    </message>
     </context>
 <context>
     <name>Intro</name>
@@ -406,8 +445,23 @@
     </message>
     </context>
 <context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    </context>
+<context>
     <name>ModalOverlay</name>
     </context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>地址</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     </context>
@@ -417,12 +471,26 @@
 <context>
     <name>OptionsDialog</name>
     <message>
+        <source>W&amp;allet</source>
+        <translation>&amp;錢包</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     </context>
 <context>
     <name>OverviewPage</name>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">關閉 l</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
     </context>
 <context>
     <name>PaymentServer</name>
@@ -500,7 +568,17 @@
         <source>%n year(s)</source>
         <translation><numerusform>%n 年</numerusform></translation>
     </message>
-    </context>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>塊</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>交易</translation>
+    </message>
+</context>
 <context>
     <name>QRImageWidget</name>
     <message>
@@ -531,6 +609,10 @@
         <translation>一般</translation>
     </message>
     <message>
+        <source>Wallet: </source>
+        <translation type="unfinished">錢包: </translation>
+    </message>
+    <message>
         <source>Received</source>
         <translation>已接收</translation>
     </message>
@@ -545,9 +627,17 @@
     </context>
 <context>
     <name>ReceiveCoinsDialog</name>
+    <message>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;標記:</translation>
+    </message>
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
+    <message>
+        <source>Copy &amp;Address</source>
+        <translation>複製位址 &amp;C</translation>
+    </message>
     <message>
         <source>Address</source>
         <translation>地址</translation>
@@ -575,12 +665,28 @@
 <context>
     <name>SendCoinsDialog</name>
     <message>
+        <source>Choose...</source>
+        <translation type="unfinished">選取 h...</translation>
+    </message>
+    <message>
+        <source>S&amp;end</source>
+        <translation type="unfinished">付款 &amp;S</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">付款 S</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(無標記)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
+    <message>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;標記:</translation>
+    </message>
     </context>
 <context>
     <name>SendConfirmationDialog</name>
@@ -599,6 +705,10 @@
     <message>
         <source>Open until %1</source>
         <translation>開放至 %1</translation>
+    </message>
+    <message>
+        <source>Transaction</source>
+        <translation>交易</translation>
     </message>
     </context>
 <context>
@@ -659,6 +769,10 @@
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>把目前分頁的資料匯出至檔案</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>錯誤</translation>
     </message>
     </context>
 <context>

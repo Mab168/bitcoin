@@ -160,12 +160,32 @@
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
         <translation>മുന്നറിയിപ്പ്: നിങ്ങളുടെ വാലറ്റ് എൻക്രിപ്റ്റ് ചെയ്ത് പാസ്ഫ്രെയ്സ് നഷ്ടപ്പെടുകയാണെങ്കിൽ, നിങ്ങളുടെ എല്ലാ ബിറ്റ്കൊയിനുകളും നഷ്ടപ്പെടും!</translation>
     </message>
+    <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>വാലറ്റിൽ പുതിയ രഹസ്യപദപ്രയോഗം നൽകുക. &lt;br/&gt; &lt;b&gt; പത്തോ അതിലധികമോ റാൻഡം പ്രതീകങ്ങൾ &lt;/ b&gt; അല്ലെങ്കിൽ &lt;b&gt; എട്ട് അല്ലെങ്കിൽ അതിൽ കൂടുതൽ വാക്കുകൾ &lt;/ b&gt; ഒരു രഹസ്യപദപ്രയോഗം ഉപയോഗിക്കുക.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>പഴയ രഹസ്യപദപ്രയോഗം പുതിയ രഹസ്യപദപ്രയോഗം വാലറ്റിൽ നൽകുക.</translation>
+    </message>
     </context>
 <context>
     <name>BanTableModel</name>
     </context>
 <context>
     <name>BitcoinGUI</name>
+    <message>
+        <source>&amp;Encrypt Wallet...</source>
+        <translation type="unfinished">&amp;വാലറ്റ് എൻക്രിപ്റ്റ് ചെയ്യുക...</translation>
+    </message>
+    <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;വിലാസങ്ങൾ അയയ്ക്കുന്നു</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;സ്വീകരിക്കുന്ന വിലാസങ്ങൾ</translation>
+    </message>
     </context>
 <context>
     <name>CoinControlDialog</name>
@@ -179,12 +199,27 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation>വാലറ്റ് എൻക്രിപ്റ്റ് ചെയ്യുക</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
+    <message>
+        <source>&amp;Label</source>
+        <translation type="unfinished">&amp;ലേബൽ</translation>
+    </message>
+    <message>
+        <source>&amp;Address</source>
+        <translation type="unfinished">&amp;വിലാസം</translation>
+    </message>
     </context>
 <context>
     <name>FreespaceChecker</name>
+    </context>
+<context>
+    <name>GuiNetWatch</name>
     </context>
 <context>
     <name>HelpMessageDialog</name>
@@ -193,8 +228,19 @@
     <name>Intro</name>
     </context>
 <context>
+    <name>MempoolStats</name>
+    </context>
+<context>
     <name>ModalOverlay</name>
     </context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>വിലാസം</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     </context>
@@ -206,6 +252,16 @@
     </context>
 <context>
     <name>OverviewPage</name>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">അടയ്ക്കുക</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
     </context>
 <context>
     <name>PaymentServer</name>
@@ -224,9 +280,17 @@
     </context>
 <context>
     <name>ReceiveCoinsDialog</name>
+    <message>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;ലേബൽ:</translation>
+    </message>
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
+    <message>
+        <source>Copy &amp;Address</source>
+        <translation type="unfinished">&amp;വിലാസം പകർത്തുക</translation>
+    </message>
     <message>
         <source>Address</source>
         <translation>വിലാസം</translation>
@@ -250,12 +314,20 @@
 <context>
     <name>SendCoinsDialog</name>
     <message>
+        <source>Choose...</source>
+        <translation type="unfinished">തിരഞ്ഞെടുക്കുക...</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(ലേബൽ ഇല്ല)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
+    <message>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;ലേബൽ:</translation>
+    </message>
     </context>
 <context>
     <name>SendConfirmationDialog</name>

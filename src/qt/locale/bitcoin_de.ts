@@ -70,10 +70,6 @@
         <translation>Dies sind Ihre Bitcoin-Adressen zum Tätigen von Überweisungen. Bitte prüfen Sie den Betrag und die Adresse des Empfängers, bevor Sie Bitcoins überweisen.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>Dies sind Ihre Bitcoin-Adressen zum Empfangen von Zahlungen. Benutze den 'Neue Empfangsadresse erstellen' Button im Empfangen-Tab, um eine neue Addresse zu erstellen.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;Adresse kopieren</translation>
     </message>
@@ -522,10 +518,6 @@
         <translation>Zeige den "%1"-Hilfetext, um eine Liste mit möglichen Kommandozeilenoptionen zu erhalten</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>Standard Wallet</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Keine Wallets verfügbar</translation>
     </message>
@@ -918,6 +910,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -955,10 +950,6 @@
         <translation>Wenn Sie auf OK klicken, beginnt %1 mit dem Herunterladen und Verarbeiten der gesamten %4-Blockchain (%2GB), beginnend mit den frühesten Transaktionen in %3 beim ersten Start von %4.</translation>
     </message>
     <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>Um diese Einstellung wiederherzustellen, muss die gesamte Blockchain neu heruntergeladen werden. Es ist schneller, die gesamte Chain zuerst herunterzuladen und später zu bearbeiten. Deaktiviert einige erweiterte Funktionen.</translation>
-    </message>
-    <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation>Diese initiale Synchronisation führt zur hohen Last und kann Harewareprobleme, die bisher nicht aufgetreten sind, mit ihrem Computer verursachen. Jedes Mal, wenn Sie %1 ausführen, wird der Download zum letzten Synchronisationspunkt fortgesetzt.</translation>
     </message>
@@ -977,10 +968,6 @@
     <message>
         <source>Bitcoin</source>
         <translation>Bitcoin</translation>
-    </message>
-    <message>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation>Verwerfe Blöcke nachdem sie verifiziert worden sind, ausser die %1 GB (prune)</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1014,11 +1001,14 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(von %n GB benötigt)</numerusform><numerusform>(von %n GB benötigt)</numerusform></translation>
     </message>
-    <message numerus="yes">
-        <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB benötigt für komplette Blockchain)</numerusform><numerusform>(%n GB benötigt für komplette Blockchain)</numerusform></translation>
-    </message>
 </context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>k.A.</translation>
+    </message>
+    </context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1071,6 +1061,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adresse</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1087,6 +1090,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Zahlungsanforderungsdatei auswählen</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Adresse aus der Zwischenablage einfügen</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1193,10 +1204,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>&amp;Blockspeicher kürzen auf</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1461,7 +1468,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Aktueller Gesamtbetrag in nur-beobachteten Adressen</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Schließen</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Gesamtbetrag</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>oder</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1701,6 +1726,11 @@
     <message>
         <source>unknown</source>
         <translation>unbekannt</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tsn</translation>
     </message>
 </context>
 <context>
@@ -2084,8 +2114,8 @@
         <translation>Ein optional angeforderter Betrag. Lassen Sie dieses Feld leer oder setzen Sie es auf 0, um keinen spezifischen Betrag anzufordern.</translation>
     </message>
     <message>
-        <source>&amp;Create new receiving address</source>
-        <translation>Neue Empfangsadresse erstellen</translation>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Zahlung anfordern</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2293,10 +2323,6 @@
         <translation>Achtung: Berechnung der Gebühr ist momentan nicht möglich.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>Transaktionsgebühren-Einstellungen ausblenden</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2457,6 +2483,10 @@ Hinweis: Eine Gebühr von "100 Satoshis pro kB" bei einer Größe der Transaktio
         <translation>Überweisung bestätigen</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Überweisen</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>Die Zahlungsadresse ist ungültig, bitte nochmals überprüfen.</translation>
     </message>
@@ -2494,7 +2524,7 @@ Hinweis: Eine Gebühr von "100 Satoshis pro kB" bei einer Größe der Transaktio
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Voraussichtlicher Beginn der Bestätigung innerhalb von %n Block</numerusform><numerusform>Voraussichtlicher Beginn der Bestätigung innerhalb von %n Blöcken.</numerusform></translation>
+        <translation><numerusform>Voraussichtlicher Beginn der Bestätigung innerhalb von %n Block.</numerusform><numerusform>Voraussichtlicher Beginn der Bestätigung innerhalb von %n Blöcken.</numerusform></translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2534,10 +2564,6 @@ Hinweis: Eine Gebühr von "100 Satoshis pro kB" bei einer Größe der Transaktio
     <message>
         <source>Choose previously used address</source>
         <translation>Bereits verwendete Adresse auswählen</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Dies ist eine normale Überweisung.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3096,10 +3122,6 @@ Hinweis: Eine Gebühr von "100 Satoshis pro kB" bei einer Größe der Transaktio
         <translation>Überwiesen an</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Eigenüberweisung</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Erarbeitet</translation>
     </message>
@@ -3301,6 +3323,10 @@ Hinweis: Eine Gebühr von "100 Satoshis pro kB" bei einer Größe der Transaktio
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Daten der aktuellen Ansicht in eine Datei exportieren</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Fehler</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3526,6 +3552,12 @@ Hinweis: Eine Gebühr von "100 Satoshis pro kB" bei einer Größe der Transaktio
     <message>
         <source>Specified blocks directory "%s" does not exist.</source>
         <translation>Angegebener Blöcke-Ordner "%s" existiert nicht.</translation>
+    </message>
+    <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>Die spezifische R/W Konfigurationsdatei %s existiert nicht.
+</translation>
     </message>
     <message>
         <source>Unknown address type '%s'</source>

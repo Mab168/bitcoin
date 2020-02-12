@@ -80,6 +80,10 @@
         <source>Repeat new passphrase</source>
         <translation>नयाँ पासफ्रेज दोहोर्याउनुहोस्</translation>
     </message>
+    <message>
+        <source>Encrypt wallet</source>
+        <translation>वालेटलाई इन्क्रिप्ट गर्नुहोस्</translation>
+    </message>
     </context>
 <context>
     <name>BanTableModel</name>
@@ -190,9 +194,25 @@
         <source>Open debugging and diagnostic console</source>
         <translation>डिबगिङ र डायाग्नोस्टिक कन्सोल खोल्नुहोस्</translation>
     </message>
+    <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>डिस्कमा ब्लकलाई पुनः सूचीकरण गरिँदै...</translation>
+    </message>
+    <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;amp;पठाउने ठेगानाहरू</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;amp;प्राप्त गर्ने ठेगानाहरू</translation>
+    </message>
     </context>
 <context>
     <name>CoinControlDialog</name>
+    <message>
+        <source>Amount:</source>
+        <translation type="unfinished">रकम:</translation>
+    </message>
     <message>
         <source>Amount</source>
         <translation>रकम</translation>
@@ -208,6 +228,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">amp;वालेटलाई इन्क्रिप्ट गर्नुहोस्</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -216,22 +240,43 @@
     <name>FreespaceChecker</name>
     </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
+    <message>
+        <source>About %1</source>
+        <translation type="unfinished">amp;बारेमा %1</translation>
+    </message>
     </context>
 <context>
     <name>Intro</name>
     </context>
 <context>
+    <name>MempoolStats</name>
+    </context>
+<context>
     <name>ModalOverlay</name>
     </context>
 <context>
+    <name>NetWatchLogModel</name>
+    </context>
+<context>
     <name>OpenURIDialog</name>
+    <message>
+        <source>Open URI</source>
+        <translation type="unfinished">URI amp;खोल्नुहोस्</translation>
+    </message>
     </context>
 <context>
     <name>OpenWalletActivity</name>
     </context>
 <context>
     <name>OptionsDialog</name>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished">amp;विकल्प</translation>
+    </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>इन्टरफेसमा र सिक्का पठाउँदा देखिने डिफल्ट उपविभाजन एकाइ चयन गर्नुहोस् ।</translation>
@@ -283,7 +328,17 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>हेर्ने-मात्र ठेगानामा रहेको हालको जम्मा ब्यालेन्स</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">बन्द गर्नुहोस्</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     </context>
@@ -308,12 +363,26 @@
         <source>Enter a Bitcoin address (e.g. %1)</source>
         <translation>कृपया बिटकोइन ठेगाना प्रवेश गर्नुहोस् (उदाहरण %1)</translation>
     </message>
-    </context>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>ब्लक</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>कारोबार</translation>
+    </message>
+</context>
 <context>
     <name>QRImageWidget</name>
     </context>
 <context>
     <name>RPCConsole</name>
+    <message>
+        <source>Debug window</source>
+        <translation type="unfinished">amp;डिबग विन्डो</translation>
+    </message>
     <message>
         <source>User Agent</source>
         <translation>प्रयोगकर्ता एजेन्ट</translation>
@@ -325,9 +394,18 @@
     </context>
 <context>
     <name>ReceiveCoinsDialog</name>
+    <message>
+        <source>&amp;Amount:</source>
+        <translation type="unfinished">&amp;रकम:</translation>
+    </message>
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
+    <message>
+        <source>Copy &amp;Address</source>
+        <translation type="unfinished">ठेगाना कपी गर्नुहोस्
+</translation>
+    </message>
     <message>
         <source>Amount</source>
         <translation>रकम</translation>
@@ -339,12 +417,20 @@
 <context>
     <name>SendCoinsDialog</name>
     <message>
+        <source>Amount:</source>
+        <translation type="unfinished">रकम:</translation>
+    </message>
+    <message>
         <source>Choose...</source>
         <translation>छनौट गर्नुहोस्...</translation>
     </message>
     </context>
 <context>
     <name>SendCoinsEntry</name>
+    <message>
+        <source>A&amp;mount:</source>
+        <translation type="unfinished">&amp;रकम:</translation>
+    </message>
     <message>
         <source>Choose previously used address</source>
         <translation>पहिला प्रयोग गरिएको ठेगाना प्रयोग गर्नुहोस्</translation>
@@ -393,6 +479,14 @@
 <context>
     <name>TransactionDesc</name>
     <message>
+        <source>watch-only</source>
+        <translation type="unfinished">हेर्ने-मात्र</translation>
+    </message>
+    <message>
+        <source>Transaction</source>
+        <translation>कारोबार</translation>
+    </message>
+    <message>
         <source>Amount</source>
         <translation>रकम</translation>
     </message>
@@ -402,6 +496,10 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
+    <message>
+        <source>watch-only</source>
+        <translation type="unfinished">हेर्ने-मात्र</translation>
+    </message>
     </context>
 <context>
     <name>TransactionView</name>
@@ -409,6 +507,10 @@
         <source>Copy address</source>
         <translation>ठेगाना कपी गर्नुहोस्
 </translation>
+    </message>
+    <message>
+        <source>Watch-only</source>
+        <translation type="unfinished">हेर्ने-मात्र</translation>
     </message>
     </context>
 <context>
@@ -434,6 +536,10 @@
         <source>Export the data in the current tab to a file</source>
         <translation>वर्तमान ट्याबको डाटालाई फाइलमा निर्यात गर्नुहोस्</translation>
     </message>
+    <message>
+        <source>Backup Wallet</source>
+        <translation type="unfinished">amp;वालेटलाई ब्याकअप गर्नुहोस्</translation>
+    </message>
     </context>
 <context>
     <name>bitcoin-core</name>
@@ -442,8 +548,20 @@
         <translation>ब्लक डाटाबेसमा भविष्यबाट आए जस्तो देखिने एउटा ब्लक हुन्छ । तपाईंको कम्प्युटरको मिति र समय गलत तरिकाले सेट गरिएकाले यस्तो हुन सक्छ । तपाईं आफ्नो कम्प्युटरको मिति र समय सही छ भनेर पक्का हुनुहुन्छ भने मात्र ब्लक डाटाबेस पुनर्निर्माण गर्नुहोस् ।</translation>
     </message>
     <message>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>यो जारी गर्नु पूर्वको परीक्षण संस्करण हो - आफ्नै जोखिममा प्रयोग गर्नुहोस् - खनन वा व्यापारीक प्रयोगको लागि प्रयोग नगर्नुहोस</translation>
+    </message>
+    <message>
         <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
         <translation>प्रि-फर्क अवस्थामा डाटाबेस रिवाइन्ड गर्न सकिएन । तपाईंले फेरि ब्लकचेन डाउनलोड गर्नु पर्ने हुन्छ</translation>
+    </message>
+    <message>
+        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
+        <translation>चेतावनी: नेटवर्क पूरै तरिकाले सहमत छैन जस्तो देखिन्छ! केही खननकर्ताहरूले समस्या भोगिरहेका छन् जस्तो देखिन्छ ।</translation>
+    </message>
+    <message>
+        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>चेतावनी: हामी हाम्रा सहकर्मीहरूसँग पूर्णतया सहमत छैनौं जस्तो देखिन्छ! तपाईंले अपग्रेड गर्नु पर्ने हुनसक्छ वा अरू नोडहरूले अपग्रेड गर्नु पर्ने हुनसक्छ ।</translation>
     </message>
     <message>
         <source>%s corrupt, salvage failed</source>
@@ -504,6 +622,14 @@
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
         <translation>तपाईंले काटछाँट नगरेको मोडमा जान पुनः सूचकांक प्रयोग गरेर डाटाबेस पुनर्निर्माण गर्नु पर्ने हुन्छ । यसले सम्पूर्ण ब्लकचेनलाई फेरि डाउनलोड गर्नेछ</translation>
+    </message>
+    <message>
+        <source>Verifying wallet(s)...</source>
+        <translation>वालेट प्रमाणित गरिँदै...</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>यो उत्पादन ले OpenSSL टुलकिट %s को प्रयोगको लागि OpenSSL परियोजनाले विकास गरेको सफ्टवेयर, एरिक यंग द्वारा लिखित क्रिप्टोग्राफिक सफ्टवेयर र थमस बर्नार्डद्वारा लिखित UPnP सफ्टवेयरलाई समावेश गर्छ ।</translation>
     </message>
     </context>
 </TS>

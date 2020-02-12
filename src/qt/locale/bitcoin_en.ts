@@ -90,7 +90,7 @@
     </message>
     <message>
         <location line="+5"/>
-        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.</source>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Request payment&apos; button in the receive tab to create new addresses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -109,7 +109,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+179"/>
         <source>Export Address List</source>
         <translation type="unfinished"></translation>
     </message>
@@ -175,7 +175,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="+50"/>
+        <location filename="../askpassphrasedialog.cpp" line="+51"/>
         <source>Encrypt wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -205,7 +205,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+48"/>
         <source>Confirm wallet encryption</source>
         <translation type="unfinished"></translation>
     </message>
@@ -226,7 +226,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-145"/>
+        <location line="-147"/>
         <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -236,7 +236,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+55"/>
         <source>Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -325,17 +325,17 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+316"/>
+        <location filename="../bitcoingui.cpp" line="+336"/>
         <source>Sign &amp;message...</source>
         <translation>Sign &amp;message...</translation>
     </message>
     <message>
-        <location line="+625"/>
+        <location line="+697"/>
         <source>Synchronizing with network...</source>
         <translation>Synchronizing with network...</translation>
     </message>
     <message>
-        <location line="-703"/>
+        <location line="-784"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overview</translation>
     </message>
@@ -355,7 +355,17 @@
         <translation>Browse transaction history</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+6"/>
+        <source>&amp;Pairing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Pair other software or devices with your node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>E&amp;xit</source>
         <translation>E&amp;xit</translation>
     </message>
@@ -410,7 +420,47 @@
         <translation>&amp;Change Passphrase...</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+6"/>
+        <source>&amp;Load PSBT from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Load PSBT from clipboard...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>&amp;Watch network activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open p2p network watching window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>&amp;Mempool Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Mempool Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>Open &amp;URI...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -425,12 +475,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+6"/>
+        <source>&amp;Mask values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Cloak values on Overview tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+203"/>
         <source>Wallet:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+335"/>
+        <location line="+374"/>
         <source>Click to disable network activity.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -455,17 +515,17 @@
         <translation>Reindexing blocks on disk...</translation>
     </message>
     <message>
-        <location line="+317"/>
+        <location line="+333"/>
         <source>Proxy is &lt;b&gt;enabled&lt;/b&gt;: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1023"/>
+        <location line="-1120"/>
         <source>Send coins to a Bitcoin address</source>
         <translation>Send coins to a Bitcoin address</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+76"/>
         <source>Backup wallet to another location</source>
         <translation>Backup wallet to another location</translation>
     </message>
@@ -475,7 +535,7 @@
         <translation>Change the passphrase used for wallet encryption</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+13"/>
         <source>&amp;Debug window</source>
         <translation>&amp;Debug window</translation>
     </message>
@@ -485,12 +545,12 @@
         <translation>Open debugging and diagnostic console</translation>
     </message>
     <message>
-        <location line="-4"/>
+        <location line="-11"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Verify message...</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-82"/>
         <source>&amp;Send</source>
         <translation>&amp;Send</translation>
     </message>
@@ -500,7 +560,7 @@
         <translation>&amp;Receive</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+59"/>
         <source>&amp;Show / Hide</source>
         <translation>&amp;Show / Hide</translation>
     </message>
@@ -525,17 +585,17 @@
         <translation>Verify messages to ensure they were signed with specified Bitcoin addresses</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+135"/>
         <source>&amp;File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+17"/>
         <source>&amp;Settings</source>
         <translation>&amp;Settings</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+64"/>
         <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
@@ -545,12 +605,12 @@
         <translation>Tabs toolbar</translation>
     </message>
     <message>
-        <location line="-257"/>
+        <location line="-298"/>
         <source>Request payments (generates QR codes and bitcoin: URIs)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+92"/>
         <source>Show the list of used sending addresses and labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -570,7 +630,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+523"/>
+        <location line="+583"/>
         <source>%n active connection(s) to Bitcoin network</source>
         <translation>
             <numerusform>%n active connection to Bitcoin network</numerusform>
@@ -596,12 +656,12 @@
         </translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+31"/>
         <source>%1 behind</source>
         <translation>%1 behind</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+28"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>Last received block was generated %1 ago.</translation>
     </message>
@@ -626,12 +686,12 @@
         <translation>Information</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-88"/>
         <source>Up to date</source>
         <translation>Up to date</translation>
     </message>
     <message>
-        <location line="-644"/>
+        <location line="-709"/>
         <source>&amp;Sending addresses</source>
         <translation type="unfinished"></translation>
     </message>
@@ -666,17 +726,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>default wallet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+21"/>
+        <location line="+60"/>
         <source>No wallets available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>&amp;Window</source>
         <translation type="unfinished">&amp;Window</translation>
     </message>
@@ -696,17 +751,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+233"/>
+        <location line="+244"/>
         <source>%1 client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+241"/>
+        <location line="+274"/>
         <source>Connecting to peers...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+49"/>
         <source>Catching up...</source>
         <translation>Catching up...</translation>
     </message>
@@ -721,7 +776,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+99"/>
+        <location line="+103"/>
         <source>Date: %1
 </source>
         <translation type="unfinished"></translation>
@@ -792,7 +847,7 @@
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+386"/>
+        <location filename="../bitcoin.cpp" line="+389"/>
         <source>A fatal error occurred. Bitcoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -946,7 +1001,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+313"/>
+        <location line="+315"/>
         <source>(%1 locked)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1096,7 +1151,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+77"/>
         <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1124,7 +1179,7 @@
 <context>
     <name>FreespaceChecker</name>
     <message>
-        <location filename="../intro.cpp" line="+73"/>
+        <location filename="../intro.cpp" line="+74"/>
         <source>A new data directory will be created.</source>
         <translation>A new data directory will be created.</translation>
     </message>
@@ -1150,9 +1205,17 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    <message>
+        <location filename="../netwatch.cpp" line="+738"/>
+        <source>Network Watch</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="+39"/>
+        <location filename="../utilitydialog.cpp" line="+40"/>
         <source>version</source>
         <translation type="unfinished">version</translation>
     </message>
@@ -1191,13 +1254,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+157"/>
-        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <location line="+159"/>
+        <source>Limit block chain storage to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
+        <location line="+32"/>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1211,7 +1274,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-194"/>
         <source>Use the default data directory</source>
         <translation>Use the default data directory</translation>
     </message>
@@ -1226,22 +1289,26 @@
         <translation type="unfinished">Bitcoin</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+35"/>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Approximately %1 GB of data will be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location line="+13"/>
+        <source>MiB (sufficient to restore backups %n day(s) old)</source>
+        <comment>block chain pruning</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+8"/>
+        <location line="+3"/>
         <source>%1 will download and store a copy of the Bitcoin block chain.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1251,7 +1318,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+91"/>
         <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1269,20 +1336,55 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location line="+3"/>
+        <location line="+4"/>
         <source>(of %n GB needed)</source>
         <translation>
             <numerusform>(of %n GB needed)</numerusform>
             <numerusform>(of %n GB needed)</numerusform>
         </translation>
     </message>
-    <message numerus="yes">
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <location filename="../forms/mempoolstats.ui" line="+20"/>
+        <source>Mempool Stats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mempoolstats.cpp" line="+88"/>
+        <source>Mempool Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>N/A</source>
+        <translation type="unfinished">N/A</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>No Data available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+4"/>
-        <source>(%n GB needed for full chain)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <source>Last 10 min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Last Hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Last Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>All Data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1310,7 +1412,7 @@
     <message>
         <location line="+7"/>
         <location line="+26"/>
-        <location filename="../modaloverlay.cpp" line="+141"/>
+        <location filename="../modaloverlay.cpp" line="+145"/>
         <source>Unknown...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1346,8 +1448,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../modaloverlay.cpp" line="+6"/>
+        <location line="+3"/>
+        <source>Esc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../modaloverlay.cpp" line="-111"/>
+        <source>%1 is currently syncing.  It will download headers and blocks from peers and validate them until reaching the tip of the block chain.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+117"/>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <location filename="../netwatch.cpp" line="-372"/>
+        <source>(Burn)</source>
+        <comment>Tx Watch: Provably burned value in transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>(Unknown)</source>
+        <comment>Tx Watch: Unknown transaction output type</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+129"/>
+        <source>Time</source>
+        <comment>NetWatch: Time header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Id</source>
+        <comment>NetWatch: Block hash / Txid header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1374,7 +1525,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+45"/>
+        <location line="+13"/>
+        <source>Paste address from clipboard</source>
+        <translation type="unfinished">Paste address from clipboard</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Alt+P</source>
+        <translation type="unfinished">Alt+P</translation>
+    </message>
+    <message>
+        <location filename="../openuridialog.cpp" line="+51"/>
         <source>Select payment request file to open</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1435,7 +1596,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+161"/>
+        <location line="+261"/>
         <location line="+187"/>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation type="unfinished"></translation>
@@ -1453,7 +1614,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+108"/>
+        <location line="+168"/>
         <source>Hide the icon from the system tray.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1468,7 +1629,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+80"/>
+        <location line="+78"/>
+        <source>Whether to show Bitcoin addresses in the transaction list or not.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Display addresses in transaction list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation type="unfinished"></translation>
@@ -1494,12 +1665,12 @@
         <translation>&amp;Reset Options</translation>
     </message>
     <message>
-        <location line="-529"/>
+        <location line="-648"/>
         <source>&amp;Network</source>
         <translation>&amp;Network</translation>
     </message>
     <message>
-        <location line="-191"/>
+        <location line="-242"/>
         <source>Disables some advanced features but all blocks will still be fully validated. Reverting this setting requires re-downloading the entire blockchain. Actual disk usage may be somewhat higher.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1509,17 +1680,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>GB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="+35"/>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-25"/>
+        <location line="+53"/>
         <source>MiB</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1554,7 +1721,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+10"/>
+        <source>Address type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Legacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>P2SH Segwit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Native Segwit (bech32)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Network &amp;port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Network port (e.g. 8333)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
@@ -1627,7 +1824,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+105"/>
+        <location line="+93"/>
+        <source>Try to keep upload traffic under</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>MB per day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Support filtering of blocks and transaction with bloom filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Provide search services for light clients</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Generate compact block filters and allow peers to download them</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Provide compact block filters for light clients</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>&amp;Window</source>
         <translation>&amp;Window</translation>
     </message>
@@ -1672,12 +1899,12 @@
         <translation>Choose the default subdivision unit to show in the interface and when sending coins.</translation>
     </message>
     <message>
-        <location line="-450"/>
+        <location line="-610"/>
         <source>Whether to show coin control features or not.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+464"/>
+        <location line="+634"/>
         <source>&amp;Third party transaction URLs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1697,33 +1924,203 @@
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="+96"/>
+        <location filename="../optionsdialog.cpp" line="+144"/>
+        <source>Request Replace-By-Fee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Indicates that the sender may wish to replace this transaction with a new one paying higher fees (prior to being confirmed). Can be overridden per send.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Keep at most %s extra transactions in memory for compact block reconstruction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Mem&amp;pool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Transaction &amp;replacement: %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Keep at most %s unconnected transactions in memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Keep the transaction memory pool below %s MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Require transaction fees to be at least %s per kB higher than transactions they are replacing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Do not keep transactions in memory more than %s hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Spam filtering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Ignore unrecognised receiver scripts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>With this option enabled, unrecognised receiver (&quot;pubkey&quot;) scripts will be ignored. Unrecognisable scripts could be used to bypass further spam filters. If your software is outdated, they may also be used to trick you into thinking you were sent bitcoins that will never confirm.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Disallow most address reuse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>With this option enabled, your memory pool will only allow each unique payment destination to be used once, effectively deprioritising address reuse. Address reuse is not technically supported, and harms the privacy of all Bitcoin users. It also has limited real-world utility, and has been known to be common with spam.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Consider transaction fees less than %s per kB relayed to be worthless.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Treat each consensus-counted sigop as at least %s bytes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Ignore transactions with fewer than %s bytes per potentially-executed sigop.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Ignore transactions with %s or more unconfirmed ancestors.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Ignore transactions whose size with all unconfirmed ancestors exceeds %s kilobytes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Ignore transactions if any ancestor would have %s or more unconfirmed descendants.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Ignore transactions if any ancestor would have more than %s kilobytes of unconfirmed descendants.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ignore bare/exposed &quot;multisig&quot; scripts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Spam is sometimes disguised to appear as if it is an old-style N-of-M multi-party transaction, where most of the keys are really bogus. At the same time, legitimate multi-party transactions typically have always used P2SH format (which is not filtered by this option), which is more secure.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Since 2014, a specific method for attaching arbitrary data to transactions has been recognised as not requiring space in the coin database. Since it is sometimes impractical to detect small spam disguised as ordinary transactions, it is sometimes considered beneficial to treat these less harmful data attachments as equals to legitimate usage.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ignore transactions with additional data larger than %s bytes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ignore transactions with values that would cost more to spend at a fee rate of %s per kB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>M&amp;ining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>&lt;strong&gt;Note that mining is heavily influenced by the settings on the Mempool tab.&lt;/strong&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Only mine transactions paying a fee of at least %s per kB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Never mine a block larger than %s kB.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Mine first %s kB of transactions sorted by coin-age priority.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Never mine a block weighing more than %s,000.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
         <source>default</source>
         <translation>default</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+70"/>
         <source>none</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+223"/>
+        <source>Use policy defaults for %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Bitcoin Core</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Confirm options reset</source>
         <translation>Confirm options reset</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+60"/>
+        <location line="+117"/>
         <source>Client restart required to activate changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-60"/>
+        <location line="-117"/>
         <source>Client will be shut down. Do you want to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+19"/>
         <source>Configuration options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1743,7 +2140,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+18"/>
+        <source>Invalid setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The value entered is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+78"/>
         <source>This change would require a client restart.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1844,6 +2251,187 @@
     <message>
         <location line="+128"/>
         <source>Current total balance in watch-only addresses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../overviewpage.cpp" line="+168"/>
+        <source>PRIVACY mode is activated. To reveal cloaked values uncheck Menu-&gt;Settings-&gt;Mask values</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <location filename="../forms/psbtoperationsdialog.ui" line="+14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+72"/>
+        <source>Sign Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Broadcast Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Copy to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Save...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../psbtoperationsdialog.cpp" line="+53"/>
+        <source>Failed to load transaction: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Failed to sign transaction: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Could not sign any more inputs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Signed transaction sucessfully. Transaction is ready to broadcast.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Unknown error processing transaction.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Transaction broadcast failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>PSBT copied to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Save Transaction Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>PSBT saved to disk.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source> * Sends %1 to %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Pays transaction fee: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Total Amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>or</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Transaction still needs signature(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Transaction status is unknown.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PairingPage</name>
+    <message>
+        <location filename="../pairingpage.cpp" line="+28"/>
+        <source>Pairing is an experimental feature that currently only works when Tor is enabled. It is expected that the pairing address below will change with future updates, and you may need to re-pair after upgrading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Below you will find information to pair other software or devices with this node:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Onion address: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>(not connected)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2041,17 +2629,17 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../bitcoinunits.cpp" line="+195"/>
+        <location filename="../bitcoinunits.cpp" line="+328"/>
         <source>Amount</source>
         <translation type="unfinished">Amount</translation>
     </message>
     <message>
-        <location filename="../guiutil.cpp" line="+108"/>
+        <location filename="../guiutil.cpp" line="+114"/>
         <source>Enter a Bitcoin address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+699"/>
+        <location line="+736"/>
         <source>%1 d</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2067,7 +2655,7 @@
     </message>
     <message>
         <location line="+2"/>
-        <location line="+47"/>
+        <location line="+59"/>
         <source>%1 s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2161,7 +2749,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+118"/>
+        <location filename="../bitcoin.cpp" line="+124"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2176,13 +2764,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+16"/>
+        <source>Software expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>This software is expired, and may be out of consensus. You must choose to upgrade or override this expiration.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
         <source>%1 didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../modaloverlay.cpp" line="-36"/>
         <source>unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../netwatch.cpp" line="-423"/>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2389,8 +2999,8 @@
     </message>
     <message>
         <location line="+65"/>
-        <location filename="../rpcconsole.cpp" line="+497"/>
-        <location line="+759"/>
+        <location filename="../rpcconsole.cpp" line="+506"/>
+        <location line="+822"/>
         <source>Select a peer to view detailed information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2541,7 +3151,7 @@
         <translation>Clear console</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-243"/>
+        <location filename="../rpcconsole.cpp" line="-252"/>
         <source>1 &amp;hour</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2579,7 +3189,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+164"/>
+        <location line="+56"/>
+        <source>&amp;Pairing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+117"/>
         <source>Welcome to the %1 RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2703,7 +3318,7 @@
     </message>
     <message>
         <location line="-76"/>
-        <source>&amp;Create new receiving address</source>
+        <source>&amp;Request payment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2795,7 +3410,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+63"/>
+        <location filename="../receiverequestdialog.cpp" line="+65"/>
         <source>Request payment to %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2877,7 +3492,7 @@
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+601"/>
+        <location filename="../sendcoinsdialog.cpp" line="+752"/>
         <source>Send Coins</source>
         <translation>Send Coins</translation>
     </message>
@@ -2962,12 +3577,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
-        <source>collapse fee-settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+51"/>
+        <location line="+77"/>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -3019,7 +3629,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+543"/>
+        <location line="+457"/>
+        <source>Hide transaction fee settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+86"/>
         <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for bitcoin transactions than the network can process.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3064,7 +3679,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation>S&amp;end</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-513"/>
+        <location filename="../sendcoinsdialog.cpp" line="-663"/>
         <source>Copy quantity</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3104,7 +3719,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+190"/>
         <source> from wallet &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3121,12 +3736,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+10"/>
         <source>Are you sure you want to send?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+48"/>
         <source>or</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3136,12 +3751,69 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-21"/>
-        <source>Please, review your transaction.</source>
+        <location line="-236"/>
+        <source>Cr&amp;eate Unsigned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+125"/>
+        <source>You&apos;ve already paid some of these addresses.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>You&apos;ve already paid this address.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Sent %1 to %2 on %3</source>
+        <extracomment>%1 is an amount (eg, &quot;1 BTC&quot;); %2 is a Bitcoin address and its label; %3 is a date (eg, &quot;2019-05-08&quot;)</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Sent %1 to %2 across %3 transactions from %4 through %5</source>
+        <extracomment>%1 is an amount (eg, &quot;1 BTC&quot;); %2 is a Bitcoin address and its label; %3 is the number of transactions; %4 and %5 are dates (eg, &quot;2019-05-08&quot;), earlier first</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Bitcoin addresses are intended to only be used once, for a single payment. Sending to the same address again will harm the recipient&apos;s security, as well as the privacy of all Bitcoin users!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Already paid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Override</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+53"/>
+        <source>Do you want to draft this transaction?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Please, review your transaction.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>Transaction fee</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3156,17 +3828,52 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+7"/>
         <source>To review recipient list click &quot;Show Details...&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+19"/>
         <source>Confirm send coins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+0"/>
+        <source>Confirm transaction proposal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Create Unsigned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>Save Transaction Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>PSBT saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+175"/>
+        <source>Watch-only balance:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3211,7 +3918,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+120"/>
+        <location line="+125"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation>
             <numerusform>Estimated to begin confirmation within %n block.</numerusform>
@@ -3247,14 +3954,14 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="+155"/>
-        <location line="+546"/>
+        <location filename="../forms/sendcoinsentry.ui" line="+152"/>
+        <location line="+550"/>
         <location line="+533"/>
         <source>A&amp;mount:</source>
         <translation>A&amp;mount:</translation>
     </message>
     <message>
-        <location line="-1192"/>
+        <location line="-1196"/>
         <source>Pay &amp;To:</source>
         <translation>Pay &amp;To:</translation>
     </message>
@@ -3269,12 +3976,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-46"/>
-        <source>This is a normal payment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+39"/>
+        <location line="-7"/>
         <source>The Bitcoin address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3295,13 +3997,18 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+7"/>
-        <location line="+555"/>
+        <location line="+559"/>
         <location line="+533"/>
         <source>Remove this entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1028"/>
+        <location line="-1035"/>
+        <source>The amount to send in the selected unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>The fee will be deducted from the amount being sent. The recipient will receive less bitcoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3331,12 +4038,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1016"/>
+        <location line="-1020"/>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+58"/>
         <source>A message that was attached to the bitcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitcoin network.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3361,8 +4068,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>SendConfirmationDialog</name>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="+88"/>
-        <location line="+5"/>
+        <location filename="../sendcoinsdialog.cpp" line="+72"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3370,7 +4076,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="+83"/>
+        <location filename="../utilitydialog.cpp" line="+85"/>
         <source>%1 is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3404,18 +4110,18 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+7"/>
-        <location line="+210"/>
+        <location line="+213"/>
         <source>Choose previously used address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-200"/>
-        <location line="+210"/>
+        <location line="-203"/>
+        <location line="+213"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-200"/>
+        <location line="-203"/>
         <source>Paste address from clipboard</source>
         <translation>Paste address from clipboard</translation>
     </message>
@@ -3426,6 +4132,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+12"/>
+        <location line="+3"/>
         <source>Enter the message you want to sign here</source>
         <translation>Enter the message you want to sign here</translation>
     </message>
@@ -3456,12 +4163,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+157"/>
         <source>Clear &amp;All</source>
         <translation>Clear &amp;All</translation>
     </message>
     <message>
-        <location line="-84"/>
+        <location line="-98"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verify Message</translation>
     </message>
@@ -3476,7 +4183,19 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+29"/>
+        <location line="+3"/>
+        <source>The signed message to verify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location line="+3"/>
+        <source>The signature given when the message was signed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
         <translation>Verify the message to ensure it was signed with the specified Bitcoin address</translation>
     </message>
@@ -3496,7 +4215,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+83"/>
         <location line="+78"/>
         <source>The entered address is invalid.</source>
         <translation type="unfinished"></translation>
@@ -3811,7 +4530,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation>This pane shows a detailed description of the transaction</translation>
     </message>
     <message>
-        <location filename="../transactiondescdialog.cpp" line="+17"/>
+        <location filename="../transactiondescdialog.cpp" line="+18"/>
         <source>Details for %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4002,11 +4721,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+2"/>
-        <source>To yourself</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>Mined</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4154,7 +4868,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+156"/>
+        <location filename="../bitcoingui.cpp" line="+164"/>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4180,7 +4894,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>WalletFrame</name>
     <message>
-        <location filename="../walletframe.cpp" line="+29"/>
+        <location filename="../walletframe.cpp" line="+32"/>
         <source>No wallet has been loaded.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4188,25 +4902,31 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="+222"/>
+        <location filename="../walletmodel.cpp" line="+239"/>
         <source>Send Coins</source>
         <translation type="unfinished">Send Coins</translation>
     </message>
     <message>
         <location line="+309"/>
-        <location line="+39"/>
+        <location line="+43"/>
+        <location line="+13"/>
         <location line="+5"/>
         <source>Fee bump error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-61"/>
         <source>Increasing transaction fee failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+8"/>
         <source>Do you want to increase the fee?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Do you want to draft a transaction with fee increase?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4225,12 +4945,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Confirm fee bump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+18"/>
+        <source>Can&apos;t draft transaction.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>PSBT copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>Can&apos;t sign transaction.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4240,7 +4970,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+32"/>
         <source>default wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4248,7 +4978,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+47"/>
+        <location filename="../walletview.cpp" line="+53"/>
         <source>&amp;Export</source>
         <translation type="unfinished">&amp;Export</translation>
     </message>
@@ -4258,7 +4988,33 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished">Export the data in the current tab to a file</translation>
     </message>
     <message>
-        <location line="+206"/>
+        <location line="+189"/>
+        <location line="+18"/>
+        <source>Error</source>
+        <translation type="unfinished">Error</translation>
+    </message>
+    <message>
+        <location line="-18"/>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Load Transaction Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Unable to decode PSBT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Backup Wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4316,22 +5072,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+70"/>
+        <location line="+76"/>
         <source>Error: A fatal internal error occurred, see debug.log for details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+27"/>
         <source>Pruning blockstore...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+31"/>
         <source>Unable to start HTTP server. See debug log for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-167"/>
+        <location line="-175"/>
         <source>The %s developers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4396,6 +5152,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+3"/>
+        <source>Warning: Unrecognised block version being mined! Unknown rules may or may not be in effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+7"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
         <translation type="unfinished"></translation>
@@ -4417,7 +5178,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+2"/>
+        <source>Cannot grant cfilters permission without -blockfilterindex.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cannot set -peercfilters without -blockfilterindex.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4444,6 +5215,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <location line="+1"/>
         <source>Do you want to rebuild the block database now?</source>
         <translation>Do you want to rebuild the block database now?</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Do you want to use the standard network port for %s (port %s) instead?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4531,12 +5307,23 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+3"/>
+        <source>Listen on port %s failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+3"/>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Unknown address type &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4551,17 +5338,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-46"/>
+        <location line="+7"/>
+        <source>whitebind is only used for incoming connections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-54"/>
         <source>Loading P2P addresses...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-16"/>
         <source>Error: Disk space is too low!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Loading banlist...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4596,7 +5388,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Transaction fee and change calculation failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4636,7 +5428,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-156"/>
+        <location line="-164"/>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4651,12 +5443,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+38"/>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+28"/>
         <source>Error reading from database, shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4691,7 +5483,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4731,7 +5523,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>The specified config file %s does not exist
 </source>
         <translation type="unfinished"></translation>
@@ -4792,7 +5584,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-187"/>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4812,7 +5604,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+17"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4822,17 +5614,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+21"/>
         <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Starting network threads...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>The wallet will avoid paying less than the minimum relay fee.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4867,12 +5659,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation>Unknown network specified in -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Insufficient funds</source>
         <translation>Insufficient funds</translation>
     </message>
     <message>
-        <location line="-107"/>
+        <location line="-113"/>
         <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use -upgradewallet=169900 or -upgradewallet with no version specified.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4887,12 +5679,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+26"/>
         <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+39"/>
         <source>Loading block index...</source>
         <translation>Loading block index...</translation>
     </message>
@@ -4902,17 +5694,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation>Loading wallet...</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-44"/>
         <source>Cannot downgrade wallet</source>
         <translation>Cannot downgrade wallet</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+53"/>
         <source>Rescanning...</source>
         <translation>Rescanning...</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Done loading</source>
         <translation>Done loading</translation>
     </message>

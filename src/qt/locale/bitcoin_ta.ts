@@ -70,10 +70,6 @@
         <translation>இவை பணம் அனுப்புவதற்கு உங்களின் பிட்காயின் முகவரிகள். பிட்காயின்களை அனுப்புவதற்கு முன் எப்பொழுதும் தொகையும் பெறுதலையும் சரிபார்க்கவும்.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>பிட்காயின் பெறுவதற்காக உங்கள் முகவரி இவை. புதிய முகவரிகளை உருவாக்க 'புதிய முகவரியை உருவாக்கு' என்ற பட்டனை கிளிக் செய்யவும்.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;காபி முகவரி</translation>
     </message>
@@ -522,10 +518,6 @@
         <translation>சாத்தியமான Bitcoin கட்டளை-வரி விருப்பங்களைக் கொண்ட பட்டியலைப் பெற %1 உதவிச் செய்தியைக் காட்டு</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>அடிப்படை வாலட்</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>வாலட் எதுவும் இல்லை</translation>
     </message>
@@ -918,6 +910,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -955,10 +950,6 @@
         <translation>நீங்கள் சரி என்பதைக் கிளிக் செய்தால் %1 ஆரம்பத்தில் %4 இல் ஆரம்பிக்கப்பட்ட %3 இன் ஆரம்ப பரிவர்த்தனைகளைத் தொடங்கும் போது முழு %4 தொகுதி சங்கிலி (%2GB) பதிவிறக்க மற்றும் செயலாக்கத் தொடங்கும்.</translation>
     </message>
     <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>இந்த அமைப்பை மாற்றியமைக்க முழு பிளாக்செயினையும் மீண்டும் டவுன்லோட் செய்ய வேண்டும். முதலில் முழு செயினையும் டவுன்லோட் செய்த பின்னர் ப்ரூன் செய்வது வேகமான செயல் ஆகும். சில மேம்பட்ட அம்சங்களை முடக்கும்.</translation>
-    </message>
-    <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation>இந்த ஆரம்ப ஒத்திசைவு மிகவும் கோரி வருகிறது, முன்பு கவனிக்கப்படாத உங்கள் கணினியுடன் வன்பொருள் சிக்கல்களை அம்பலப்படுத்தலாம். ஒவ்வொரு முறையும் நீங்கள் %1 ரன் இயங்கும் போது, ​​அது எங்கிருந்து வெளியேறும் என்பதைத் தொடர்ந்து பதிவிறக்கும்.</translation>
     </message>
@@ -977,10 +968,6 @@
     <message>
         <source>Bitcoin</source>
         <translation>Bitcoin</translation>
-    </message>
-    <message>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation>சமீபத்திய %1 ஜிபி ப்லாக்கை தவிர (ப்ரூன்), சரிபார்ப்புக்குப் பிறகு மற்ற ப்லாக்கை நிராகரிக்கவும்</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1013,6 +1000,13 @@
     <message numerus="yes">
         <source>(of %n GB needed)</source>
         <translation><numerusform>(%n ஜிபி தேவை)</numerusform><numerusform>(%n ஜிபி தேவை)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
     </message>
     </context>
 <context>
@@ -1067,6 +1061,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>வகை</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>முகவரி</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1083,6 +1090,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>பணம் கோரிக்கை கோப்பைத் தேர்ந்தெடுக்கவும்</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>கிளிப்போர்டிலிருந்து முகவரியை பேஸ்ட் செய்யவும்</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1189,10 +1204,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>பிரவுன் &amp; தடுப்பு சேமிப்பு</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>ஜிபி</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1347,6 +1358,10 @@
         <translation>none</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin மையம்</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>விருப்பங்களை மீட்டமைக்கவும்</translation>
     </message>
@@ -1457,7 +1472,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>தற்போதைய மொத்த சமநிலை வாட்ச் மட்டும் முகவரிகள்</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">மூடு</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>முழு தொகை</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>அல்லது</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1634,6 +1667,10 @@
         <source>%1 ms</source>
         <translation>%1 ms</translation>
     </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n மணி</numerusform><numerusform>%n மணி</numerusform></translation>
+    </message>
     <message>
         <source>%1 and %2</source>
         <translation>%1 மற்றும் %2</translation>
@@ -1673,6 +1710,11 @@
     <message>
         <source>unknown</source>
         <translation>தெரியாத</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>பரிவர்த்தனை</translation>
     </message>
 </context>
 <context>
@@ -2056,8 +2098,8 @@
         <translation>கோரிக்கைக்கு விருப்பமான தொகை. ஒரு குறிப்பிட்ட தொகையை கோர வேண்டாம் இந்த வெற்று அல்லது பூஜ்ஜியத்தை விடு.</translation>
     </message>
     <message>
-        <source>&amp;Create new receiving address</source>
-        <translation>&amp;புதிய பிட்காயின் பெறும் முகவரியை உருவாக்கு</translation>
+        <source>&amp;Request payment</source>
+        <translation>கட்டணம் மற்றும் கோரிக்கை கட்டணம்</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2265,10 +2307,6 @@
         <translation>எச்சரிக்கை: கட்டணம் மதிப்பீடு தற்போது சாத்தியமில்லை.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>கட்டண சரிவுகளை சரி செய்ய வேண்டும்</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2429,6 +2467,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>அனுப்பும் பிட்காயின்களை உறுதிப்படுத்தவும்</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">அனுப்பு</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>பெறுநரின் முகவரி தவறானது. மீண்டும் சரிபார்க்கவும்.</translation>
     </message>
@@ -2498,10 +2540,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Choose previously used address</source>
         <translation>முன்பு பயன்படுத்திய முகவரியைத் தேர்வுசெய்</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>இது சாதாரண கட்டணம்.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3032,10 +3070,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>அனுப்பப்பட்டது</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>உங்களுக்கே</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>மைன் செய்யப்பட்டது</translation>
     </message>
@@ -3237,6 +3271,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>தற்போதைய தாவலில் தரவை ஒரு கோப்பிற்கு ஏற்றுமதி செய்க</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>பிழை</translation>
     </message>
     <message>
         <source>Backup Wallet</source>

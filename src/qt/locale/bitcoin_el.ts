@@ -172,6 +172,14 @@
         <translation>Πορτοφόλι κρυπτογραφήθηκε</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Εισάγετε το νέο κωδικό πρόσβασης στο πορτοφόλι. &lt;br/&gt;Παρακαλώ χρησιμοποιείστε έναν κωδικό με &lt;b&gt;δέκα ή περισσότερους τυχαίους χαρακτήρες &lt;/b&gt;, ή &lt;b&gt;οχτώ ή παραπάνω λέξεις &lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>Εισάγετε την παλιά φράση κλειδί και την νέα φράση κλειδί στο πορτοφόλι.</translation>
+    </message>
+    <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>ΣΗΜΑΝΤΙΚΟ: Τα προηγούμενα αντίγραφα ασφαλείας που έχετε κάνει από το αρχείο του πορτοφόλιου σας θα πρέπει να αντικατασταθουν με το νέο που δημιουργείται, κρυπτογραφημένο αρχείο πορτοφόλιου. Για λόγους ασφαλείας, τα προηγούμενα αντίγραφα ασφαλείας του μη κρυπτογραφημένου αρχείου πορτοφόλιου θα καταστουν άχρηστα μόλις αρχίσετε να χρησιμοποιείτε το νέο κρυπτογραφημένο πορτοφόλι.</translation>
     </message>
@@ -442,8 +450,12 @@
         <translation>Ενημερωμένο</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>Προεπιλεγμένο πορτοφόλι</translation>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;Διευθύνσεις αποστολής</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;Διευθύνσεις λήψης</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -605,6 +617,10 @@
         <translation>Αντιγραφή τελών</translation>
     </message>
     <message>
+        <source>Copy change</source>
+        <translation>Αντιγραφή αλλαγής</translation>
+    </message>
+    <message>
         <source>yes</source>
         <translation>ναι</translation>
     </message>
@@ -626,6 +642,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation>Κρυπτογράφηση πορτοφολιού</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -706,6 +726,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -762,6 +785,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(από το %n GB που απαιτείται)</numerusform><numerusform>(από τα %n GB που απαιτούνται)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>Μη διαθέσιμο</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -783,6 +813,14 @@
     </message>
     </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Διεύθυνση</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -799,6 +837,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Επιλέξτε πληρωμή αρχείου αίτησης</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Επικόλληση διεύθυνσης από το βιβλίο διευθύνσεων</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     </context>
 <context>
@@ -853,10 +899,6 @@
     <message>
         <source>&amp;Network</source>
         <translation>&amp;Δίκτυο</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>(0 = auto, &lt;0 = leave that many cores free)</source>
@@ -1069,7 +1111,21 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Το τρέχον συνολικό υπόλοιπο σε διευθύνσεις παρακολούθησης μόνο</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Κλείσιμο</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>ή</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1170,6 +1226,16 @@
         <source>unknown</source>
         <translation>Άγνωστο</translation>
     </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>μπλοκ</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Συναλλαγή</translation>
+    </message>
 </context>
 <context>
     <name>QRImageWidget</name>
@@ -1231,6 +1297,10 @@
     <message>
         <source>Memory usage</source>
         <translation>χρήση Μνήμης</translation>
+    </message>
+    <message>
+        <source>Wallet: </source>
+        <translation type="unfinished">Πορτοφόλι: </translation>
     </message>
     <message>
         <source>Received</source>
@@ -1337,6 +1407,10 @@
         <translation>1 &amp;χρόνος</translation>
     </message>
     <message>
+        <source>Network activity disabled</source>
+        <translation type="unfinished">Η δραστηριότητα δικτύου είναι απενεργοποιημένη</translation>
+    </message>
+    <message>
         <source>via %1</source>
         <translation>μέσω %1</translation>
     </message>
@@ -1378,6 +1452,10 @@
     <message>
         <source>&amp;Message:</source>
         <translation>&amp;Μήνυμα:</translation>
+    </message>
+    <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Αίτηση πληρωμής</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -1439,6 +1517,10 @@
         <translation>Πληροφορίες πληρωμής</translation>
     </message>
     <message>
+        <source>URI</source>
+        <translation type="unfinished">URI</translation>
+    </message>
+    <message>
         <source>Address</source>
         <translation>Διεύθυνση</translation>
     </message>
@@ -1476,6 +1558,10 @@
     <message>
         <source>(no label)</source>
         <translation>(χωρίς ετικέτα)</translation>
+    </message>
+    <message>
+        <source>(no message)</source>
+        <translation>(κανένα μήνυμα)</translation>
     </message>
     </context>
 <context>
@@ -1601,12 +1687,20 @@
         <translation>Αντιγραφή τελών</translation>
     </message>
     <message>
+        <source>Copy change</source>
+        <translation>Αντιγραφή αλλαγής</translation>
+    </message>
+    <message>
         <source>or</source>
         <translation>ή</translation>
     </message>
     <message>
         <source>Transaction fee</source>
         <translation>Κόστος συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">Αποστολή</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1630,10 +1724,6 @@
     <message>
         <source>Choose previously used address</source>
         <translation>Επιλογή διεύθυνσης που έχει ήδη χρησιμοποιηθεί</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Αυτή είναι μια απλή πληρωμή.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -1839,6 +1929,10 @@
         <translation>Μήνυμα</translation>
     </message>
     <message>
+        <source>Inputs</source>
+        <translation type="unfinished">Εισροές</translation>
+    </message>
+    <message>
         <source>Amount</source>
         <translation>Ποσό</translation>
     </message>
@@ -1908,6 +2002,10 @@
         <translation>Επικυρωμένες</translation>
     </message>
     <message>
+        <source>Watch-only</source>
+        <translation type="unfinished">Επίβλεψη μόνο</translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation>Ημερομηνία</translation>
     </message>
@@ -1963,6 +2061,10 @@
         <translation>Εξαγωγή δεδομένων καρτέλας σε αρχείο</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Σφάλμα</translation>
+    </message>
+    <message>
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
@@ -2000,6 +2102,10 @@
     <message>
         <source>Importing...</source>
         <translation>Εισαγωγή...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Σφάλμα: Χαμηλός χώρος στο δίσκο!</translation>
     </message>
     <message>
         <source>Not enough file descriptors available.</source>

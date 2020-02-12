@@ -172,6 +172,14 @@
         <translation>Peněženka je zašifrována</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Zadej nové heslo k peněžence.&lt;br/&gt;Použij &lt;b&gt;alespoň deset náhodných znaků&lt;/b&gt; nebo &lt;b&gt;alespoň osm slov&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>Zadej staré a nové heslo k peněžence.</translation>
+    </message>
+    <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>DŮLEŽITÉ: Všechny předchozí zálohy peněženky by měly být nahrazeny nově vygenerovanou, zašifrovanou peněženkou. Z bezpečnostních důvodů budou předchozí zálohy nešifrované peněženky nepoužitelné, jakmile začneš používat novou zašifrovanou peněženku.</translation>
     </message>
@@ -482,10 +490,6 @@
         <translation>Seznam argumentů Bitcoinu pro příkazovou řádku získáš v nápovědě %1</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>výchozí peněženka</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Nejsou dostupné žádné peněženky</translation>
     </message>
@@ -746,6 +750,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">Zašifruj peněženku</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -825,6 +833,9 @@
         <translation>Tady nemůžu vytvořit adresář pro data.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -914,6 +925,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(z potřebného %n GB)</numerusform><numerusform>(z potřebných %n GB)</numerusform><numerusform>(z potřebných %n GB)</numerusform><numerusform>(z potřebných %n GB)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>nedostupná informace</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -967,6 +985,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adresa</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -983,6 +1014,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Vyber soubor platebního požadavku</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Vlož adresu ze schránky</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1081,10 +1120,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Redukovat prostor pro &amp;bloky na</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1349,7 +1384,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Aktuální stav účtu sledovaných adres</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Zavřít</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Celková částka</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>nebo</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1581,6 +1634,11 @@
     <message>
         <source>unknown</source>
         <translation>neznámo</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tse</translation>
     </message>
 </context>
 <context>
@@ -1960,6 +2018,10 @@
         <translation>Volitelná částka, kterou požaduješ. Nech prázdné nebo nulové, pokud nepožaduješ konkrétní částku.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Vyžádat platbu</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Promaž obsah ze všech formulářových políček.</translation>
     </message>
@@ -2165,10 +2227,6 @@
         <translation>Upozornění: teď není možné poplatek odhadnout.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>sbal nastavení poplatků</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2281,6 +2339,10 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>%1 (%2 bloků)</translation>
     </message>
     <message>
+        <source> from wallet '%1'</source>
+        <translation> z peněženky '%1'</translation>
+    </message>
+    <message>
         <source>%1 to %2</source>
         <translation>%1 pro %2</translation>
     </message>
@@ -2315,6 +2377,10 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>Confirm send coins</source>
         <translation>Potvrď odeslání mincí</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">Pošli</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
@@ -2394,10 +2460,6 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>Choose previously used address</source>
         <translation>Vyber již použitou adresu</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Tohle je normální platba.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2952,10 +3014,6 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Posláno</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Sám sobě</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Vytěženo</translation>
     </message>
@@ -3086,6 +3144,10 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Zavřít peněženku</translation>
     </message>
     <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Ste si jist že chete zavřít peněženku &lt;i&gt;%1&lt;/i&gt;</translation>
+    </message>
+    <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Zavření peněženky na příliš dlouhou dobu může vyústit v potřebu resynchronizace celého blockchainu pokud je zapnuté prořezávání.</translation>
     </message>
@@ -3153,6 +3215,10 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Exportuj data z tohoto panelu do souboru</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Chyba</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3374,12 +3440,22 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Zadaný adresář bloků "%s" neexistuje.</translation>
     </message>
     <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>Uvedený R/W konfigurační soubor %s neexistuje
+</translation>
+    </message>
+    <message>
         <source>Upgrading txindex database</source>
         <translation>Aktualizuje se txindex databáze</translation>
     </message>
     <message>
         <source>Loading P2P addresses...</source>
         <translation>Načítám P2P adresy…</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Problém: Na disku je málo místa!</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

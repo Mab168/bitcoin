@@ -518,10 +518,6 @@
         <translation>A %1 súgó megjelenítése a Bitcoin lehetséges parancssori kapcsolóinak listájával</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>Alapértelmezett tárca</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Nincs elérhető tárca</translation>
     </message>
@@ -893,6 +889,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -930,10 +929,6 @@
         <translation>Ha az OK-ra kattint, %1 megkezdi a teljes %4 blokk lánc letöltését és feldolgozását (%2GB) a legkorábbi tranzakciókkal kezdve %3 -ben, amikor a %4 bevezetésre került.</translation>
     </message>
     <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>A beállítás visszaállításához le kell tölteni a teljes blokkláncot. A teljes lánc letöltése és későbbi nyesése ennél gyorsabb. Bizonyos haladó funkciókat letilt.</translation>
-    </message>
-    <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation>Az első szinkronizáció nagyon erőforrás-igényes és felszínre hozhat a számítógépében eddig rejtve maradt hardver problémákat. Minden %1 indításnál a program onnan folytatja a letöltést, ahol legutóbb abbahagyta.</translation>
     </message>
@@ -952,10 +947,6 @@
     <message>
         <source>Bitcoin</source>
         <translation>Bitcoin</translation>
-    </message>
-    <message>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation>Blokkok elhgyása ellenőrzés után, kivéve a legújabb %1 GB-ot (nyesés)</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -984,6 +975,17 @@
     <message numerus="yes">
         <source>%n GB of free space available</source>
         <translation><numerusform>%n GB elérhető szabad hely</numerusform><numerusform>%n GB elérhető szabad hely</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation><numerusform>(a szükséges %n GB-ból)</numerusform><numerusform>(a szükséges %n GB-ból)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>Nem elérhető</translation>
     </message>
     </context>
 <context>
@@ -1032,7 +1034,24 @@
         <source>Hide</source>
         <translation>Elrejtés</translation>
     </message>
-    </context>
+    <message>
+        <source>Unknown. Syncing Headers (%1, %2%)...</source>
+        <translation>Ismeretlen. Fejlécek szinkronizálása (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Típus</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Cím</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -1050,6 +1069,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Fizetési kérelmi fájl kiválasztása</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Cím beillesztése a vágólapról</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1110,6 +1137,10 @@
         <translation>Megmutatja, hogy az alapértelmezett SOCKS5 proxy van-e használatban, hogy elérje a párokat ennél a hálózati típusnál.</translation>
     </message>
     <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor hidden services:</source>
+        <translation type="unfinished">&amp;Más SOCKS5 proxy használata a párok eléréséhez, a Tor rejtett szolgáltatásain keresztül:</translation>
+    </message>
+    <message>
         <source>Hide the icon from the system tray.</source>
         <translation>Ikon elrejtése a tálcáról.</translation>
     </message>
@@ -1152,10 +1183,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Nyesi a &amp;block tárolását ide:</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1416,7 +1443,21 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>A csak megfigyelt címek jelenlegi teljes egyenlege</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Bezárás</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>vagy</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1632,6 +1673,11 @@
     <message>
         <source>unknown</source>
         <translation>ismeretlen</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tzó</translation>
     </message>
 </context>
 <context>
@@ -1991,6 +2037,10 @@
         <translation>Egy opcionálisan kérhető összeg. Hagyja üresen, vagy írjon be nullát, ha nem kívánja használni.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Fizetés kérése</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Minden mező törlése</translation>
     </message>
@@ -2196,10 +2246,6 @@
         <translation>Figyelem: A hozzávetőleges díjszámítás jelenleg nem lehetséges.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>díj beállítások bezárása</translation>
-    </message>
-    <message>
         <source>per kilobyte</source>
         <translation>kilobájtonként</translation>
     </message>
@@ -2308,6 +2354,10 @@
         <translation>Összeg küldésének megerősítése</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Küldés</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>A fogadó címe érvénytelen. Kérem ellenőrizze.</translation>
     </message>
@@ -2381,10 +2431,6 @@
     <message>
         <source>Choose previously used address</source>
         <translation>Válassz egy korábban már használt címet</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Ez normál fizetés.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2827,7 +2873,11 @@
         <source>Whether or not a watch-only address is involved in this transaction.</source>
         <translation>Egy csak megfigyelt cím érintett vagy nem ebben a tranzakcióban.</translation>
     </message>
-    </context>
+    <message>
+        <source>Amount removed from or added to balance.</source>
+        <translation>Az egyenleghez jóváírt vagy ráterhelt összeg.</translation>
+    </message>
+</context>
 <context>
     <name>TransactionView</name>
     <message>
@@ -2865,10 +2915,6 @@
     <message>
         <source>Sent to</source>
         <translation>Elküldve ide</translation>
-    </message>
-    <message>
-        <source>To yourself</source>
-        <translation>Magának</translation>
     </message>
     <message>
         <source>Mined</source>
@@ -2974,7 +3020,11 @@
         <source>Range:</source>
         <translation>Tartomány:</translation>
     </message>
-    </context>
+    <message>
+        <source>to</source>
+        <translation>meddig</translation>
+    </message>
+</context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
     </context>
@@ -3050,6 +3100,10 @@
         <translation>Jelenlegi nézet adatainak exportálása fájlba</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Hiba</translation>
+    </message>
+    <message>
         <source>Backup Wallet</source>
         <translation>Biztonsági másolat készítése a Tárcáról</translation>
     </message>
@@ -3073,7 +3127,11 @@
         <source>The wallet data was successfully saved to %1.</source>
         <translation>A tárca adatai sikeresen elmentve %1.</translation>
     </message>
-    </context>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Megszakítás</translation>
+    </message>
+</context>
 <context>
     <name>bitcoin-core</name>
     <message>
@@ -3123,6 +3181,10 @@
     <message>
         <source>-maxmempool must be at least %d MB</source>
         <translation>-maxmempool legalább %d MB kell legyen.</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>Külső cím (-%s address) feloldása nem sikerült: '%s'</translation>
     </message>
     <message>
         <source>Copyright (C) %i-%i</source>
@@ -3183,6 +3245,10 @@
     <message>
         <source>Loading P2P addresses...</source>
         <translation>P2P címek betöltése...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Hiba: kevés a hely a lemezen!</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

@@ -70,10 +70,6 @@
         <translation>Это ваши адреса Bitcoin для отправки платежей. Всегда проверяйте количество и адрес получателя перед отправкой перевода.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>Це ваші біткойн-адреси для отримання платежів. Використовуйте кнопку "Створити нову адресу прийому" на вкладці отримання, для створення нових адрес.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>Копировать &amp;адрес</translation>
     </message>
@@ -178,6 +174,10 @@
     <message>
         <source>Wallet encrypted</source>
         <translation>Кошелёк зашифрован</translation>
+    </message>
+    <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Введіть нову кодову фразу для гаманця.&lt;br/&gt;Будь ласка, використовуйте кодові фрази що містять &lt;b&gt; щонайменше десять випадкових символів &lt;/b&gt; або &lt;b&gt; щонайменше вісім слів &lt;/b&gt;.</translation>
     </message>
     <message>
         <source>Enter the old passphrase and new passphrase for the wallet.</source>
@@ -516,10 +516,6 @@
     <message>
         <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
         <translation>Показати довідку %1 для отримання переліку можливих параметрів командного рядка.</translation>
-    </message>
-    <message>
-        <source>default wallet</source>
-        <translation>гаманець за змовчуванням</translation>
     </message>
     <message>
         <source>No wallets available</source>
@@ -898,6 +894,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -986,6 +985,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(в той час, як необхідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>Н/Д</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -1039,6 +1045,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Тип</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Адреса</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1055,6 +1074,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Виберіть файл запиту платежу</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Вставити адресу</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1161,10 +1188,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Скоротити місце під блоки...</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>ГБ</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1429,7 +1452,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Поточний сукупний баланс в адресах для спостереження</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Закрыть</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Всього</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>або</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1663,6 +1704,16 @@
     <message>
         <source>unknown</source>
         <translation>невідомо</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>блок</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Транзакція</translation>
     </message>
 </context>
 <context>
@@ -2042,6 +2093,10 @@
         <translation>Необов'язкове поле для суми запиту. Залиште це поле пустим або впишіть нуль, щоб не надсилати у запиті конкретної суми.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>Н&amp;адіслати запит платежу</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Очистити всі поля в формі</translation>
     </message>
@@ -2247,10 +2302,6 @@
         <translation>Попередження: оцінка розміру комісії наразі неможлива.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>згорнути налаштування оплат</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2363,6 +2414,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>%1 (%2 блоків)</translation>
     </message>
     <message>
+        <source> from wallet '%1'</source>
+        <translation> з гаманця '%1'</translation>
+    </message>
+    <message>
         <source>%1 to %2</source>
         <translation>%1 до %2</translation>
     </message>
@@ -2397,6 +2452,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Confirm send coins</source>
         <translation>Підтвердьте надсилання монет</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">Відправити</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
@@ -2476,10 +2535,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Choose previously used address</source>
         <translation>Обрати ранiш використовувану адресу</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Це звичайний платіж.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3038,10 +3093,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Відправлені на</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Відправлені собі</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Добуті</translation>
     </message>
@@ -3172,6 +3223,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>закрити Гаманець</translation>
     </message>
     <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Ви впевнені, що хочете закрити гаманець &lt;i&gt;%1&lt;/i&gt;?</translation>
+    </message>
+    <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Якщо занадто довго закривати гаманець, це може призвести до необхідності повторної синхронізації всієї ланцюга, якщо ввімкнено обрізку.</translation>
     </message>
@@ -3239,6 +3294,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Экспортировать данные текущей вкладки в файл</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <source>Backup Wallet</source>

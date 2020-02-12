@@ -70,10 +70,6 @@
         <translation>Detta är dina Bitcoin-adresser för att skicka betalningar. Kontrollera alltid belopp och mottagaradress innan du skickar bitcoin.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>Detta är dina Bitcoinadresser för att ta emot betalningar. Använd knappen 'Skapa ny mottagaradress' på fliken ta emot för att skapa nya adresser .</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;Kopiera adress</translation>
     </message>
@@ -523,10 +519,6 @@ Försök igen.</translation>
         <translation>Visa %1 hjälpmeddelande för att få en lista med möjliga Bitcoin kommandoradsalternativ.</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>Standardplånbok</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Inga plånböcker tillgängliga</translation>
     </message>
@@ -899,6 +891,9 @@ Försök igen.</translation>
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -981,17 +976,20 @@ Försök igen.</translation>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB fritt utrymme kvar</numerusform><numerusform>%n GB ledigt utrymme kvar</numerusform></translation>
+        <translation><numerusform>%n GB fritt utrymme kvar</numerusform><numerusform>%n GB fritt utrymme kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(av %n GB behövs)</numerusform><numerusform>(av de %n GB som behövs)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB behövs för hela kedjan)</numerusform><numerusform>(%n GB behövs för hela kedjan)</numerusform></translation>
+        <translation><numerusform>(av %n GB behövs)</numerusform><numerusform>(av %n GB behövs)</numerusform></translation>
     </message>
 </context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>ej tillgänglig</translation>
+    </message>
+    </context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1044,6 +1042,19 @@ Försök igen.</translation>
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adress</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1060,6 +1071,14 @@ Försök igen.</translation>
     <message>
         <source>Select payment request file</source>
         <translation>Välj betalningsbegäransfil</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Klistra in adress från Urklipp</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1162,10 +1181,6 @@ Försök igen.</translation>
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>Gallra &amp;blocklagring till</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1320,6 +1335,10 @@ Försök igen.</translation>
         <translation>inget</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Kärna</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>Bekräfta att alternativen ska återställs</translation>
     </message>
@@ -1430,7 +1449,25 @@ Försök igen.</translation>
         <source>Current total balance in watch-only addresses</source>
         <translation>Aktuellt totalt saldo i granska-bara adresser</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Stäng</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Totalt belopp</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>eller</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1662,6 +1699,11 @@ Försök igen.</translation>
     <message>
         <source>unknown</source>
         <translation>okänd</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>Tsn</translation>
     </message>
 </context>
 <context>
@@ -2041,8 +2083,8 @@ Försök igen.</translation>
         <translation>Ett valfritt belopp att begära. Lämna tomt eller ange noll för att inte begära ett specifikt belopp.</translation>
     </message>
     <message>
-        <source>&amp;Create new receiving address</source>
-        <translation>S&amp;kapa ny mottagaradress</translation>
+        <source>&amp;Request payment</source>
+        <translation>Begä&amp;r betalning</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2250,10 +2292,6 @@ Försök igen.</translation>
         <translation>Varning: Avgiftsuppskattning är för närvarande inte möjlig.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>Fäll ihop avgiftsinställningarna</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2406,6 +2444,10 @@ Notera: Då avgiften beräknas per byte kommer en avgift på 50 satoshi tas ut f
         <translation>Bekräfta att pengar ska skickas</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Skicka</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>Mottagarens adress är ogiltig. Kontrollera igen.</translation>
     </message>
@@ -2483,10 +2525,6 @@ Notera: Då avgiften beräknas per byte kommer en avgift på 50 satoshi tas ut f
     <message>
         <source>Choose previously used address</source>
         <translation>Välj tidigare använda adresser</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Detta är en normal betalning.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3041,10 +3079,6 @@ Notera: Då avgiften beräknas per byte kommer en avgift på 50 satoshi tas ut f
         <translation>Skickad till</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Till dig själv</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Genererade</translation>
     </message>
@@ -3175,6 +3209,10 @@ Notera: Då avgiften beräknas per byte kommer en avgift på 50 satoshi tas ut f
         <translation>Stäng plånboken</translation>
     </message>
     <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Är det säkert att du vill stänga plånboken &lt;i&gt;%1&lt;/i&gt;?</translation>
+    </message>
+    <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Om plånboken är stängd under för lång tid kan hela kedjan behöva synkroniseras om, om gallring är aktiverad.</translation>
     </message>
@@ -3242,6 +3280,10 @@ Notera: Då avgiften beräknas per byte kommer en avgift på 50 satoshi tas ut f
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Exportera informationen i aktuell flik till en fil</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Fel</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3461,6 +3503,12 @@ Notera: Då avgiften beräknas per byte kommer en avgift på 50 satoshi tas ut f
     <message>
         <source>Specified blocks directory "%s" does not exist.</source>
         <translation>Den specificerade mappen för block "%s" existerar inte.</translation>
+    </message>
+    <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>Angiven R/W konfigurationsfil %s finns inte
+</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>

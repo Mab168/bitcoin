@@ -70,10 +70,6 @@
         <translation>您可以给这些比特币地址付款。在付款之前，务必要检查金额和收款地址是否正确。</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>您可以用这些比特币地址收款。使用“接收”标签页中的"创建新收款地址"按钮创建新地址。</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>复制地址(&amp;C)</translation>
     </message>
@@ -522,10 +518,6 @@
         <translation>显示 %1 帮助信息，获取可用命令行选项列表</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>默认钱包</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>没有可用的钱包</translation>
     </message>
@@ -918,6 +910,9 @@
     </message>
 </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
@@ -955,10 +950,6 @@
         <translation>当你单击确认后，%1 将会在 %4 启动时从  %3 中最早的交易开始，下载并处理完整的 %4 区块链 (%2GB)。</translation>
     </message>
     <message>
-        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation>取消此设置需要重新下载整个区块链。先完整下载整条链再进行修剪会更快。这会禁用一些高级功能。</translation>
-    </message>
-    <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation>初始化同步过程是非常吃力的，同时可能会暴露您之前没有注意到的电脑硬件问题。你每次启动%1时，它都会从之前中断的地方继续下载。</translation>
     </message>
@@ -977,10 +968,6 @@
     <message>
         <source>Bitcoin</source>
         <translation>比特币</translation>
-    </message>
-    <message>
-        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation>在完成验证后丢弃区块，只保留最近的 %1 GB(修剪)</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1014,11 +1001,14 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(需要 %n GB的空间)</numerusform></translation>
     </message>
-    <message numerus="yes">
-        <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(保存完整的链需要 %n GB)</numerusform></translation>
-    </message>
 </context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>不可用</translation>
+    </message>
+    </context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1071,6 +1061,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>种类</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>地址</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -1087,6 +1090,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>选择支付请求文件</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>从剪贴板粘贴地址</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1128,7 +1139,7 @@
     </message>
     <message>
         <source>&amp;Start %1 on system login</source>
-        <translation>系统登入时启动 %1 (%S)</translation>
+        <translation>系统登入时启动 %1 (&amp;S)</translation>
     </message>
     <message>
         <source>Size of &amp;database cache</source>
@@ -1193,10 +1204,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>将区块存储修剪至(&amp;B)</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1351,6 +1358,10 @@
         <translation>无</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>比特币核心</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>确认恢复默认设置</translation>
     </message>
@@ -1461,7 +1472,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>仅观察地址中的当前总余额</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">关闭</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>总额</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>或</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1701,6 +1730,16 @@
     <message>
         <source>unknown</source>
         <translation>未知</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>块</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>交易</translation>
     </message>
 </context>
 <context>
@@ -2084,8 +2123,8 @@
         <translation>可选的请求金额。留空或填零为不要求具体金额。</translation>
     </message>
     <message>
-        <source>&amp;Create new receiving address</source>
-        <translation>新建收款地址(&amp;C)</translation>
+        <source>&amp;Request payment</source>
+        <translation>请求付款(&amp;R)</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2293,10 +2332,6 @@
         <translation>警告: 目前无法进行手续费估计。</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>将费用设置收起</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2457,6 +2492,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>确认发币</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">发送</translation>
+    </message>
+    <message>
         <source>The recipient address is not valid. Please recheck.</source>
         <translation>接收人地址无效。请重新检查。</translation>
     </message>
@@ -2534,10 +2573,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Choose previously used address</source>
         <translation>选择以前用过的地址</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>这是笔正常的付款。</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -3096,10 +3131,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>发送到</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>给自己</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>挖矿所得</translation>
     </message>
@@ -3301,6 +3332,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>将当前标签页数据导出到文件</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>错误</translation>
     </message>
     <message>
         <source>Backup Wallet</source>

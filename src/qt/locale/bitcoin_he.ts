@@ -70,10 +70,6 @@
         <translation>אלו הן כתובות הביטקוין שלך לשליחת תשלומים. חשוב לבדוק את הסכום ואת הכתובת המקבלת לפני שליחת מטבעות.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
-        <translation>אלה כתובות הביטקוין שלך לקבלת תשלומים. השתמש בלחצן 'צור כתובת קבלה חדשה' בכרטיסייה קבלה כדי ליצור כתובות חדשות.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;העתק כתובת</translation>
     </message>
@@ -178,6 +174,14 @@
     <message>
         <source>Wallet encrypted</source>
         <translation>הארנק מוצפן</translation>
+    </message>
+    <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>הכנס את הסיסמה החדשה לארנק. &lt;br/&gt;אנא השתמש בסיסמה המכילה &lt;b&gt;10 תוים אקראיים או יותר&lt;/b&gt;, או &lt;b&gt;שמונה מילים או יותר&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>הכנס את הסיסמה הישנה והחדשה לארנק.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -490,10 +494,6 @@
         <translation>יש להציג את הודעת העזרה של %1 כדי להציג רשימה עם אפשרויות שורת פקודה לביטקוין</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>ארנק בררת מחדל</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>אין ארנקים זמינים</translation>
     </message>
@@ -754,6 +754,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation>הצפנת הארנק</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -833,6 +837,9 @@
         <translation>לא ניתן ליצור כאן תיקיית נתונים.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -922,6 +929,13 @@
         <source>(of %n GB needed)</source>
         <translation><numerusform>(מתוך %n ג״ב נדרשים)</numerusform><numerusform>(מתוך %n ג״ב נדרשים)</numerusform><numerusform>(מתוך %n ג״ב נדרשים)</numerusform><numerusform>(מתוך %n ג״ב נדרשים)</numerusform></translation>
     </message>
+</context>
+<context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>לא זמין</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -975,6 +989,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>סוג</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>כתובת</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -991,6 +1018,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>בחירת קובץ בקשת תשלום</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>הדבקת כתובת מלוח הגזירים</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1089,10 +1124,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>יש לגזום את &amp;מאגר הבלוקים אל</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>ג״ב</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1247,6 +1278,10 @@
         <translation>ללא</translation>
     </message>
     <message>
+        <source>Bitcoin Core</source>
+        <translation>ליבת ביטקוין</translation>
+    </message>
+    <message>
         <source>Confirm options reset</source>
         <translation>אישור איפוס האפשרויות</translation>
     </message>
@@ -1357,7 +1392,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>המאזן הכולל הנוכחי בכתובות לצפייה בלבד</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">סגור</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>סכום כולל</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>או</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1589,6 +1642,16 @@
     <message>
         <source>unknown</source>
         <translation>לא ידוע</translation>
+    </message>
+    <message>
+        <source>Blk</source>
+        <comment>Tx Watch: Block type abbreviation</comment>
+        <translation>מקטע</translation>
+    </message>
+    <message>
+        <source>Txn</source>
+        <comment>Tx Watch: Transaction type abbreviation</comment>
+        <translation>העברה</translation>
     </message>
 </context>
 <context>
@@ -1968,6 +2031,10 @@
         <translation>סכום כרשות לבקשה. ניתן להשאיר זאת ריק כדי לא לבקש סכום מסוים.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;בקשת תשלום</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>ניקוי של כל השדות בטופס.</translation>
     </message>
@@ -2173,10 +2240,6 @@
         <translation>אזהרה</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>צמצום הגדרות עמלה</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2289,6 +2352,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>%1 (%2 בלוקים)</translation>
     </message>
     <message>
+        <source> from wallet '%1'</source>
+        <translation>'מארנק '%1 </translation>
+    </message>
+    <message>
         <source>%1 to %2</source>
         <translation>%1 ל %2</translation>
     </message>
@@ -2323,6 +2390,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Confirm send coins</source>
         <translation>אימות שליחת מטבעות</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">שליחה</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
@@ -2402,10 +2473,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Choose previously used address</source>
         <translation>בחירת כתובת שהייתה בשימוש</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>זהו תשלום רגיל.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2960,10 +3027,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>נשלח אל</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>לעצמך</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>נכרו</translation>
     </message>
@@ -3094,6 +3157,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>סגירת ארנק</translation>
     </message>
     <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>האם בטוח/ה שרוצה לסגור את הארנק &lt;i&gt;%1&lt;/i&gt;?</translation>
+    </message>
+    <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>סגירת הארנק למשך זמן רב מדי יכול לגרור את הצורך לסינכרון מחדש של כל השרשרת אם אופצית הגיזום אקטיבית.</translation>
     </message>
@@ -3161,6 +3228,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>יצוא הנתונים בלשונית הנוכחית לקובץ</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>שגיאה</translation>
     </message>
     <message>
         <source>Backup Wallet</source>

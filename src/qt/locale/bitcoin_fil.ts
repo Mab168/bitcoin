@@ -172,6 +172,14 @@
         <translation>Naka-encrypt ang walet.</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>I-enter ang bagong passphrase sa walet. &lt;br/&gt;Gumamit ng passphrase ng &lt;b&gt;sampung o higit pang random na karakters &lt;/b&gt;, o &lt;b&gt;walong o higit pang mga salita &lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase for the wallet.</source>
+        <translation>I-enter ang dating passphrase at bagong passphrase sa walet.</translation>
+    </message>
+    <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>MAHALAGA: Anumang nakaraang mga backup na ginawa mo sa iyong walet file ay dapat mapalitan ng bagong-buong, naka-encrypt na walet file. Para sa mga kadahilanang pangseguridad, ang mga nakaraang pag-backup ng hindi naka-encrypt na walet file ay mapagwawalang-silbi sa sandaling simulan mong gamitin ang bagong naka-encrypt na walet.</translation>
     </message>
@@ -474,10 +482,6 @@
         <translation>Ipakita sa %1 ang tulong na mensahe upang makuha ang talaan ng mga posibleng opsyon ng Bitcoin command-line</translation>
     </message>
     <message>
-        <source>default wallet</source>
-        <translation>walet na default</translation>
-    </message>
-    <message>
         <source>No wallets available</source>
         <translation>Walang magagamit na mga walet</translation>
     </message>
@@ -738,6 +742,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">I-encrypt ang Walet</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -817,6 +825,9 @@
         <translation>Hindi maaaring gumawa ng direktoryo ng data dito.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -904,6 +915,13 @@
     </message>
     </context>
 <context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    </context>
+<context>
     <name>ModalOverlay</name>
     <message>
         <source>Form</source>
@@ -955,6 +973,19 @@
     </message>
 </context>
 <context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Type</source>
+        <comment>NetWatch: Type header</comment>
+        <translation>Uri</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Address</translation>
+    </message>
+</context>
+<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
@@ -971,6 +1002,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Piliin ang file na hiling ng bayad</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>I-paste ang address mula sa clipboard</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
@@ -1069,10 +1108,6 @@
     <message>
         <source>Prune &amp;block storage to</source>
         <translation>I-prune and block storage sa</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation>GB</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
@@ -1333,7 +1368,25 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Kasalukuyang kabuuan ng balanse sa mga watch-only address</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Isara</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Kabuuang Halaga</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>o</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1566,7 +1619,7 @@
         <source>unknown</source>
         <translation>hindi alam</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>QRImageWidget</name>
     <message>
@@ -1944,6 +1997,10 @@
         <translation>Opsyonal na halaga upang humiling. Iwanan itong walang laman o zero upang hindi humiling ng tiyak na halaga.</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>Humiling ng bayad</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Burahin ang laman ng lahat ng patlang ng form.</translation>
     </message>
@@ -2149,10 +2206,6 @@
         <translation>Babala: Kasalukuyang hindi posible ang pagtatantiya sa bayarin.</translation>
     </message>
     <message>
-        <source>collapse fee-settings</source>
-        <translation>i-collapse ang fee-settings</translation>
-    </message>
-    <message>
         <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
 
 Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
@@ -2265,6 +2318,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>%1 (%2 mga block)</translation>
     </message>
     <message>
+        <source> from wallet '%1'</source>
+        <translation> mula sa walet '%1'</translation>
+    </message>
+    <message>
         <source>%1 to %2</source>
         <translation>%1 sa %2</translation>
     </message>
@@ -2299,6 +2356,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>Confirm send coins</source>
         <translation>Kumpirmahin magpadala ng coins</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">Magpadala</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
@@ -2378,10 +2439,6 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>Choose previously used address</source>
         <translation>Piliin ang dating ginamit na address</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Ito ay normal na pagbabayad.</translation>
     </message>
     <message>
         <source>The Bitcoin address to send the payment to</source>
@@ -2936,10 +2993,6 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Ipinadala sa</translation>
     </message>
     <message>
-        <source>To yourself</source>
-        <translation>Sa iyong sarili</translation>
-    </message>
-    <message>
         <source>Mined</source>
         <translation>Namina</translation>
     </message>
@@ -3070,6 +3123,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Isara ang walet</translation>
     </message>
     <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Sigurado ka bang nais mong isara ang walet &lt;i&gt;%1&lt;/i&gt;?</translation>
+    </message>
+    <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Ang pagsasara ng walet nang masyadong matagal ay maaaring magresulta sa pangangailangan ng pag-resync sa buong chain kung pinagana ang pruning.</translation>
     </message>
@@ -3137,6 +3194,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Angkatin ang datos sa kasalukuyang tab sa talaksan</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Kamalian</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3350,12 +3411,22 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Ang tinukoy na direktoryo ng mga block "%s" ay hindi umiiral.</translation>
     </message>
     <message>
+        <source>The specified R/W config file %s does not exist
+</source>
+        <translation>Ang tinukoy na R/W config file %s ay hindi umiiral
+</translation>
+    </message>
+    <message>
         <source>Upgrading txindex database</source>
         <translation>Nag-u-upgrade ng txindex database</translation>
     </message>
     <message>
         <source>Loading P2P addresses...</source>
         <translation>Nag-lo-load ng mga P2P address...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Kamalian: Ang disk space ay mababa!</translation>
     </message>
     <message>
         <source>Loading banlist...</source>

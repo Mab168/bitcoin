@@ -166,6 +166,10 @@
         <translation>Aizvērt programmu</translation>
     </message>
     <message>
+        <source>Show information about %1</source>
+        <translation>Parādīt informāciju par %1</translation>
+    </message>
+    <message>
         <source>About &amp;Qt</source>
         <translation>Par &amp;Qt</translation>
     </message>
@@ -192,6 +196,10 @@
     <message>
         <source>Open &amp;URI...</source>
         <translation>Atvērt &amp;URI...</translation>
+    </message>
+    <message>
+        <source>Wallet:</source>
+        <translation type="unfinished">Maciņš:</translation>
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
@@ -276,6 +284,10 @@
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Komandrindas iespējas</translation>
+    </message>
+    <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>Bloku reindeksēšana no diska...</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -390,6 +402,10 @@
     </context>
 <context>
     <name>CreateWalletDialog</name>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation type="unfinished">Šifrēt maciņu</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -425,6 +441,9 @@
         <translation>Šeit nevar izveidot datu mapi.</translation>
     </message>
 </context>
+<context>
+    <name>GuiNetWatch</name>
+    </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
@@ -464,6 +483,13 @@
     </message>
     </context>
 <context>
+    <name>MempoolStats</name>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    </context>
+<context>
     <name>ModalOverlay</name>
     <message>
         <source>Form</source>
@@ -474,6 +500,14 @@
         <translation>Pēdējā bloka laiks</translation>
     </message>
     </context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>Adrese</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -491,6 +525,14 @@
     <message>
         <source>Select payment request file</source>
         <translation>Izvēlies maksājuma pieprasījuma datni</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>ielīmēt adresi no starpliktuves</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
     </message>
     </context>
 <context>
@@ -675,6 +717,16 @@
     </message>
     </context>
 <context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Aizvērt</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
+    </context>
+<context>
     <name>PaymentServer</name>
     </context>
 <context>
@@ -722,7 +774,7 @@
         <source>unknown</source>
         <translation>nav zināms</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>QRImageWidget</name>
     <message>
@@ -777,6 +829,10 @@
         <translation>Pašreizējais bloku skaits</translation>
     </message>
     <message>
+        <source>Wallet: </source>
+        <translation type="unfinished">Maciņš: </translation>
+    </message>
+    <message>
         <source>Last block time</source>
         <translation>Pēdējā bloka laiks</translation>
     </message>
@@ -828,6 +884,10 @@
         <translation>&amp;Ziņojums:</translation>
     </message>
     <message>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Pieprasīt maksājumu</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Notīrīt visus laukus formā.</translation>
     </message>
@@ -855,6 +915,10 @@
         <source>Remove</source>
         <translation>Noņemt</translation>
     </message>
+    <message>
+        <source>Copy URI</source>
+        <translation type="unfinished">Kopēt URI</translation>
+    </message>
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
@@ -875,6 +939,10 @@
         <translation>&amp;Saglabāt Attēlu...</translation>
     </message>
     <message>
+        <source>URI</source>
+        <translation type="unfinished">URI</translation>
+    </message>
+    <message>
         <source>Address</source>
         <translation>Adrese</translation>
     </message>
@@ -885,6 +953,10 @@
     <message>
         <source>Label</source>
         <translation>Nosaukums</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation type="unfinished">Ziņojums</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -900,6 +972,10 @@
     <message>
         <source>Label</source>
         <translation>Nosaukums</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation type="unfinished">Ziņojums</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -993,6 +1069,10 @@
         <translation>Transakcijas maksa</translation>
     </message>
     <message>
+        <source>Send</source>
+        <translation type="unfinished">Sūtīt</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(bez nosaukuma)</translation>
     </message>
@@ -1014,10 +1094,6 @@
     <message>
         <source>Choose previously used address</source>
         <translation>Izvēlies iepriekš izmantoto adresi</translation>
-    </message>
-    <message>
-        <source>This is a normal payment.</source>
-        <translation>Šis ir parasts maksājums.</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1147,6 +1223,18 @@
         <translation>Transakcijas maksa</translation>
     </message>
     <message>
+        <source>Message</source>
+        <translation type="unfinished">Ziņojums</translation>
+    </message>
+    <message>
+        <source>Transaction</source>
+        <translation>Transakcijas</translation>
+    </message>
+    <message>
+        <source>Inputs</source>
+        <translation type="unfinished">Ieejas</translation>
+    </message>
+    <message>
         <source>Amount</source>
         <translation>Daudzums</translation>
     </message>
@@ -1222,7 +1310,19 @@
         <source>Export the data in the current tab to a file</source>
         <translation>Datus no tekošā ieliktņa eksportēt uz failu</translation>
     </message>
-    </context>
+    <message>
+        <source>Error</source>
+        <translation>Kļūda</translation>
+    </message>
+    <message>
+        <source>Backup Wallet</source>
+        <translation type="unfinished">Maciņa Rezerves Kopija</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Atcelt</translation>
+    </message>
+</context>
 <context>
     <name>bitcoin-core</name>
     <message>
@@ -1232,6 +1332,10 @@
     <message>
         <source>Importing...</source>
         <translation>Importē...</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is too low!</source>
+        <translation>Kļūda: Zema diska vieta!</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>

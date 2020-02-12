@@ -58,6 +58,9 @@
     </message>
     </context>
 <context>
+    <name>GuiNetWatch</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     </context>
 <context>
@@ -68,7 +71,13 @@
     </message>
     </context>
 <context>
+    <name>MempoolStats</name>
+    </context>
+<context>
     <name>ModalOverlay</name>
+    </context>
+<context>
+    <name>NetWatchLogModel</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -85,6 +94,16 @@
     </context>
 <context>
     <name>OverviewPage</name>
+    <message>
+        <source>Watch-only:</source>
+        <translation type="unfinished">wo nikan:</translation>
+    </message>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    </context>
+<context>
+    <name>PairingPage</name>
     </context>
 <context>
     <name>PaymentServer</name>
@@ -178,6 +197,10 @@
     <message>
         <source>This year</source>
         <translation>Odun yi</translation>
+    </message>
+    <message>
+        <source>Watch-only</source>
+        <translation>wo nikan</translation>
     </message>
     <message>
         <source>Date</source>

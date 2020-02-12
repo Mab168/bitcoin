@@ -148,6 +148,10 @@
         <translation>జోలె సంకేతపరబడింది</translation>
     </message>
     <message>
+        <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>జోలెకు క్రొత్త సంకేతపదము ఇవ్వండి.&lt;br/&gt; &lt;b&gt;పది లేదా ఎక్కువ యాదృచ్ఛిక అక్షరాలు&lt;/b&gt;, లేక &lt;b&gt;ఎనిమిది కంటే ఎక్కువ పదాలు&lt;/b&gt; కలిగి ఉన్న సంకేతపదము దయచేసి వాడండి.</translation>
+    </message>
+    <message>
         <source>Wallet encryption failed</source>
         <translation>జోలె సంకేతపరచడం విఫలమయ్యింది</translation>
     </message>
@@ -160,6 +164,10 @@
     <message>
         <source>E&amp;xit</source>
         <translation>నిష్క్రమించు</translation>
+    </message>
+    <message>
+        <source>Wallet:</source>
+        <translation type="unfinished">వాలెట్:</translation>
     </message>
     <message>
         <source>&amp;Send</source>
@@ -180,6 +188,14 @@
     <message>
         <source>Up to date</source>
         <translation>తాజాగా ఉంది</translation>
+    </message>
+    <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">&amp;పంపించే చిరునామాలు</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">&amp;అందుకునే చిరునామాలు</translation>
     </message>
     <message>
         <source>Connecting to peers...</source>
@@ -213,9 +229,20 @@
     </context>
 <context>
     <name>EditAddressDialog</name>
+    <message>
+        <source>&amp;Label</source>
+        <translation type="unfinished">&amp;ఉల్లాకు</translation>
+    </message>
+    <message>
+        <source>&amp;Address</source>
+        <translation type="unfinished">&amp;చిరునామా</translation>
+    </message>
     </context>
 <context>
     <name>FreespaceChecker</name>
+    </context>
+<context>
+    <name>GuiNetWatch</name>
     </context>
 <context>
     <name>HelpMessageDialog</name>
@@ -232,8 +259,19 @@
     </message>
     </context>
 <context>
+    <name>MempoolStats</name>
+    </context>
+<context>
     <name>ModalOverlay</name>
     </context>
+<context>
+    <name>NetWatchLogModel</name>
+    <message>
+        <source>Address</source>
+        <comment>NetWatch: Address header</comment>
+        <translation>చిరునామా</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     </context>
@@ -243,12 +281,30 @@
 <context>
     <name>OptionsDialog</name>
     <message>
+        <source>W&amp;allet</source>
+        <translation type="unfinished">&amp;వాలెట్</translation>
+    </message>
+    <message>
+        <source>Bitcoin Core</source>
+        <translation>బిట్కోయిన్ కోర్</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>లోపం</translation>
     </message>
     </context>
 <context>
     <name>OverviewPage</name>
+    </context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Cకోల్పోవు</translation>
+    </message>
+    </context>
+<context>
+    <name>PairingPage</name>
     </context>
 <context>
     <name>PaymentServer</name>
@@ -262,18 +318,38 @@
         <source>unknown</source>
         <translation>తెలియదు</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>QRImageWidget</name>
     </context>
 <context>
     <name>RPCConsole</name>
+    <message>
+        <source>&amp;Information</source>
+        <translation type="unfinished">&amp;వర్తమానము</translation>
+    </message>
+    <message>
+        <source>Wallet: </source>
+        <translation type="unfinished">వాలెట్: </translation>
+    </message>
     </context>
 <context>
     <name>ReceiveCoinsDialog</name>
+    <message>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;ఉల్లాకు:</translation>
+    </message>
+    <message>
+        <source>&amp;Message:</source>
+        <translation type="unfinished">&amp;సందేశం:</translation>
+    </message>
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
+    <message>
+        <source>Copy &amp;Address</source>
+        <translation type="unfinished">చిరునామాను కాపీ చెయ్యండి</translation>
+    </message>
     <message>
         <source>Address</source>
         <translation>చిరునామా</translation>
@@ -317,12 +393,32 @@
         <translation>పరిమాణం</translation>
     </message>
     <message>
+        <source>Choose...</source>
+        <translation type="unfinished">ఎంచుకోండి...</translation>
+    </message>
+    <message>
+        <source>S&amp;end</source>
+        <translation type="unfinished">పంపు</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished">పంపు</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>( ఉల్లాకు లేదు )</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
+    <message>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;ఉల్లాకు:</translation>
+    </message>
+    <message>
+        <source>Message:</source>
+        <translation type="unfinished">సందేశం:</translation>
+    </message>
     </context>
 <context>
     <name>SendConfirmationDialog</name>
@@ -433,6 +529,10 @@
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>ప్రస్తుతం ఉన్న సమాచారాన్ని ఫైల్ లోనికి ఎగుమతి చేసుకోండి</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>లోపం</translation>
     </message>
     </context>
 <context>
