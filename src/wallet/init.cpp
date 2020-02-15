@@ -7,6 +7,7 @@
 #include <interfaces/chain.h>
 #include <net.h>
 #include <outputtype.h>
+#include <script/signingprovider.h>
 #include <util/moneystr.h>
 #include <util/system.h>
 #include <util/translation.h>
@@ -58,6 +59,7 @@ void WalletInit::AddWalletOptions() const
     gArgs.AddArg("-wallet=<path>", "Specify wallet database path. Can be specified multiple times to load multiple wallets. Path is interpreted relative to <walletdir> if it is not absolute, and will be created if it does not exist (as a directory containing a wallet.dat file and log files). For backwards compatibility this will also accept names of existing data files in <walletdir>.)", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::WALLET);
     gArgs.AddArg("-walletbroadcast",  strprintf("Make the wallet broadcast transactions (default: %u)", DEFAULT_WALLETBROADCAST), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     gArgs.AddArg("-walletdir=<dir>", "Specify directory to hold wallets (default: <datadir>/wallets if it exists, otherwise <datadir>)", ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
+    gArgs.AddArg("-walletimplicitsegwit", strprintf("Support segwit when restoring wallet backups and importing keys (default: %u)", DEFAULT_WALLET_IMPLICIT_SEGWIT), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
 #if HAVE_SYSTEM
     gArgs.AddArg("-walletnotify=<cmd>", "Execute command when a wallet transaction changes (%s in cmd is replaced by TxID and %w is replaced by wallet name)", ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
 #endif
@@ -123,6 +125,13 @@ bool WalletInit::ParameterInteraction() const
         return InitError("-sysperms is not allowed in combination with enabled wallet functionality");
     if (gArgs.GetArg("-prune", 0) && gArgs.GetBoolArg("-rescan", false))
         return InitError(_("Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.").translated);
+
+    g_implicit_segwit = gArgs.GetBoolArg("-walletimplicitsegwit", DEFAULT_WALLET_IMPLICIT_SEGWIT);
+    if (!g_implicit_segwit) {
+        if (gArgs.SoftSetArg("-addresstype", "legacy")) {
+            LogPrintf("%s: parameter interaction: -walletimplicitsegwit=%u -> setting -addresstype=legacy\n", __func__, g_implicit_segwit);
+        }
+    }
 
     return true;
 }

@@ -95,6 +95,7 @@ class TestNode():
             "-debugexclude=libevent",
             "-debugexclude=leveldb",
             "-uacomment=testnode%d" % i,
+            "-walletimplicitsegwit",
         ]
 
         self.cli = TestNodeCLI(bitcoin_cli, self.datadir)

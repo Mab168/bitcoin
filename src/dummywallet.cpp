@@ -46,6 +46,7 @@ void DummyWalletInit::AddWalletOptions() const
         "-wallet=<path>",
         "-walletbroadcast",
         "-walletdir=<dir>",
+        "-walletimplicitsegwit",
         "-walletnotify=<cmd>",
         "-walletrbf",
         "-zapwallettxes=<mode>",
