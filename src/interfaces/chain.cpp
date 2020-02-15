@@ -294,9 +294,9 @@ public:
         // that Chain clients do not need to know about.
         return TransactionError::OK == err;
     }
-    void getTransactionAncestry(const uint256& txid, size_t& ancestors, size_t& descendants) override
+    void getTransactionAncestry(const uint256& txid, size_t& ancestors, size_t& descendants, size_t* ancestorsize, CAmount* ancestorfees) override
     {
-        ::mempool.GetTransactionAncestry(txid, ancestors, descendants);
+        ::mempool.GetTransactionAncestry(txid, ancestors, descendants, ancestorsize, ancestorfees);
     }
     bool checkChainLimits(const CTransactionRef& tx) override
     {

@@ -51,10 +51,21 @@ class MempoolPackagesTest(BitcoinTestFramework):
         fee = Decimal("0.0001")
         # MAX_ANCESTORS transactions off a confirmed tx should be fine
         chain = []
+        wallet_unspent = self.nodes[0].listunspent(minconf=0)
+        ancestor_vsize = 0
+        ancestor_fees = Decimal(0)
         for i in range(MAX_ANCESTORS):
             (txid, sent_value) = self.chain_transaction(self.nodes[0], txid, 0, value, fee, 1)
             value = sent_value
             chain.append(txid)
+
+            wallet_unspent = self.nodes[0].listunspent(minconf=0)
+            this_unspent = next(i for i in wallet_unspent if i['txid'] == txid)
+            assert_equal(this_unspent['ancestorcount'], i + 1)
+            ancestor_vsize += self.nodes[0].getrawtransaction(txid=txid, verbose=True)['vsize']
+            assert_equal(this_unspent['ancestorsize'], ancestor_vsize)
+            ancestor_fees -= self.nodes[0].gettransaction(txid=txid)['fee']
+            assert_equal(this_unspent['ancestorfees'], ancestor_fees * 100000000)
 
         # Check mempool has MAX_ANCESTORS transactions in it, and descendant and ancestor
         # count and fees should look correct
@@ -64,9 +75,9 @@ class MempoolPackagesTest(BitcoinTestFramework):
         descendant_fees = 0
         descendant_vsize = 0
 
-        ancestor_vsize = sum([mempool[tx]['vsize'] for tx in mempool])
+        assert_equal(ancestor_vsize, sum([mempool[tx]['vsize'] for tx in mempool]))
         ancestor_count = MAX_ANCESTORS
-        ancestor_fees = sum([mempool[tx]['fee'] for tx in mempool])
+        assert_equal(ancestor_fees, sum([mempool[tx]['fee'] for tx in mempool]))
 
         descendants = []
         ancestors = list(chain)

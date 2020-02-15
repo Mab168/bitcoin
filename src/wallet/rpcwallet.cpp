@@ -19,6 +19,7 @@
 #include <rpc/util.h>
 #include <script/descriptor.h>
 #include <script/sign.h>
+#include <txmempool.h>
 #include <util/bip32.h>
 #include <util/fees.h>
 #include <util/moneystr.h>
@@ -2945,6 +2946,9 @@ static UniValue listunspent(const JSONRPCRequest& request)
             "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction output amount in " + CURRENCY_UNIT + "\n"
             "    \"confirmations\" : n,      (numeric) The number of confirmations\n"
+            "    \"ancestorcount\" : n,      (numeric) If transaction is in the mempool, the number of in-mempool ancestor transactions (including this one)\n"
+            "    \"ancestorsize\" : n,       (numeric) If transaction is in the mempool, the virtual transaction size of in-mempool ancestors (including this one)\n"
+            "    \"ancestorfees\" : n,       (numeric) If transaction is in the mempool, total fees of in-mempool ancestors (including this one) with fee deltas used for mining priority\n"
             "    \"redeemScript\" : \"script\" (string) The redeemScript if scriptPubKey is P2SH\n"
             "    \"witnessScript\" : \"script\" (string) witnessScript if the scriptPubKey is P2WSH or P2SH-P2WSH\n"
             "    \"spendable\" : xxx,        (bool) Whether we have the private keys to spend this output\n"
@@ -3097,6 +3101,16 @@ static UniValue listunspent(const JSONRPCRequest& request)
         entry.pushKV("scriptPubKey", HexStr(scriptPubKey.begin(), scriptPubKey.end()));
         entry.pushKV("amount", ValueFromAmount(out.tx->tx->vout[out.i].nValue));
         entry.pushKV("confirmations", out.nDepth);
+        if (!out.nDepth) {
+            size_t ancestor_count, descendant_count, ancestor_size;
+            CAmount ancestor_fees;
+            pwallet->chain().getTransactionAncestry(out.tx->GetHash(), ancestor_count, descendant_count, &ancestor_size, &ancestor_fees);
+            if (ancestor_count) {
+                entry.pushKV("ancestorcount", (uint64_t)ancestor_count);
+                entry.pushKV("ancestorsize", (uint64_t)ancestor_size);
+                entry.pushKV("ancestorfees", (uint64_t)ancestor_fees);
+            }
+        }
         entry.pushKV("spendable", out.fSpendable);
         entry.pushKV("solvable", out.fSolvable);
         if (out.fSolvable) {

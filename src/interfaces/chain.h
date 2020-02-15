@@ -161,7 +161,7 @@ public:
     virtual bool broadcastTransaction(const CTransactionRef& tx, std::string& err_string, const CAmount& max_tx_fee, bool relay) = 0;
 
     //! Calculate mempool ancestor and descendant counts for the given transaction.
-    virtual void getTransactionAncestry(const uint256& txid, size_t& ancestors, size_t& descendants) = 0;
+    virtual void getTransactionAncestry(const uint256& txid, size_t& ancestors, size_t& descendants, size_t* ancestorsize = nullptr, CAmount* ancestorfees = nullptr) = 0;
 
     //! Check if transaction will pass the mempool's chain limits.
     virtual bool checkChainLimits(const CTransactionRef& tx) = 0;
