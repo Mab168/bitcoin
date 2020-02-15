@@ -219,6 +219,8 @@ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const PlatformStyle *_platformSty
 #elif defined Q_OS_WIN
     m_taskbar_button = new QWinTaskbarButton(this);
 #endif
+
+    GUIUtil::handleCloseWindowShortcut(this);
 }
 
 BitcoinGUI::~BitcoinGUI()
