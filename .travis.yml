@@ -94,6 +94,13 @@ jobs:
         FILE_ENV="./ci/test/00_setup_env_arm.sh"
 
     - stage: test
+      name: 'PowerPC64  [GOAL: install]  [unit tests, functional tests]'
+      os: linux
+      arch: ppc64le
+      env: >-
+        FILE_ENV="./ci/test/00_setup_env_powerpc64.sh"
+
+    - stage: test
       name: 'Win64  [GOAL: deploy]  [no gui or functional tests]'
       env: >-
         FILE_ENV="./ci/test/00_setup_env_win64.sh"
