@@ -4,10 +4,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <bech32.h>
+#include <clientversion.h>
 #include <coins.h>
 #include <crypto/ripemd160.h>
 #include <key_io.h>
 #include <httpserver.h>
+#include <net.h>
 #include <outputtype.h>
 #include <policy/settings.h>
 #include <rpc/blockchain.h>
@@ -668,6 +670,36 @@ static UniValue getmemoryinfo(const JSONRPCRequest& request)
     }
 }
 
+static UniValue getgeneralinfo(const JSONRPCRequest& request)
+{
+    RPCHelpMan{"getgeneralinfo",
+                "\nReturns data about the bitcoin daemon.\n",
+                {},
+                RPCResult{
+                "  {\n"
+                "    \"clientversion\": \"string\",     (string) Client version\n"
+                "    \"useragent\":\"string\",          (string) Client name\n"
+                "    \"datadir\":\"path\",              (string) Data directory path\n"
+                "    \"blocksdir\":\"path\",            (string) Blocks directory path\n"
+                "    \"startuptime\":\"number\",      (number) Startup time\n"
+                "  }\n"
+                },
+                RPCExamples{
+                    HelpExampleCli("getgeneralinfo", "")
+            + HelpExampleRpc("getgeneralinfo", "")
+                },
+            }.Check(request);
+
+        UniValue obj(UniValue::VOBJ);
+        obj.pushKV("clientversion", FormatFullVersion());
+        obj.pushKV("useragent", strSubVersion);
+        obj.pushKV("datadir", GetDataDir().string());
+        obj.pushKV("blocksdir", GetBlocksDir().string());
+        obj.pushKV("startuptime", GetStartupTime());
+        return obj;
+
+}
+
 static void EnableOrDisableLogCategories(UniValue cats, bool enable) {
     cats = cats.get_array();
     for (unsigned int i = 0; i < cats.size(); ++i) {
@@ -776,6 +808,7 @@ static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         argNames
   //  --------------------- ------------------------  -----------------------  ----------
     { "control",            "getmemoryinfo",          &getmemoryinfo,          {"mode"} },
+    { "control",            "getgeneralinfo",         &getgeneralinfo,         {} },
     { "control",            "logging",                &logging,                {"include", "exclude"}},
     { "util",               "validateaddress",        &validateaddress,        {"address"} },
     { "util",               "createmultisig",         &createmultisig,         {"nrequired","keys","options|address_type"} },
