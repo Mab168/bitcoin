@@ -17,16 +17,6 @@
 #endif
 
 #ifndef WIN32
-// for posix_fallocate
-#ifdef __linux__
-
-#ifdef _POSIX_C_SOURCE
-#undef _POSIX_C_SOURCE
-#endif
-
-#define _POSIX_C_SOURCE 200112L
-
-#endif // __linux__
 
 #include <algorithm>
 #include <fcntl.h>
@@ -1102,8 +1092,9 @@ void AllocateFileRange(FILE *file, unsigned int offset, unsigned int length) {
     }
     ftruncate(fileno(file), static_cast<off_t>(offset) + length);
 #else
-    #if defined(__linux__)
-    // Version using posix_fallocate
+    #if _POSIX_C_SOURCE >= 200112L
+    // Use posix_fallocate to advise the kernel how much data we have to write,
+    // if this system supports it.
     off_t nEndPos = (off_t)offset + length;
     if (0 == posix_fallocate(fileno(file), 0, nEndPos)) return;
     #endif
@@ -1121,6 +1112,47 @@ void AllocateFileRange(FILE *file, unsigned int offset, unsigned int length) {
         length -= now;
     }
 #endif
+}
+
+FILE* AdviseSequential(FILE *file) {
+#if _POSIX_C_SOURCE >= 200112L
+    // Since this whole thing is advisory anyway, we can ignore any errors
+    // encountered up to and including the posix_fadvise call. However, we must
+    // rewind the file to the appropriate position if we've changed the seek
+    // offset.
+    if (file == nullptr)
+        return nullptr;
+    int fd = fileno(file);
+    if (fd == -1)
+        return file;
+    off_t start = lseek(fd, 0, SEEK_CUR);
+    if (start == -1)
+        return file;
+    off_t end = lseek(fd, 0, SEEK_END);
+    if (end != -1) {
+        posix_fadvise(fd, start, end - start, POSIX_FADV_WILLNEED);
+        posix_fadvise(fd, start, end - start, POSIX_FADV_SEQUENTIAL);
+    }
+    lseek(fd, start, SEEK_SET);
+#endif
+    return file;
+}
+
+int CloseAndUncache(FILE *file) {
+#if _POSIX_C_SOURCE >= 200112L
+    // Ignore any errors up to and including the posix_fadvise call since it's
+    // advisory.
+    if (file != nullptr) {
+        const int fd = fileno(file);
+        if (fd != -1) {
+            const off_t end = lseek(fd, 0, SEEK_END);
+            if (end != (off_t)-1) {
+                posix_fadvise(fd, 0, end, POSIX_FADV_DONTNEED);
+            }
+        }
+    }
+#endif
+    return fclose(file);
 }
 
 #ifdef WIN32
