@@ -67,6 +67,7 @@ class BumpFeeTest(BitcoinTestFramework):
 
         self.log.info("Running tests")
         dest_address = peer_node.getnewaddress()
+        test_invalid_parameters(rbf_node, dest_address)
         test_simple_bumpfee_succeeds(self, "default", rbf_node, peer_node, dest_address)
         test_simple_bumpfee_succeeds(self, "fee_rate", rbf_node, peer_node, dest_address)
         test_feerate_args(self, rbf_node, peer_node, dest_address)
@@ -89,6 +90,38 @@ class BumpFeeTest(BitcoinTestFramework):
         test_no_more_inputs_fails(rbf_node, dest_address)
         self.log.info("Success")
 
+def test_invalid_parameters(node, dest_address):
+    txid = spend_one_input(node, dest_address)
+    # invalid estimate mode
+    assert_raises_rpc_error(-8, "Invalid estimate_mode parameter", node.bumpfee, txid, {
+        "estimate_mode": "moo",
+    })
+    assert_raises_rpc_error(-3, "Expected type string", node.bumpfee, txid, {
+        "estimate_mode": 38,
+    })
+    assert_raises_rpc_error(-3, "Expected type string", node.bumpfee, txid, {
+        "estimate_mode": {
+            "foo": "bar",
+        },
+    })
+    assert_raises_rpc_error(-8, "Invalid estimate_mode parameter", node.bumpfee, txid, {
+        "estimate_mode": Decimal("3.141592"),
+    })
+    # confTarget and conf_target
+    assert_raises_rpc_error(-8, "confTarget and conf_target options should not both be set", node.bumpfee, txid, {
+        "confTarget": 123,
+        "conf_target": 456,
+    })
+    # confTarget and totalFee (depends on -deprecatedrpc=totalFee)
+    assert_raises_rpc_error(-8, "confTarget can't be set with totalFee or fee_rate", node.bumpfee, txid, {
+        "confTarget": 123,
+        "totalFee": 456,
+    })
+    # conf_target and totalFee (depends on -deprecatedrpc=totalFee)
+    assert_raises_rpc_error(-8, "conf_target can't be set with totalFee or fee_rate", node.bumpfee, txid, {
+        "conf_target": 123,
+        "totalFee": 456,
+    })
 
 def test_simple_bumpfee_succeeds(self, mode, rbf_node, peer_node, dest_address):
     rbfid = spend_one_input(rbf_node, dest_address)
