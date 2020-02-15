@@ -9,13 +9,17 @@
 #include <qt/walletmodel.h>
 
 #include <QUrl>
+#include <QClipboard>
 
-OpenURIDialog::OpenURIDialog(QWidget *parent) :
+OpenURIDialog::OpenURIDialog(const PlatformStyle *platformStyle, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::OpenURIDialog)
 {
     ui->setupUi(this);
     ui->uriEdit->setPlaceholderText("bitcoin:");
+
+    ui->pasteButton->setIcon(platformStyle->SingleColorIcon(":/icons/editpaste"));
+    QObject::connect(ui->pasteButton, &QPushButton::clicked, [=] { ui->uriEdit->setText(QApplication::clipboard()->text()); });
 
     GUIUtil::handleCloseWindowShortcut(this);
 }
