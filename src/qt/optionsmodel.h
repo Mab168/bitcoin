@@ -51,11 +51,13 @@ public:
         Language,               // QString
         CoinControlFeatures,    // bool
         ThreadsScriptVerif,     // int
-        Prune,                  // bool
-        PruneSize,              // int
+        PruneMiB,               // int
         DatabaseCache,          // int
         SpendZeroConfChange,    // bool
+        addresstype,            // QString
         Listen,                 // bool
+        maxuploadtarget,
+        peerbloomfilters,       // bool
         OptionIDRowCount,
     };
 
@@ -79,7 +81,7 @@ public:
     const QString& getOverriddenByCommandLine() { return strOverriddenByCommandLine; }
 
     /* Explicit setters */
-    void SetPrune(bool prune, bool force = false);
+    void SetPruneMiB(uint64_t prune, bool force = false);
 
     /* Restart flag helper */
     void setRestartRequired(bool fRequired);
@@ -99,6 +101,10 @@ private:
     bool fCoinControlFeatures;
     /* settings that were overridden by command-line */
     QString strOverriddenByCommandLine;
+
+    /* rwconf settings that require a restart */
+    qlonglong m_nextrun_prune;
+    bool f_peerbloomfilters;
 
     // Add option to list of GUI options overridden through command line/config file
     void addOverriddenOption(const std::string &option);

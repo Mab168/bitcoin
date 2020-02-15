@@ -36,6 +36,7 @@ public:
 
     QString getDataDirectory();
     void setDataDirectory(const QString &dataDir);
+    uint64_t getPrune();
 
     /**
      * Determine data directory. Let the user choose if the current one doesn't exist.
@@ -47,7 +48,7 @@ public:
      * @note do NOT call global GetDataDir() before calling this function, this
      * will cause the wrong path to be cached.
      */
-    static bool showIfNeeded(interfaces::Node& node, bool& did_show_intro, bool& prune);
+    static bool showIfNeeded(interfaces::Node& node, bool& did_show_intro, uint64_t& prune);
 
 Q_SIGNALS:
     void requestCheck();
@@ -60,6 +61,7 @@ private Q_SLOTS:
     void on_ellipsisButton_clicked();
     void on_dataDirDefault_clicked();
     void on_dataDirCustom_clicked();
+    void UpdateText();
 
 private:
     Ui::Intro *ui;
