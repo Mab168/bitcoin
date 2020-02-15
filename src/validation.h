@@ -15,6 +15,7 @@
 #include <crypto/common.h> // for ReadLE64
 #include <fs.h>
 #include <policy/feerate.h>
+#include <policy/policy.h>
 #include <protocol.h> // For CMessageHeader::MessageStartChars
 #include <script/script_error.h>
 #include <sync.h>
@@ -271,11 +272,22 @@ void UnlinkPrunedFiles(const std::set<int>& setFilesToPrune);
 /** Prune block files up to a given height */
 void PruneBlockFilesManual(int nManualPruneHeight);
 
+static const std::string rejectmsg_lowfee_mempool = "mempool min fee not met";
+static const std::string rejectmsg_lowfee_relay = "min relay fee not met";
+static const std::string rejectmsg_mempoolfull = "mempool full";
+
 /** (try to) add transaction to memory pool
  * plTxnReplaced will be appended to with all transactions replaced from mempool **/
 bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransactionRef &tx,
                         bool* pfMissingInputs, std::list<CTransactionRef>* plTxnReplaced,
-                        bool bypass_limits, const CAmount nAbsurdFee, bool test_accept=false) EXCLUSIVE_LOCKS_REQUIRED(cs_main);
+                        const ignore_rejects_type&, const CAmount nAbsurdFee, bool test_accept=false) EXCLUSIVE_LOCKS_REQUIRED(cs_main);
+
+static inline bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransactionRef &tx,
+                        bool* pfMissingInputs, std::list<CTransactionRef>* plTxnReplaced,
+                        bool bypass_limits, const CAmount nAbsurdFee, bool test_accept=false) EXCLUSIVE_LOCKS_REQUIRED(cs_main) {
+    static const ignore_rejects_type ignore_rejects_legacy{rejectmsg_lowfee_mempool, rejectmsg_lowfee_relay, rejectmsg_mempoolfull};
+    return AcceptToMemoryPool(pool, state, tx, pfMissingInputs, plTxnReplaced, (bypass_limits ? ignore_rejects_legacy : empty_ignore_rejects), nAbsurdFee, test_accept);
+}
 
 /** Get the BIP9 state for a given deployment at the current tip. */
 ThresholdState VersionBitsTipState(const Consensus::Params& params, Consensus::DeploymentPos pos);

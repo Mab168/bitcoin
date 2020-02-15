@@ -450,7 +450,7 @@ public:
         bool* m_missing_inputs;
         const int64_t m_accept_time;
         std::list<CTransactionRef>* m_replaced_transactions;
-        const bool m_bypass_limits;
+        const ignore_rejects_type& m_ignore_rejects;
         const CAmount& m_absurd_fee;
         /*
          * Return any outpoints which were not previously present in the coins
@@ -485,6 +485,22 @@ private:
         const uint256& m_hash;
     };
 
+    static inline bool MaybeReject_(ValidationInvalidReason reason, unsigned int reject_code, const std::string& reason_str, const std::string& debug_msg, const ignore_rejects_type& ignore_rejects, CValidationState& state) {
+        if (ignore_rejects.count(reason_str)) {
+            return false;
+        }
+
+        return state.Invalid(reason, true, reject_code, reason_str, debug_msg);
+    }
+
+#define MaybeRejectDbg(reason, reject_code, reason_str, debug_msg)  do {  \
+    if (MaybeReject_(reason, reject_code, reason_str, debug_msg, ignore_rejects, state)) {  \
+        return false;  \
+    }  \
+} while(0)
+
+#define MaybeReject(reason, reject_code, reason_str)  MaybeRejectDbg(reason, reject_code, reason_str, "")
+
     // Run the policy checks on a given transaction, excluding any script checks.
     // Looks up inputs, calculates feerate, considers replacement, evaluates
     // package limits, etc. As this function can be invoked for "free" by a peer,
@@ -507,14 +523,14 @@ private:
     bool Finalize(ATMPArgs& args, Workspace& ws) EXCLUSIVE_LOCKS_REQUIRED(cs_main, m_pool.cs);
 
     // Compare a package's feerate against minimum allowed.
-    bool CheckFeeRate(size_t package_size, CAmount package_fee, CValidationState& state)
+    bool CheckFeeRate(size_t package_size, CAmount package_fee, CValidationState& state, const ignore_rejects_type& ignore_rejects)
     {
         CAmount mempoolRejectFee = m_pool.GetMinFee(gArgs.GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000).GetFee(package_size);
-        if (mempoolRejectFee > 0 && package_fee < mempoolRejectFee) {
+        if (mempoolRejectFee > 0 && package_fee < mempoolRejectFee && !ignore_rejects.count(rejectmsg_lowfee_mempool)) {
             return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_INSUFFICIENTFEE, "mempool min fee not met", strprintf("%d < %d", package_fee, mempoolRejectFee));
         }
 
-        if (package_fee < ::minRelayTxFee.GetFee(package_size)) {
+        if (package_fee < ::minRelayTxFee.GetFee(package_size) && !ignore_rejects.count(rejectmsg_lowfee_relay)) {
             return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_INSUFFICIENTFEE, "min relay fee not met", strprintf("%d < %d", package_fee, ::minRelayTxFee.GetFee(package_size)));
         }
         return true;
@@ -527,10 +543,10 @@ private:
     CCoinsView m_dummy;
 
     // The package limits in effect at the time of invocation.
-    const size_t m_limit_ancestors;
-    const size_t m_limit_ancestor_size;
     // These may be modified while evaluating a transaction (eg to account for
     // in-mempool conflicts; see below).
+    size_t m_limit_ancestors;
+    size_t m_limit_ancestor_size;
     size_t m_limit_descendants;
     size_t m_limit_descendant_size;
 };
@@ -545,7 +561,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     CValidationState &state = args.m_state;
     bool* pfMissingInputs = args.m_missing_inputs;
     const int64_t nAcceptTime = args.m_accept_time;
-    const bool bypass_limits = args.m_bypass_limits;
+    const ignore_rejects_type& ignore_rejects = args.m_ignore_rejects;
     const CAmount& nAbsurdFee = args.m_absurd_fee;
     std::vector<COutPoint>& coins_to_uncache = args.m_coins_to_uncache;
 
@@ -572,7 +588,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
 
     // Rather not work on nonstandard transactions (unless -testnet/-regtest)
     std::string reason;
-    if (fRequireStandard && !IsStandardTx(tx, reason))
+    if (fRequireStandard && !IsStandardTx(tx, reason, ignore_rejects))
         return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false, REJECT_NONSTANDARD, reason);
 
     // Do not work on transactions that are too small.
@@ -580,13 +596,13 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     // Transactions smaller than this are not relayed to mitigate CVE-2017-12842 by not relaying
     // 64-byte transactions.
     if (::GetSerializeSize(tx, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) < MIN_STANDARD_TX_NONWITNESS_SIZE)
-        return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false, REJECT_NONSTANDARD, "tx-size-small");
+        MaybeReject(ValidationInvalidReason::TX_NOT_STANDARD, REJECT_NONSTANDARD, "tx-size-small");
 
     // Only accept nLockTime-using transactions that can be mined in the next
     // block; we don't want our mempool filled up with transactions that can't
     // be mined yet.
     if (!CheckFinalTx(tx, STANDARD_LOCKTIME_VERIFY_FLAGS))
-        return state.Invalid(ValidationInvalidReason::TX_PREMATURE_SPEND, false, REJECT_NONSTANDARD, "non-final");
+        MaybeReject(ValidationInvalidReason::TX_PREMATURE_SPEND, REJECT_NONSTANDARD, "non-final");
 
     // is it already in the memory pool?
     if (m_pool.exists(hash)) {
@@ -600,6 +616,8 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
         if (ptxConflicting) {
             if (!setConflicts.count(ptxConflicting->GetHash()))
             {
+                if (!ignore_rejects.count("txn-mempool-conflict")) {
+
                 // Allow opt-out of transaction replacement by setting
                 // nSequence > MAX_BIP125_RBF_SEQUENCE (SEQUENCE_FINAL-2) on all inputs.
                 //
@@ -624,6 +642,8 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
                 if (fReplacementOptOut) {
                     return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_DUPLICATE, "txn-mempool-conflict");
                 }
+
+                }  // ignore_rejects
 
                 setConflicts.insert(ptxConflicting->GetHash());
             }
@@ -672,6 +692,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     // be mined yet.
     // Must keep pool.cs for this unless we change CheckSequenceLocks to take a
     // CoinsViewCache instead of create its own
+    // NOTE: The miner doesn't check this again, so for now it may not be overridden.
     if (!CheckSequenceLocks(m_pool, tx, STANDARD_LOCKTIME_VERIFY_FLAGS, &lp))
         return state.Invalid(ValidationInvalidReason::TX_PREMATURE_SPEND, false, REJECT_NONSTANDARD, "non-BIP68-final");
 
@@ -681,12 +702,13 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     }
 
     // Check for non-standard pay-to-script-hash in inputs
-    if (fRequireStandard && !AreInputsStandard(tx, m_view))
-        return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false, REJECT_NONSTANDARD, "bad-txns-nonstandard-inputs");
+    if (fRequireStandard && !AreInputsStandard(tx, m_view, "bad-txns-input-", reason, ignore_rejects)) {
+        return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false, REJECT_NONSTANDARD, reason);
+    }
 
     // Check for non-standard witness in P2WSH
-    if (tx.HasWitness() && fRequireStandard && !IsWitnessStandard(tx, m_view))
-        return state.Invalid(ValidationInvalidReason::TX_WITNESS_MUTATED, false, REJECT_NONSTANDARD, "bad-witness-nonstandard");
+    if (tx.HasWitness() && fRequireStandard && !IsWitnessStandard(tx, m_view, "bad-witness-", reason, ignore_rejects))
+        return state.Invalid(ValidationInvalidReason::TX_WITNESS_MUTATED, false, REJECT_NONSTANDARD, reason);
 
     int64_t nSigOpsCost = GetTransactionSigOpCost(tx, m_view, STANDARD_SCRIPT_VERIFY_FLAGS);
 
@@ -710,15 +732,15 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     unsigned int nSize = entry->GetTxSize();
 
     if (nSigOpsCost > MAX_STANDARD_TX_SIGOPS_COST)
-        return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false, REJECT_NONSTANDARD, "bad-txns-too-many-sigops",
+        MaybeRejectDbg(ValidationInvalidReason::TX_NOT_STANDARD, REJECT_NONSTANDARD, "bad-txns-too-many-sigops",
                 strprintf("%d", nSigOpsCost));
 
     // No transactions are allowed below minRelayTxFee except from disconnected
     // blocks
-    if (!bypass_limits && !CheckFeeRate(nSize, nModifiedFees, state)) return false;
+    if (!CheckFeeRate(nSize, nModifiedFees, state, args.m_ignore_rejects)) return false;
 
     if (nAbsurdFee && nFees > nAbsurdFee)
-        return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false,
+        MaybeRejectDbg(ValidationInvalidReason::TX_NOT_STANDARD,
                 REJECT_HIGHFEE, "absurdly-high-fee",
                 strprintf("%d > %d", nFees, nAbsurdFee));
 
@@ -759,6 +781,9 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
         m_limit_descendant_size += conflict->GetSizeWithDescendants();
     }
 
+    if (ignore_rejects.count("too-long-mempool-chain")) {
+        m_limit_ancestors = m_limit_ancestor_size = m_limit_descendants = m_limit_descendant_size = std::numeric_limits<size_t>::max();
+    }
     std::string errString;
     if (!m_pool.CalculateMemPoolAncestors(*entry, setAncestors, m_limit_ancestors, m_limit_ancestor_size, m_limit_descendants, m_limit_descendant_size, errString)) {
         setAncestors.clear();
@@ -830,7 +855,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
             CFeeRate oldFeeRate(mi->GetModifiedFee(), mi->GetTxSize());
             if (newFeeRate <= oldFeeRate)
             {
-                return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_INSUFFICIENTFEE, "insufficient fee",
+                MaybeRejectDbg(ValidationInvalidReason::TX_MEMPOOL_POLICY, REJECT_INSUFFICIENTFEE, "insufficient fee",
                         strprintf("rejecting replacement %s; new feerate %s <= old feerate %s",
                             hash.ToString(),
                             newFeeRate.ToString(),
@@ -847,7 +872,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
         // This potentially overestimates the number of actual descendants
         // but we just want to be conservative to avoid doing too much
         // work.
-        if (nConflictingCount <= maxDescendantsToVisit) {
+        if (nConflictingCount <= maxDescendantsToVisit || ignore_rejects.count("too-many-replacements")) {
             // If not too many to replace, then calculate the set of
             // transactions that would have to be evicted
             for (CTxMemPool::txiter it : setIterConflicting) {
@@ -864,6 +889,8 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
                         nConflictingCount,
                         maxDescendantsToVisit));
         }
+
+        if (!ignore_rejects.count("replacement-adds-unconfirmed")) {
 
         for (unsigned int j = 0; j < tx.vin.size(); j++)
         {
@@ -889,12 +916,14 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
             }
         }
 
+        }  // ignore_rejects
+
         // The replacement must pay greater fees than the transactions it
         // replaces - if we did the bandwidth used by those conflicting
         // transactions would not be paid for.
         if (nModifiedFees < nConflictingFees)
         {
-            return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_INSUFFICIENTFEE, "insufficient fee",
+            MaybeRejectDbg(ValidationInvalidReason::TX_MEMPOOL_POLICY, REJECT_INSUFFICIENTFEE, "insufficient fee",
                     strprintf("rejecting replacement %s, less fees than conflicting txs; %s < %s",
                         hash.ToString(), FormatMoney(nModifiedFees), FormatMoney(nConflictingFees)));
         }
@@ -904,7 +933,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
         CAmount nDeltaFees = nModifiedFees - nConflictingFees;
         if (nDeltaFees < ::incrementalRelayFee.GetFee(nSize))
         {
-            return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_INSUFFICIENTFEE, "insufficient fee",
+            MaybeRejectDbg(ValidationInvalidReason::TX_MEMPOOL_POLICY, REJECT_INSUFFICIENTFEE, "insufficient fee",
                     strprintf("rejecting replacement %s, not enough additional fees to relay; %s < %s",
                         hash.ToString(),
                         FormatMoney(nDeltaFees),
@@ -979,7 +1008,6 @@ bool MemPoolAccept::Finalize(ATMPArgs& args, Workspace& ws)
     const CTransaction& tx = *ws.m_ptx;
     const uint256& hash = ws.m_hash;
     CValidationState &state = args.m_state;
-    const bool bypass_limits = args.m_bypass_limits;
 
     CTxMemPool::setEntries& allConflicting = ws.m_all_conflicting;
     CTxMemPool::setEntries& setAncestors = ws.m_ancestors;
@@ -1007,13 +1035,13 @@ bool MemPoolAccept::Finalize(ATMPArgs& args, Workspace& ws)
     // - it's not being re-added during a reorg which bypasses typical mempool fee limits
     // - the node is not behind
     // - the transaction is not dependent on any other transactions in the mempool
-    bool validForFeeEstimation = !fReplacementTransaction && !bypass_limits && IsCurrentForFeeEstimation() && m_pool.HasNoInputsOf(tx);
+    bool validForFeeEstimation = !fReplacementTransaction && args.m_ignore_rejects.empty() && IsCurrentForFeeEstimation() && m_pool.HasNoInputsOf(tx);
 
     // Store transaction in memory
     m_pool.addUnchecked(*entry, setAncestors, validForFeeEstimation);
 
     // trim mempool and check if tx was trimmed
-    if (!bypass_limits) {
+    if (!args.m_ignore_rejects.count(rejectmsg_mempoolfull)) {
         LimitMempoolSize(m_pool, gArgs.GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, gArgs.GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
         if (!m_pool.exists(hash))
             return state.Invalid(ValidationInvalidReason::TX_MEMPOOL_POLICY, false, REJECT_INSUFFICIENTFEE, "mempool full");
@@ -1060,10 +1088,10 @@ bool MemPoolAccept::AcceptSingleTransaction(const CTransactionRef& ptx, ATMPArgs
 /** (try to) add transaction to memory pool with a specified acceptance time **/
 static bool AcceptToMemoryPoolWithTime(const CChainParams& chainparams, CTxMemPool& pool, CValidationState &state, const CTransactionRef &tx,
                         bool* pfMissingInputs, int64_t nAcceptTime, std::list<CTransactionRef>* plTxnReplaced,
-                        bool bypass_limits, const CAmount nAbsurdFee, bool test_accept) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
+                        const ignore_rejects_type& ignore_rejects, const CAmount nAbsurdFee, bool test_accept) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 {
     std::vector<COutPoint> coins_to_uncache;
-    MemPoolAccept::ATMPArgs args { chainparams, state, pfMissingInputs, nAcceptTime, plTxnReplaced, bypass_limits, nAbsurdFee, coins_to_uncache, test_accept };
+    MemPoolAccept::ATMPArgs args { chainparams, state, pfMissingInputs, nAcceptTime, plTxnReplaced, ignore_rejects, nAbsurdFee, coins_to_uncache, test_accept };
     bool res = MemPoolAccept(pool).AcceptSingleTransaction(tx, args);
     if (!res) {
         // Remove coins that were not present in the coins cache before calling ATMPW;
@@ -1082,10 +1110,10 @@ static bool AcceptToMemoryPoolWithTime(const CChainParams& chainparams, CTxMemPo
 
 bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransactionRef &tx,
                         bool* pfMissingInputs, std::list<CTransactionRef>* plTxnReplaced,
-                        bool bypass_limits, const CAmount nAbsurdFee, bool test_accept)
+                        const ignore_rejects_type& ignore_rejects, const CAmount nAbsurdFee, bool test_accept)
 {
     const CChainParams& chainparams = Params();
-    return AcceptToMemoryPoolWithTime(chainparams, pool, state, tx, pfMissingInputs, GetTime(), plTxnReplaced, bypass_limits, nAbsurdFee, test_accept);
+    return AcceptToMemoryPoolWithTime(chainparams, pool, state, tx, pfMissingInputs, GetTime(), plTxnReplaced, ignore_rejects, nAbsurdFee, test_accept);
 }
 
 /**
@@ -5075,7 +5103,7 @@ bool LoadMempool(CTxMemPool& pool)
                     CValidationState state;
                     LOCK(cs_main);
                     AcceptToMemoryPoolWithTime(chainparams, pool, state, tx, nullptr /* pfMissingInputs */, nTime,
-                                               nullptr /* plTxnReplaced */, false /* bypass_limits */, 0 /* nAbsurdFee */,
+                                               nullptr /* plTxnReplaced */, empty_ignore_rejects, 0 /* nAbsurdFee */,
                                                false /* test_accept */);
                     if (!state.IsValid()) {
                         throw std::runtime_error(state.GetRejectReason());
