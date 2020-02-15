@@ -3885,6 +3885,10 @@ UniValue getaddressinfo(const JSONRPCRequest& request)
             "        \"name\": \"labelname\" (string) The label\n"
             "        \"purpose\": \"string\" (string) Purpose of address (\"send\" for sending address, \"receive\" for receiving address)\n"
             "      },...\n"
+            "    ],\n"
+            "    \"use_txids\": [\n"
+            "       \"txid\",                         (string) The ids of transactions involving this wallet which received with the address\n"
+            "       ...\n"
             "    ]\n"
             "}\n"
                 },
@@ -3956,6 +3960,15 @@ UniValue getaddressinfo(const JSONRPCRequest& request)
         labels.push_back(AddressBookDataToJSON(mi->second, true));
     }
     ret.pushKV("labels", std::move(labels));
+
+    // NOTE: Intentionally not special-casing a single txid: while addresses
+    // should never be reused, it's not unexpected to have RBF result in
+    // multiple txids for a single use.
+    UniValue use_txids(UniValue::VARR);
+    pwallet->FindScriptPubKeyUsed(std::set<CScript>{scriptPubKey}, [&use_txids](const CWalletTx& wtx){
+        use_txids.push_back(wtx.tx->GetHash().GetHex());
+    });
+    ret.pushKV("use_txids", std::move(use_txids));
 
     return ret;
 }
