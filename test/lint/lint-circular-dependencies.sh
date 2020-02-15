@@ -32,6 +32,9 @@ EXPECTED_CIRCULAR_DEPENDENCIES=(
     "txmempool -> validation -> validationinterface -> txmempool"
     "wallet/ismine -> wallet/wallet -> wallet/ismine"
 )
+EXPECTED_CIRCULAR_DEPENDENCIES=(
+    'qt/walletmodel.h -> qt/walletmodeltransaction.h -> qt/walletmodel.h'
+)
 
 EXIT_CODE=0
 
