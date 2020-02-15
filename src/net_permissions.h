@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <netaddress.h>
+#include <netbase.h>
 
 #ifndef BITCOIN_NET_PERMISSIONS_H
 #define BITCOIN_NET_PERMISSIONS_H
@@ -55,7 +56,11 @@ public:
 class NetWhitelistPermissions : public NetPermissions
 {
 public:
-    static bool TryParse(const std::string str, NetWhitelistPermissions& output, std::string& error);
+    static bool TryParse(const std::string str, NetWhitelistPermissions& output, ConnectionDirection& output_connection_direction, std::string& error);
+    static inline bool TryParse(const std::string str, NetWhitelistPermissions& output, std::string& error) {
+        ConnectionDirection connection_direction_ignored;
+        return TryParse(str, output, connection_direction_ignored, error);
+    }
     CSubNet m_subnet;
 };
 

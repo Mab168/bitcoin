@@ -25,6 +25,22 @@ static const int DEFAULT_CONNECT_TIMEOUT = 5000;
 //! -dns default
 static const int DEFAULT_NAME_LOOKUP = true;
 
+enum class ConnectionDirection {
+        None = 0,
+        In = (1U << 0),
+        Out = (1U << 1),
+        Both = (In | Out),
+};
+static inline ConnectionDirection& operator|=(ConnectionDirection& a, ConnectionDirection b) {
+    using underlying = typename std::underlying_type<ConnectionDirection>::type;
+    a = ConnectionDirection(underlying(a) | underlying(b));
+    return a;
+}
+static inline bool operator&(ConnectionDirection a, ConnectionDirection b) {
+    using underlying = typename std::underlying_type<ConnectionDirection>::type;
+    return (underlying(a) & underlying(b));
+}
+
 class proxyType
 {
 public:
