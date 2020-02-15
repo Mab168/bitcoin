@@ -60,9 +60,32 @@ BOOST_AUTO_TEST_CASE(bip173_testvectors_invalid)
         "a12UEL5L",
         "A12uEL5L",
     };
+    static const std::pair<std::string, int> ERRORS[] = {
+        {"Invalid character", 0},
+        {"Invalid character", 0},
+        {"Invalid character", 0},
+        {"String too long", 90},
+        {"Missing separator", 0},
+        {"Invalid separator position", 0},
+        {"Invalid Base 32 character", 2},
+        {"Invalid separator position", 2},
+        {"Invalid character", 8},
+        {"Invalid", 0}, // The checksum is calculated using the uppercase form so the entire string is invalid, not just a few characters
+        {"Invalid separator position", 0},
+        {"Invalid separator position", 0},
+        {"Invalid character", 3},
+        {"Invalid character", 3},
+    };
+    int i = 0;
     for (const std::string& str : CASES) {
+        const std::pair<std::string, int>& err = ERRORS[i];
         auto ret = bech32::Decode(str);
         BOOST_CHECK(ret.first.empty());
+        std::string error;
+        int pos = bech32::LocateError(str, error);
+        BOOST_CHECK_EQUAL(err.first, error);
+        BOOST_CHECK_EQUAL(err.second, pos);
+        i++;
     }
 }
 

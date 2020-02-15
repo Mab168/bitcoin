@@ -3,6 +3,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <bech32.h>
 #include <coins.h>
 #include <crypto/ripemd160.h>
 #include <key_io.h>
@@ -39,6 +40,7 @@ static UniValue validateaddress(const JSONRPCRequest& request)
                 "\nReturn information about the given bitcoin address.\n",
                 {
                     {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The bitcoin address to validate"},
+                    {"address_type", RPCArg::Type::STR, RPCArg::Optional::OMITTED_NAMED_ARG, "The address type provided, used to detect errors. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\"."},
                 },
                 RPCResult{
             "{\n"
@@ -49,6 +51,8 @@ static UniValue validateaddress(const JSONRPCRequest& request)
             "  \"iswitness\" : true|false,     (boolean) If the address is a witness address\n"
             "  \"witness_version\" : version   (numeric, optional) The version number of the witness program\n"
             "  \"witness_program\" : \"hex\"     (string, optional) The hex value of the witness program\n"
+            "  \"error\" : \"message\"           (string, optional) The error message if the provided address is invalid and address type is provided\n"
+            "  \"error_index\" : xxxxx         (numeric, optional) The index of the first invalid character (if the address type provided is bech32)\n"
             "}\n"
                 },
                 RPCExamples{
@@ -57,7 +61,8 @@ static UniValue validateaddress(const JSONRPCRequest& request)
                 },
             }.Check(request);
 
-    CTxDestination dest = DecodeDestination(request.params[0].get_str());
+    std::string address = request.params[0].get_str();
+    CTxDestination dest = DecodeDestination(address);
     bool isValid = IsValidDestination(dest);
 
     UniValue ret(UniValue::VOBJ);
@@ -72,6 +77,13 @@ static UniValue validateaddress(const JSONRPCRequest& request)
 
         UniValue detail = DescribeAddress(dest);
         ret.pushKVs(detail);
+    } else {
+        std::string address_type;
+        if (!request.params[1].isNull()) address_type = request.params[1].get_str();
+        std::string error;
+        auto res = LocateErrorInDestinationString(address, address_type);
+        ret.pushKV("error", res.second);
+        if (address_type == "bech32") ret.pushKV("error_index", res.first);
     }
     return ret;
 }
