@@ -26,6 +26,7 @@
 #include <memory>
 
 class ClientModel;
+class GuiNetWatch;
 class NetworkStyle;
 class Notificator;
 class OptionsModel;
@@ -145,6 +146,7 @@ private:
     QAction* backupWalletAction = nullptr;
     QAction* changePassphraseAction = nullptr;
     QAction* aboutQtAction = nullptr;
+    QAction* m_show_netwatch_action = nullptr;
     QAction* openRPCConsoleAction = nullptr;
     QAction* openAction = nullptr;
     QAction* showHelpMessageAction = nullptr;
@@ -162,6 +164,7 @@ private:
     QSystemTrayIcon* trayIcon = nullptr;
     const std::unique_ptr<QMenu> trayIconMenu;
     Notificator* notificator = nullptr;
+    GuiNetWatch* NetWatch = nullptr;
     RPCConsole* rpcConsole = nullptr;
     HelpMessageDialog* helpMessageDialog = nullptr;
     ModalOverlay* modalOverlay = nullptr;
@@ -281,6 +284,7 @@ public Q_SLOTS:
     void optionsClicked();
     /** Show about dialog */
     void aboutClicked();
+    void showNetWatch();
     /** Show debug window */
     void showDebugWindow();
     /** Show debug window and set focus to the console */
