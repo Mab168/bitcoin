@@ -14,8 +14,8 @@ class CSipHasher
 {
 private:
     uint64_t v[4];
-    uint64_t tmp;
-    int count;
+    size_t count;  // total amount of bytes inputted.
+    uint64_t tail; // bytes that weren't processed yet.
 
 public:
     /** Construct a SipHash calculator initialized with 128-bit key (k0, k1) */
