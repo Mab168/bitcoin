@@ -109,6 +109,9 @@ void WalletView::setBitcoinGUI(BitcoinGUI *gui)
 
         // Connect HD enabled state signal
         connect(this, &WalletView::hdEnabledStatusChanged, gui, &BitcoinGUI::updateWalletStatus);
+
+        overviewPage->setPrivacy(gui->isPrivacyModeActivated());
+        connect(gui, &BitcoinGUI::setPrivacy, overviewPage, &OverviewPage::setPrivacy);
     }
 }
 

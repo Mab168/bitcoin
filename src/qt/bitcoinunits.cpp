@@ -150,6 +150,14 @@ QString BitcoinUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool p
     return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
 }
 
+QString BitcoinUnits::formatWithPrivacy(int unit, const CAmount& amount, SeparatorStyle separators, bool privacy)
+{
+    QString value = formatWithUnit(unit, privacy ? 0 : amount, false, separators);
+    if (privacy) {
+        value.replace('0', '#');
+    }
+    return value;
+}
 
 bool BitcoinUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
