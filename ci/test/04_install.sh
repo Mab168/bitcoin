@@ -45,6 +45,10 @@ fi
 DOCKER_EXEC free -m -h
 DOCKER_EXEC echo "Number of CPUs \(nproc\): $(nproc)"
 
+if [ -n "$DPKG_ADD_ARCH" ]; then
+  DOCKER_EXEC dpkg --add-architecture "$DPKG_ADD_ARCH"
+fi
+
 ${CI_RETRY_EXE} DOCKER_EXEC apt-get update
 ${CI_RETRY_EXE} DOCKER_EXEC apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES $DOCKER_PACKAGES
 

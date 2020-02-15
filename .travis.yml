@@ -101,6 +101,16 @@ jobs:
         FILE_ENV="./ci/test/00_setup_env_powerpc64.sh"
 
     - stage: test
+      name: 'Win32  [GOAL: deploy]  [no gui or functional tests]'
+      env: >-
+        HOST=i686-w64-mingw32
+        DPKG_ADD_ARCH="i386"
+        PACKAGES="python3 nsis g++-mingw-w64-i686 wine-binfmt wine32"
+        RUN_FUNCTIONAL_TESTS=false
+        GOAL="deploy"
+        BITCOIN_CONFIG="--enable-reduce-exports --disable-gui-tests"
+
+    - stage: test
       name: 'Win64  [GOAL: deploy]  [no gui or functional tests]'
       env: >-
         FILE_ENV="./ci/test/00_setup_env_win64.sh"
