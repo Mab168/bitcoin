@@ -20,6 +20,9 @@ static const unsigned int DEFAULT_BLOCK_RECONSTRUCTION_EXTRA_TXN = 100;
 /** Default for BIP61 (sending reject messages) */
 static constexpr bool DEFAULT_ENABLE_BIP61{false};
 static const bool DEFAULT_PEERBLOOMFILTERS = false;
+static const bool DEFAULT_PEERCFILTERS = false;
+
+extern bool g_need_peercfilters;
 
 class PeerLogicValidation final : public CValidationInterface, public NetEventsInterface {
 private:

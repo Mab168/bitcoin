@@ -24,9 +24,14 @@ enum NetPermissionFlags
     // Can query the mempool
     PF_MEMPOOL = (1U << 5),
 
+    // Can query compact filters even if -peercfilters is false
+    PF_CFILTERS = (1U << 16),
+    // Used to avoid an error when PF_ALL is used to set PF_CFILTERS
+    PF_CFILTERS_EXPLICIT = PF_CFILTERS | (1U << 17),
+
     // True if the user did not specifically set fine grained permissions
     PF_ISIMPLICIT = (1U << 31),
-    PF_ALL = PF_BLOOMFILTER | PF_FORCERELAY | PF_RELAY | PF_NOBAN | PF_MEMPOOL,
+    PF_ALL = PF_BLOOMFILTER | PF_FORCERELAY | PF_RELAY | PF_NOBAN | PF_MEMPOOL | PF_CFILTERS,
 };
 class NetPermissions
 {

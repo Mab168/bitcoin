@@ -438,6 +438,7 @@ void SetupServerArgs()
     gArgs.AddArg("-onion=<ip:port>", "Use separate SOCKS5 proxy to reach peers via Tor hidden services, set -noonion to disable (default: -proxy)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-onlynet=<net>", "Make outgoing connections only through network <net> (ipv4, ipv6 or onion). Incoming connections are not affected by this option. This option can be specified multiple times to allow multiple networks.", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-peerbloomfilters", strprintf("Support filtering of blocks and transaction with bloom filters (default: %u)", DEFAULT_PEERBLOOMFILTERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    gArgs.AddArg("-peercfilters", strprintf("Serve compact block filters to peers per BIP 157 (default: %u)", DEFAULT_PEERCFILTERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-permitbaremultisig", strprintf("Relay non-P2SH multisig (default: %u)", DEFAULT_PERMIT_BAREMULTISIG), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-port=<port>", strprintf("Listen for connections on <port> (default: %u, testnet: %u, regtest: %u)", defaultChainParams->GetDefaultPort(), testnetChainParams->GetDefaultPort(), regtestChainParams->GetDefaultPort()), ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-proxy=<ip:port>", "Connect through SOCKS5 proxy, set -noproxy to disable (default: disabled)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -1012,6 +1013,19 @@ bool AppInitParameterInteraction()
             }
             g_enabled_filter_types.insert(filter_type);
         }
+    }
+
+    // Signal NODE_COMPACT_FILTERS if peercfilters and required index are both enabled.
+    if (gArgs.GetBoolArg("-peercfilters", DEFAULT_PEERCFILTERS)) {
+        bool index_enabled = std::find(g_enabled_filter_types.begin(),
+                                       g_enabled_filter_types.end(),
+                                       BlockFilterType::BASIC) != g_enabled_filter_types.end();
+        if (!index_enabled) {
+            return InitError(_("Cannot set -peercfilters without -blockfilterindex.").translated);
+        }
+
+        g_need_peercfilters = true;
+        nLocalServices = ServiceFlags(nLocalServices | NODE_COMPACT_FILTERS);
     }
 
     // if using block pruning, then disallow txindex
@@ -1889,10 +1903,15 @@ bool AppInitMain(InitInterfaces& interfaces)
         }
         connOptions.vBinds.push_back(addrBind);
     }
+
+    {
+        NetPermissionFlags all_permission_flags = PF_NONE;
+
     for (const std::string& strBind : gArgs.GetArgs("-whitebind")) {
         NetWhitebindPermissions whitebind;
         std::string error;
         if (!NetWhitebindPermissions::TryParse(strBind, whitebind, error)) return InitError(error);
+        NetPermissions::AddFlag(all_permission_flags, whitebind.m_flags);
         connOptions.vWhiteBinds.push_back(whitebind);
     }
 
@@ -1901,11 +1920,22 @@ bool AppInitMain(InitInterfaces& interfaces)
         ConnectionDirection connection_direction;
         std::string error;
         if (!NetWhitelistPermissions::TryParse(net, subnet, connection_direction, error)) return InitError(error);
+        NetPermissions::AddFlag(all_permission_flags, subnet.m_flags);
         if (connection_direction & ConnectionDirection::In) {
             connOptions.vWhitelistedRange.push_back(subnet);
         }
         if (connection_direction & ConnectionDirection::Out) {
             connOptions.vWhitelistedRangeOutgoing.push_back(subnet);
+        }
+    }
+
+        if (NetPermissions::HasFlag(all_permission_flags, PF_CFILTERS)) {
+            bool index_enabled = std::find(g_enabled_filter_types.begin(), g_enabled_filter_types.end(), BlockFilterType::BASIC) != g_enabled_filter_types.end();
+            if (index_enabled) {
+                g_need_peercfilters = true;
+            } else if (NetPermissions::HasFlag(all_permission_flags, PF_CFILTERS_EXPLICIT)) {
+                return InitError(_("Cannot grant cfilters permission without -blockfilterindex.").translated);
+            }
         }
     }
 
