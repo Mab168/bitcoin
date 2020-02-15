@@ -75,7 +75,7 @@ extern std::string HelpExampleRpc(const std::string& methodname, const std::stri
 
 CPubKey HexToPubKey(const std::string& hex_in);
 CPubKey AddrToPubKey(FillableSigningProvider* const keystore, const std::string& addr_in);
-CTxDestination AddAndGetMultisigDestination(const int required, const std::vector<CPubKey>& pubkeys, OutputType type, FillableSigningProvider& keystore, CScript& script_out);
+CTxDestination AddAndGetMultisigDestination(const int required, const std::vector<CPubKey>& pubkeys, OutputType type, FillableSigningProvider& keystore, CScript& script_out, bool sort);
 
 UniValue DescribeAddress(const CTxDestination& dest);
 
