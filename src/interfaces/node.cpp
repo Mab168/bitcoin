@@ -96,6 +96,15 @@ public:
     }
     void setupServerArgs() override { return SetupServerArgs(); }
     bool getProxy(Network net, proxyType& proxy_info) override { return GetProxy(net, proxy_info); }
+    std::vector<CNetAddr> getNetLocalAddresses() override
+    {
+        std::vector<CNetAddr> ret;
+        LOCK(cs_mapLocalHost);
+        for (const std::pair<const CNetAddr, LocalServiceInfo> &item : mapLocalHost) {
+            ret.emplace_back(item.first);
+        }
+        return ret;
+    }
     size_t getNodeCount(CConnman::NumConnections flags) override
     {
         return g_connman ? g_connman->GetNodeCount(flags) : 0;
@@ -294,6 +303,10 @@ public:
     std::unique_ptr<Handler> handleNotifyNetworkActiveChanged(NotifyNetworkActiveChangedFn fn) override
     {
         return MakeHandler(::uiInterface.NotifyNetworkActiveChanged_connect(fn));
+    }
+    std::unique_ptr<Handler> handleNotifyNetworkLocalChanged(NotifyNetworkLocalChangedFn fn) override
+    {
+        return MakeHandler(::uiInterface.NotifyNetworkLocalChanged_connect(fn));
     }
     std::unique_ptr<Handler> handleNotifyAlertChanged(NotifyAlertChangedFn fn) override
     {

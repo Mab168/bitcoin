@@ -16,6 +16,7 @@
 
 class ClientModel;
 class GuiNetWatch;
+class PairingPage;
 class PlatformStyle;
 class RPCTimerInterface;
 class WalletModel;
@@ -48,6 +49,7 @@ public:
     }
 
     void setClientModel(ClientModel *model);
+    void addPairingTab();
     void addWallet(WalletModel * const walletModel);
     void removeWallet(WalletModel* const walletModel);
 
@@ -63,10 +65,11 @@ public:
         TAB_INFO = 0,
         TAB_CONSOLE = 1,
         TAB_GRAPH = 2,
-        TAB_PEERS = 3
+        TAB_PEERS = 3,
+        TAB_PAIRING,
     };
 
-    std::vector<TabTypes> tabs() const { return {TAB_INFO, TAB_CONSOLE, TAB_GRAPH, TAB_PEERS}; }
+    std::vector<TabTypes> tabs() const;
 
     QString tabTitle(TabTypes tab_type) const;
     QKeySequence tabShortcut(TabTypes tab_type) const;
@@ -154,6 +157,8 @@ private:
     interfaces::Node& m_node;
     Ui::RPCConsole* const ui;
     ClientModel *clientModel = nullptr;
+    std::map<TabTypes, QWidget*> m_tabs;
+    PairingPage *m_tab_pairing{nullptr};
     GuiNetWatch *netwatch = nullptr;
     QStringList history;
     int historyPtr = 0;
