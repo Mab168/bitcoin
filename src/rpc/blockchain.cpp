@@ -119,7 +119,9 @@ UniValue blockheaderToJSON(const CBlockIndex* tip, const CBlockIndex* blockindex
     return result;
 }
 
-UniValue blockToJSON(const CBlock& block, const CBlockIndex* tip, const CBlockIndex* blockindex, bool txDetails)
+bool UndoReadFromDisk(CBlockUndo& blockundo, const CBlockIndex* pindex); // in validation.cpp
+
+UniValue blockToJSONv(const CBlock& block, const CBlockIndex* tip, const CBlockIndex* blockindex, const int verbosity)
 {
     // Serialize passed information without accessing chain state of the active chain!
     AssertLockNotHeld(cs_main); // For performance reasons
@@ -137,17 +139,26 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* tip, const CBlockIn
     result.pushKV("versionHex", strprintf("%08x", block.nVersion));
     result.pushKV("merkleroot", block.hashMerkleRoot.GetHex());
     UniValue txs(UniValue::VARR);
-    for(const auto& tx : block.vtx)
-    {
-        if(txDetails)
-        {
+
+    if (verbosity >= 2) {
+        CBlockUndo blockUndo;
+        const bool have_undo = UndoReadFromDisk(blockUndo, blockindex);
+        for (size_t i = 0; i < block.vtx.size(); ++i) {
+
+            const auto& tx = block.vtx.at(i);
+            const CTxUndo* ptr_txundo = (have_undo && i) ? &blockUndo.vtxundo.at(i - 1) : nullptr;
             UniValue objTx(UniValue::VOBJ);
-            TxToUniv(*tx, uint256(), objTx, true, RPCSerializationFlags());
+
+            TxToUniv(*tx, uint256(), objTx, true, RPCSerializationFlags(), verbosity, ptr_txundo);
             txs.push_back(objTx);
         }
-        else
+    } else {
+        for (size_t i = 0; i < block.vtx.size(); ++i) {
+            const auto& tx = block.vtx.at(i);
             txs.push_back(tx->GetHash().GetHex());
+        }
     }
+
     result.pushKV("tx", txs);
     result.pushKV("time", block.GetBlockTime());
     result.pushKV("mediantime", (int64_t)blockindex->GetMedianTimePast());
@@ -825,7 +836,8 @@ static UniValue getblock(const JSONRPCRequest& request)
     RPCHelpMan{"getblock",
                 "\nIf verbosity is 0, returns a string that is serialized, hex-encoded data for block 'hash'.\n"
                 "If verbosity is 1, returns an Object with information about block <hash>.\n"
-                "If verbosity is 2, returns an Object with information about block <hash> and information about each transaction. \n",
+                "If verbosity is 2, returns an Object with information about block <hash> and information about each transaction. \n"
+                "If verbosity is 3, returns an Object with information about block <hash> and information about each transaction, including prevout information for inputs (only for blocks in the current best chain).\n",
                 {
                     {"blockhash", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The block hash"},
                     {"verbosity", RPCArg::Type::NUM, /* default */ "1", "0 for hex-encoded data, 1 for a json object, and 2 for json object with transaction data"},
@@ -909,7 +921,7 @@ static UniValue getblock(const JSONRPCRequest& request)
         return strHex;
     }
 
-    return blockToJSON(block, tip, pblockindex, verbosity >= 2);
+    return blockToJSONv(block, tip, pblockindex, verbosity);
 }
 
 static UniValue pruneblockchain(const JSONRPCRequest& request)
