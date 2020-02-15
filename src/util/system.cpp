@@ -47,6 +47,7 @@
 #include <malloc.h>
 #endif
 
+#include <boost/algorithm/string/replace.hpp>
 #include <thread>
 #include <typeinfo>
 
@@ -1175,6 +1176,13 @@ fs::path GetSpecialFolderPath(int nFolder, bool fCreate)
     return fs::path("");
 }
 #endif
+
+std::string ShellEscape(const std::string& arg)
+{
+    std::string escaped = arg;
+    boost::replace_all(escaped, "'", "'\\''");
+    return "'" + escaped + "'";
+}
 
 #if HAVE_SYSTEM
 void runCommand(const std::string& strCommand)
