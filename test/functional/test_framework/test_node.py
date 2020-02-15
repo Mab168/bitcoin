@@ -94,6 +94,7 @@ class TestNode():
             "-debug",
             "-debugexclude=libevent",
             "-debugexclude=leveldb",
+            "-softwareexpiry=0",
             "-uacomment=testnode%d" % i,
             "-walletimplicitsegwit",
         ]

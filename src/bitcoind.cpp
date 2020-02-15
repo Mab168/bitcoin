@@ -97,6 +97,11 @@ static bool AppInit(int argc, char* argv[])
             }
         }
 
+        if (IsThisSoftwareExpired(GetTime())) {
+            tfm::format(std::cerr, "This software is expired, and may be out of consensus. You must choose to upgrade or override this expiration.\n");
+            exit(EXIT_FAILURE);
+        }
+
         // -server defaults to true for bitcoind but not for the GUI so do this here
         gArgs.SoftSetBoolArg("-server", true);
         // Set this early so that parameter interactions go to console
