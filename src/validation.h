@@ -297,6 +297,8 @@ static inline bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state,
     return AcceptToMemoryPool(pool, state, tx, pfMissingInputs, plTxnReplaced, (bypass_limits ? ignore_rejects_legacy : empty_ignore_rejects), nAbsurdFee, test_accept);
 }
 
+void LimitMempoolSize();
+
 /** Get the BIP9 state for a given deployment at the current tip. */
 ThresholdState VersionBitsTipState(const Consensus::Params& params, Consensus::DeploymentPos pos);
 

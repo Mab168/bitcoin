@@ -366,6 +366,11 @@ static void LimitMempoolSize(CTxMemPool& pool, size_t limit, unsigned long age)
         ::ChainstateActive().CoinsTip().Uncache(removed);
 }
 
+void LimitMempoolSize() {
+    LOCK2(cs_main, ::mempool.cs);
+    LimitMempoolSize(mempool, gArgs.GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, gArgs.GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
+}
+
 static bool IsCurrentForFeeEstimation() EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 {
     AssertLockHeld(cs_main);

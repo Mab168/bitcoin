@@ -88,6 +88,7 @@ class TestNode():
         # spam debug.log.
         self.args = [
             self.binary,
+            "-corepolicy",
             "-datadir=" + self.datadir,
             "-logtimemicros",
             "-logthreadnames",
