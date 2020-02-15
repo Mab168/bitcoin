@@ -48,12 +48,16 @@
 #include <txdb.h>
 #include <txmempool.h>
 #include <ui_interface.h>
+#include <util/asmap.h>
 #include <util/moneystr.h>
 #include <util/system.h>
 #include <util/threadnames.h>
 #include <util/translation.h>
 #include <util/validation.h>
 #include <validation.h>
+#include <hash.h>
+
+
 #include <validationinterface.h>
 #include <walletinitinterface.h>
 
@@ -104,6 +108,8 @@ std::unique_ptr<BanMan> g_banman;
 #endif
 
 static const char* FEE_ESTIMATES_FILENAME="fee_estimates.dat";
+
+static const char* DEFAULT_ASMAP_FILENAME="ip_asn.map";
 
 /**
  * The PID file facilities.
@@ -411,6 +417,7 @@ void SetupServerArgs()
 
     gArgs.AddArg("-startupnotify=<cmd>", "Execute command on startup.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     gArgs.AddArg("-addnode=<ip>", "Add a node to connect to and attempt to keep the connection open (see the `addnode` RPC command help for more info). This option can be specified multiple times to add multiple nodes.", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
+    gArgs.AddArg("-asmap=<file>", strprintf("Specify asn mapping used for bucketing of the peers (default: %s). Relative paths will be prefixed by the net-specific datadir location.", DEFAULT_ASMAP_FILENAME), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-banscore=<n>", strprintf("Threshold for disconnecting misbehaving peers (default: %u)", DEFAULT_BANSCORE_THRESHOLD), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-bantime=<n>", strprintf("Number of seconds to keep misbehaving peers from reconnecting (default: %u)", DEFAULT_MISBEHAVING_BANTIME), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-bind=<addr>", "Bind to given address and always listen on it. Use [host]:port notation for IPv6", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
@@ -1481,6 +1488,31 @@ bool AppInitMain(InitInterfaces& interfaces)
             AddLocal(addrLocal, LOCAL_MANUAL);
         else
             return InitError(ResolveErrMsg("externalip", strAddr));
+    }
+
+    // Read asmap file if configured
+    if (gArgs.IsArgSet("-asmap")) {
+        fs::path asmap_path = fs::path(gArgs.GetArg("-asmap", ""));
+        if (asmap_path.empty()) {
+            asmap_path = DEFAULT_ASMAP_FILENAME;
+        }
+        if (!asmap_path.is_absolute()) {
+            asmap_path = GetDataDir() / asmap_path;
+        }
+        if (!fs::exists(asmap_path)) {
+            InitError(strprintf(_("Could not find asmap file %s").translated, asmap_path));
+            return false;
+        }
+        std::vector<bool> asmap = CAddrMan::DecodeAsmap(asmap_path);
+        if (asmap.size() == 0) {
+            InitError(strprintf(_("Could not parse asmap file %s").translated, asmap_path));
+            return false;
+        }
+        const uint256 asmap_version = SerializeHash(asmap);
+        g_connman->SetAsmap(std::move(asmap));
+        LogPrintf("Using asmap version %s for IP bucketing\n", asmap_version.ToString());
+    } else {
+        LogPrintf("Using /16 prefix for IP bucketing\n");
     }
 
 #if ENABLE_ZMQ
