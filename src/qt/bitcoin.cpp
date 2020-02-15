@@ -45,6 +45,7 @@
 #include <QLocale>
 #include <QMessageBox>
 #include <QSettings>
+#include <QString>
 #include <QThread>
 #include <QTimer>
 #include <QTranslator>
@@ -402,6 +403,7 @@ static void SetupUIArgs()
     gArgs.AddArg("-allowselfsignedrootcertificates", strprintf("Allow self signed root certificates (default: %u)", DEFAULT_SELFSIGNED_ROOTCERTS), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::GUI);
 #endif
     gArgs.AddArg("-choosedatadir", strprintf("Choose data directory on startup (default: %u)", DEFAULT_CHOOSE_DATADIR), ArgsManager::ALLOW_ANY, OptionsCategory::GUI);
+    gArgs.AddArg("-guisettingsdir=<path>", "Choose a custom data directory especially for the Qt Settings", ArgsManager::ALLOW_ANY, OptionsCategory::GUI);
     gArgs.AddArg("-lang=<lang>", "Set language, for example \"de_DE\" (default: system locale)", ArgsManager::ALLOW_ANY, OptionsCategory::GUI);
     gArgs.AddArg("-min", "Start minimized", ArgsManager::ALLOW_ANY, OptionsCategory::GUI);
     gArgs.AddArg("-resetguisettings", "Reset all settings changed in the GUI", ArgsManager::ALLOW_ANY, OptionsCategory::GUI);
@@ -476,6 +478,11 @@ int GuiMain(int argc, char* argv[])
     QApplication::setOrganizationName(QAPP_ORG_NAME);
     QApplication::setOrganizationDomain(QAPP_ORG_DOMAIN);
     QApplication::setApplicationName(QAPP_APP_NAME_DEFAULT);
+    const std::string qt_settings_path = gArgs.GetArg("-guisettingsdir", "");
+    if (!qt_settings_path.empty()) {
+        QSettings::setDefaultFormat(QSettings::IniFormat);
+        QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QString::fromStdString(qt_settings_path));
+    }
 
     /// 4. Initialization of translations, so that intro dialog is in user's language
     // Now that QSettings are accessible, initialize translations
