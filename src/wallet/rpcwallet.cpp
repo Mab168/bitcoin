@@ -180,6 +180,7 @@ static void WalletTxToJSON(interfaces::Chain& chain, interfaces::Chain::Lock& lo
     if (confirms > 0)
     {
         entry.pushKV("blockhash", wtx.m_confirm.hashBlock.GetHex());
+        entry.pushKV("blockheight", *locked_chain.getBlockHeight(wtx.m_confirm.hashBlock));
         entry.pushKV("blockindex", wtx.m_confirm.nIndex);
         int64_t block_time;
         bool found_block = chain.findBlock(wtx.m_confirm.hashBlock, nullptr /* block */, &block_time);
@@ -1521,6 +1522,7 @@ UniValue listtransactions(const JSONRPCRequest& request)
             "                                         transaction conflicts with the block chain\n"
             "    \"trusted\": xxx,           (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.\n"
             "    \"blockhash\": \"hashvalue\", (string) The block hash containing the transaction.\n"
+            "    \"blockheight\": n,         (numeric) The block height containing the transaction.\n"
             "    \"blockindex\": n,          (numeric) The index of the transaction in the block that includes it.\n"
             "    \"blocktime\": xxx,         (numeric) The block time in seconds since epoch (1 Jan 1970 GMT).\n"
             "    \"txid\": \"transactionid\", (string) The transaction id.\n"
@@ -1652,6 +1654,7 @@ static UniValue listsinceblock(const JSONRPCRequest& request)
             "    \"confirmations\": n,       (numeric) The number of confirmations for the transaction.\n"
             "                                          When it's < 0, it means the transaction conflicted that many blocks ago.\n"
             "    \"blockhash\": \"hashvalue\",     (string) The block hash containing the transaction.\n"
+            "    \"blockheight\": n,         (numeric) The block height containing the transaction.\n"
             "    \"blockindex\": n,          (numeric) The index of the transaction in the block that includes it.\n"
             "    \"blocktime\": xxx,         (numeric) The block time in seconds since epoch (1 Jan 1970 GMT).\n"
             "    \"txid\": \"transactionid\",  (string) The transaction id.\n"
@@ -1783,6 +1786,7 @@ static UniValue gettransaction(const JSONRPCRequest& request)
             "                              'send' category of transactions.\n"
             "  \"confirmations\" : n,     (numeric) The number of confirmations\n"
             "  \"blockhash\" : \"hash\",  (string) The block hash\n"
+            "  \"blockheight\": n,        (numeric) The block height containing the transaction.\n"
             "  \"blockindex\" : xx,       (numeric) The index of the transaction in the block that includes it\n"
             "  \"blocktime\" : ttt,       (numeric) The time in seconds since epoch (1 Jan 1970 GMT)\n"
             "  \"txid\" : \"transactionid\",   (string) The transaction id.\n"
