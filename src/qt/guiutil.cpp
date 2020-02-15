@@ -886,6 +886,9 @@ QString formatServicesStr(quint64 mask)
             case NODE_NETWORK_LIMITED:
                 strList.append("NETWORK_LIMITED");
                 break;
+            case NODE_REPLACE_BY_FEE:
+                strList.append("REPLACE_BY_FEE?");
+                break;
             default:
                 if (i < 8) {
                     strList.append(QString("%1[%2]").arg("UNKNOWN").arg(check));
