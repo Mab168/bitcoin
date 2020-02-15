@@ -18,6 +18,7 @@
 #include <netbase.h>
 #include <policy/fees.h>
 #include <policy/policy.h>
+#include <pow.h>
 #include <primitives/block.h>
 #include <primitives/transaction.h>
 #include <random.h>
@@ -996,6 +997,28 @@ static bool TxRelayMayResultInDisconnect(const CValidationState& state)
     return state.GetReason() == ValidationInvalidReason::CONSENSUS;
 }
 
+static void HandleBlockDoS(NodeId node_id, const int nDoS, const bool is_header) {
+    // We never actually DoS ban for invalid blocks, merely disconnect nodes if we're relying on them as a primary node
+    std::string node_name = "(unknown)";
+    {
+        LOCK(cs_main);
+        CNodeState *nodestate = State(node_id);
+        if (nodestate) {
+            node_name = nodestate->name;
+        }
+    }
+    const std::string msg = strprintf("%s peer=%d got DoS score %d on invalid block%s", node_name, node_id, nDoS, is_header ? " header" : "");
+    g_connman->ForNode(node_id, [msg](CNode* node) {
+        if (node->PunishInvalidBlocks()) {
+            LogPrint(BCLog::NET, "%s; simply disconnecting\n", msg);
+            node->fDisconnect = true;
+        } else {
+            LogPrint(BCLog::NET, "%s; tolerating\n", msg);
+        }
+        return true;
+    });
+}
+
 /**
  * Potentially ban a node based on the contents of a CValidationState object
  *
@@ -1016,8 +1039,7 @@ static bool MaybePunishNode(NodeId nodeid, const CValidationState& state, bool v
     case ValidationInvalidReason::CONSENSUS:
     case ValidationInvalidReason::BLOCK_MUTATED:
         if (!via_compact_block) {
-            LOCK(cs_main);
-            Misbehaving(nodeid, 100, message);
+            HandleBlockDoS(nodeid, 100, /*is_header=*/ false);
             return true;
         }
         break;
@@ -1032,7 +1054,8 @@ static bool MaybePunishNode(NodeId nodeid, const CValidationState& state, bool v
             // Ban outbound (but not inbound) peers if on an invalid chain.
             // Exempt HB compact block peers and manual connections.
             if (!via_compact_block && !node_state->m_is_inbound && !node_state->m_is_manual_connection) {
-                Misbehaving(nodeid, 100, message);
+                // TODO: We could drop cs_main here
+                HandleBlockDoS(nodeid, 100, /*is_header=*/ false);
                 return true;
             }
             break;
@@ -1041,16 +1064,14 @@ static bool MaybePunishNode(NodeId nodeid, const CValidationState& state, bool v
     case ValidationInvalidReason::BLOCK_CHECKPOINT:
     case ValidationInvalidReason::BLOCK_INVALID_PREV:
         {
-            LOCK(cs_main);
-            Misbehaving(nodeid, 100, message);
+            HandleBlockDoS(nodeid, 100, /*is_header=*/ true);
         }
         return true;
     // Conflicting (but not necessarily invalid) data or different policy:
     case ValidationInvalidReason::BLOCK_MISSING_PREV:
         {
             // TODO: Handle this much more gracefully (10 DoS points is super arbitrary)
-            LOCK(cs_main);
-            Misbehaving(nodeid, 10, message);
+            HandleBlockDoS(nodeid, 10, /*is_header=*/ true);
         }
         return true;
     case ValidationInvalidReason::RECENT_CONSENSUS_CHANGE:
@@ -1632,12 +1653,23 @@ bool static ProcessHeadersMessage(CNode *pfrom, CConnman *connman, const std::ve
         LOCK(cs_main);
         CNodeState *nodestate = State(pfrom->GetId());
 
+        uint256 hashLastBlock;
+        for (const CBlockHeader& header : headers) {
+            if (!hashLastBlock.IsNull() && header.hashPrevBlock != hashLastBlock) {
+                Misbehaving(pfrom->GetId(), 20, "non-continuous headers sequence");
+                return false;
+            }
+            hashLastBlock = header.GetHash();
+            if (!CheckProofOfWork(header.GetHash(), header.nBits, chainparams.GetConsensus())) {
+                Misbehaving(pfrom->GetId(), 50, "proof of work failed");
+                return false;
+            }
+        }
+
         // If this looks like it could be a block announcement (nCount <
         // MAX_BLOCKS_TO_ANNOUNCE), use special logic for handling headers that
         // don't connect:
         // - Send a getheaders message in response to try to connect the chain.
-        // - The peer can send up to MAX_UNCONNECTING_HEADERS in a row that
-        //   don't connect before giving DoS points
         // - Once a headers message is received that is valid and does connect,
         //   nUnconnectingHeaders gets reset back to 0.
         if (!LookupBlockIndex(headers[0].hashPrevBlock) && nCount < MAX_BLOCKS_TO_ANNOUNCE) {
@@ -1653,19 +1685,10 @@ bool static ProcessHeadersMessage(CNode *pfrom, CConnman *connman, const std::ve
             // we can use this peer to download.
             UpdateBlockAvailability(pfrom->GetId(), headers.back().GetHash());
 
-            if (nodestate->nUnconnectingHeaders % MAX_UNCONNECTING_HEADERS == 0) {
-                Misbehaving(pfrom->GetId(), 20);
+            if (pfrom->PunishInvalidBlocks()) {
+                pfrom->fDisconnect = true;
             }
             return true;
-        }
-
-        uint256 hashLastBlock;
-        for (const CBlockHeader& header : headers) {
-            if (!hashLastBlock.IsNull() && header.hashPrevBlock != hashLastBlock) {
-                Misbehaving(pfrom->GetId(), 20, "non-continuous headers sequence");
-                return false;
-            }
-            hashLastBlock = header.GetHash();
         }
 
         // If we don't have the last header, then they'll have given us
