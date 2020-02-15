@@ -121,6 +121,7 @@ std::atomic_bool fReindex(false);
 bool fHavePruned = false;
 bool fPruneMode = false;
 bool fRequireStandard = true;
+SpkReuseModes SpkReuseMode;
 bool fCheckBlockIndex = false;
 bool fCheckpointsEnabled = DEFAULT_CHECKPOINTS_ENABLED;
 size_t nCoinCacheUsage = 5000 * 300;
@@ -505,7 +506,7 @@ private:
     // of checking a given transaction.
     struct Workspace {
         Workspace(const CTransactionRef& ptx) : m_ptx(ptx), m_hash(ptx->GetHash()) {}
-        std::set<uint256> m_conflicts;
+        std::map<uint256, bool> m_conflicts_incl_policy;
         CTxMemPool::setEntries m_all_conflicting;
         CTxMemPool::setEntries m_ancestors;
         std::unique_ptr<CTxMemPoolEntry> m_entry;
@@ -600,7 +601,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     std::vector<COutPoint>& coins_to_uncache = args.m_coins_to_uncache;
 
     // Alias what we need out of ws
-    std::set<uint256>& setConflicts = ws.m_conflicts;
+    std::map<uint256, bool>& setConflicts = ws.m_conflicts_incl_policy;
     CTxMemPool::setEntries& allConflicting = ws.m_all_conflicting;
     CTxMemPool::setEntries& setAncestors = ws.m_ancestors;
     std::unique_ptr<CTxMemPoolEntry>& entry = ws.m_entry;
@@ -642,6 +643,12 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     if (m_pool.exists(hash)) {
         return state.Invalid(ValidationInvalidReason::TX_CONFLICT, false, REJECT_DUPLICATE, "txn-already-in-mempool");
     }
+
+    auto spk_reuse_mode = SpkReuseMode;
+    if (ignore_rejects.count("txn-spk-reused")) {
+        spk_reuse_mode = SRM_ALLOW;
+    }
+    SPKStates_t mapSPK;
 
     // Check for conflicts with in-memory transactions
     for (const CTxIn &txin : tx.vin)
@@ -688,8 +695,27 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
 
                 }  // ignore_rejects
 
-                setConflicts.insert(ptxConflicting->GetHash());
+                setConflicts.emplace(ptxConflicting->GetHash(), true);
             }
+        }
+    }
+
+    if (spk_reuse_mode != SRM_ALLOW) {
+        for (const CTxOut& txout : tx.vout) {
+            uint160 hashSPK = ScriptHashkey(txout.scriptPubKey);
+            const auto& SPKUsedIn = m_pool.mapUsedSPK.find(hashSPK);
+            if (SPKUsedIn != m_pool.mapUsedSPK.end()) {
+                if (SPKUsedIn->second.first) {
+                    setConflicts.emplace(SPKUsedIn->second.first->GetHash(), false);
+                }
+                if (SPKUsedIn->second.second) {
+                    setConflicts.emplace(SPKUsedIn->second.second->GetHash(), false);
+                }
+            }
+            if (mapSPK.find(hashSPK) != mapSPK.end()) {
+                MaybeReject(ValidationInvalidReason::TX_NOT_STANDARD, REJECT_NONSTANDARD, "txn-spk-reused-twinoutputs");
+            }
+            mapSPK[hashSPK] = MemPool_SPK_State(mapSPK[hashSPK] | MSS_CREATED);
         }
     }
 
@@ -744,6 +770,27 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
         return error_with_debug_log(BCLog::MEMPOOL, "%s: Consensus::CheckTxInputs: %s, %s", __func__, tx.GetHash().ToString(), FormatStateMessage(state));
     }
 
+    if (spk_reuse_mode != SRM_ALLOW) {
+        for (const CTxIn& txin : tx.vin) {
+            const Coin &coin = m_view.AccessCoin(txin.prevout);
+            uint160 hashSPK = ScriptHashkey(coin.out.scriptPubKey);
+
+            SPKStates_t::iterator mssit = mapSPK.find(hashSPK);
+            if (mssit != mapSPK.end()) {
+                if (mssit->second & MSS_CREATED) {
+                    MaybeReject(ValidationInvalidReason::TX_NOT_STANDARD, REJECT_NONSTANDARD, "txn-spk-reused-change");
+                }
+            }
+            const auto& SPKit = m_pool.mapUsedSPK.find(hashSPK);
+            if (SPKit != m_pool.mapUsedSPK.end()) {
+                if (SPKit->second.second /* Spent */) {
+                    setConflicts.emplace(SPKit->second.second->GetHash(), false);
+                }
+            }
+            mapSPK[hashSPK] = MemPool_SPK_State(mapSPK[hashSPK] | MSS_SPENT);
+        }
+    }
+
     // Check for non-standard pay-to-script-hash in inputs
     if (fRequireStandard && !AreInputsStandard(tx, m_view, "bad-txns-input-", reason, ignore_rejects)) {
         return state.Invalid(ValidationInvalidReason::TX_NOT_STANDARD, false, REJECT_NONSTANDARD, reason);
@@ -778,6 +825,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     entry.reset(new CTxMemPoolEntry(ptx, nFees, nAcceptTime, dPriority, ::ChainActive().Height(),
             inChainInputValue, fSpendsCoinbase, nSigOpsCost, lp));
     unsigned int nSize = entry->GetTxSize();
+    entry->mapSPK = mapSPK;
 
     // To avoid rejecting low-sigop bare-multisig transactions, the sigops
     // are counted a second time more accurately.
@@ -795,7 +843,11 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
                 REJECT_HIGHFEE, "absurdly-high-fee",
                 strprintf("%d > %d", nFees, nAbsurdFee));
 
-    const CTxMemPool::setEntries setIterConflicting = m_pool.GetIterSet(setConflicts);
+    std::set<uint256> conflicts_as_a_set;
+    std::transform(setConflicts.begin(), setConflicts.end(),
+                    std::inserter(conflicts_as_a_set, conflicts_as_a_set.end()),
+                    [](const std::pair<uint256, bool>& pair){ return pair.first; });
+    const CTxMemPool::setEntries setIterConflicting = m_pool.GetIterSet(conflicts_as_a_set);
     // Calculate in-mempool ancestors, up to a limit.
     if (setConflicts.size() == 1) {
         // In general, when we receive an RBF transaction with mempool conflicts, we want to know whether we
@@ -864,8 +916,12 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     for (CTxMemPool::txiter ancestorIt : setAncestors)
     {
         const uint256 &hashAncestor = ancestorIt->GetTx().GetHash();
-        if (setConflicts.count(hashAncestor))
+        const auto& conflictit = setConflicts.find(hashAncestor);
+        if (conflictit != setConflicts.end())
         {
+            if (!conflictit->second /* mere SPK conflict, NOT invalid */) {
+                MaybeReject(ValidationInvalidReason::TX_MEMPOOL_POLICY, REJECT_NONSTANDARD, "txn-spk-reused-chained");
+            } else
             return state.Invalid(ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-spends-conflicting-tx",
                     strprintf("%s spends conflicting transaction %s",
                         hash.ToString(),
