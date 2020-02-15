@@ -87,6 +87,9 @@ static const bool DEFAULT_STOPAFTERBLOCKIMPORT = false;
 // Dump addresses to banlist.dat every 15 minutes (900s)
 static constexpr int DUMP_BANS_INTERVAL = 60 * 15;
 
+//! Check if initial sync is done with no change in block height or queued downloads every 30s
+static constexpr int SYNC_CHECK_INTERVAL = 30;
+
 std::unique_ptr<CConnman> g_connman;
 std::unique_ptr<PeerLogicValidation> peerLogic;
 std::unique_ptr<BanMan> g_banman;
@@ -1238,6 +1241,34 @@ bool AppInitLockDataDirectory()
     return true;
 }
 
+/**
+ * Once initial sync is finished and no change in block height or queued downloads,
+ * flush state to protect against data loss
+ */
+static void FlushAfterSync()
+{
+    if (::ChainstateActive().IsInitialBlockDownload()) {
+        scheduler.scheduleFromNow(FlushAfterSync, SYNC_CHECK_INTERVAL * 1000);
+        return;
+    }
+
+    static int last_chain_height = -1;
+    LOCK(cs_main);
+    int current_height = ::ChainActive().Height();
+    if (last_chain_height == -1 || last_chain_height != current_height) {
+        last_chain_height = current_height;
+        scheduler.scheduleFromNow(FlushAfterSync, SYNC_CHECK_INTERVAL * 1000);
+        return;
+    }
+
+    if (GetNumberOfPeersWithValidatedDownloads() > 0) {
+        scheduler.scheduleFromNow(FlushAfterSync, SYNC_CHECK_INTERVAL * 1000);
+        return;
+    }
+
+    ::ChainstateActive().ForceFlushStateToDisk();
+}
+
 bool AppInitMain(InitInterfaces& interfaces)
 {
     const CChainParams& chainparams = Params();
@@ -1859,6 +1890,8 @@ bool AppInitMain(InitInterfaces& interfaces)
     scheduler.scheduleEvery([]{
         g_banman->DumpBanlist();
     }, DUMP_BANS_INTERVAL * 1000);
+
+    scheduler.scheduleFromNow(FlushAfterSync, SYNC_CHECK_INTERVAL * 1000);
 
     return true;
 }
