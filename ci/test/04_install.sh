@@ -50,5 +50,5 @@ if [ -n "$DPKG_ADD_ARCH" ]; then
 fi
 
 ${CI_RETRY_EXE} DOCKER_EXEC apt-get update
-${CI_RETRY_EXE} DOCKER_EXEC apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES $DOCKER_PACKAGES
+${CI_RETRY_EXE} DOCKER_EXEC apt-get install --no-install-recommends --no-upgrade -qq $COMMON_PACKAGES $PACKAGES $DOCKER_PACKAGES
 

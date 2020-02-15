@@ -39,6 +39,7 @@ export BASE_BUILD_DIR=${BASE_BUILD_DIR:-$BASE_ROOT_DIR}
 export BASE_OUTDIR=${BASE_OUTDIR:-$BASE_BUILD_DIR/out/$HOST}
 export SDK_URL=${SDK_URL:-https://bitcoincore.org/depends-sources/sdks}
 export WINEDEBUG=${WINEDEBUG:-fixme-all}
+export COMMON_PACKAGES="icnsutils librsvg2-bin imagemagick"
 export DOCKER_PACKAGES=${DOCKER_PACKAGES:-build-essential libtool autotools-dev automake pkg-config bsdmainutils curl ca-certificates ccache python3}
 export GOAL=${GOAL:-install}
 export DIR_QA_ASSETS=${DIR_QA_ASSETS:-${BASE_BUILD_DIR}/qa-assets}
