@@ -439,7 +439,7 @@ void SendCoinsDialog::on_sendButton_clicked()
         questionString = questionString.arg("<br /><br />" + formatted.at(0));
     }
 
-    SendConfirmationDialog confirmationDialog(QMessageBox::Question, tr("Confirm send coins"), questionString, QMessageBox::Yes, "", QMessageBox::Cancel, informative_text, detailed_text, SEND_CONFIRM_DELAY, this);
+    SendConfirmationDialog confirmationDialog(QMessageBox::Question, tr("Confirm send coins"), questionString, QMessageBox::Yes, tr("Send"), QMessageBox::Cancel, informative_text, detailed_text, SEND_CONFIRM_DELAY, this);
     if (!confirmationDialog.exec()) {
         fNewRecipientAllowed = true;
         return;
