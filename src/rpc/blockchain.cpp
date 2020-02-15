@@ -2258,6 +2258,61 @@ static UniValue getblockfilter(const JSONRPCRequest& request)
     return ret;
 }
 
+UniValue scriptthreadsinfo(const JSONRPCRequest& request)
+{
+    if (request.fHelp || request.params.size() > 0) {
+        throw std::runtime_error(
+            RPCHelpMan{"scriptthreadsinfo",
+                "\nShow information about the script verification threads.\n",
+                {},
+                RPCResult{
+            "{\n"
+            "  \"enabled\": xx,                      (boolean) true is script verification threads are enabled (see setscriptthreadsenabled).\n"
+            "  \"num_script_check_threads\": xx,     (numeric) The total number of script verification threads.\n"
+            "}\n"
+                },
+                RPCExamples{
+                    HelpExampleCli("scriptthreadsinfo", "")
+            + HelpExampleRpc("scriptthreadsinfo", "")
+                },
+            }.ToString());
+    }
+
+    UniValue ret(UniValue::VOBJ);
+    ret.pushKV("enabled", g_script_threads_enabled);
+    ret.pushKV("num_script_check_threads", nScriptCheckThreads);
+    return ret;
+}
+
+UniValue setscriptthreadsenabled(const JSONRPCRequest& request)
+{
+    if (request.fHelp || request.params.size() != 1) {
+        throw std::runtime_error(
+            RPCHelpMan{"setscriptthreadsenabled",
+                "\nDisable/enable script verification threads and therefore reducing CPU usage on multicore systems.\n"
+                "Disabling script verification threads may result in a significant slow-down during synchronisation.\n"
+                "Has no effect on single core machines or if started with -par=<-<numcores>\n",
+                {
+                    {"state", RPCArg::Type::BOOL, RPCArg::Optional::NO, "false if script verification threads should be disabled (true for re-enabling)"},
+                },
+                RPCResults{},
+                RPCExamples{
+                    HelpExampleCli("setscriptthreadsenabled", "false")
+            + HelpExampleRpc("setscriptthreadsenabled", "false")
+                },
+            }.ToString()
+        );
+    }
+
+    if (nScriptCheckThreads == 0) {
+        throw JSONRPCError(RPC_MISC_ERROR, "Script verification threads are disabled (single core machine or -par=<-<numcores>)");
+    }
+
+    g_script_threads_enabled = request.params[0].get_bool();
+
+    return NullUniValue;
+}
+
 // clang-format off
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         argNames
@@ -2282,6 +2337,8 @@ static const CRPCCommand commands[] =
     { "blockchain",         "pruneblockchain",        &pruneblockchain,        {"height"} },
     { "blockchain",         "savemempool",            &savemempool,            {} },
     { "blockchain",         "verifychain",            &verifychain,            {"checklevel","nblocks"} },
+    { "blockchain",         "scriptthreadsinfo",      &scriptthreadsinfo,      {} },
+    { "blockchain",         "setscriptthreadsenabled",&setscriptthreadsenabled,{"state"} },
 
     { "blockchain",         "preciousblock",          &preciousblock,          {"blockhash"} },
     { "blockchain",         "scantxoutset",           &scantxoutset,           {"action", "scanobjects"} },
