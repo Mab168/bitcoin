@@ -20,6 +20,8 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 
 /* Invalid field background style */
 #define STYLE_INVALID "background:#FF8080"
+/* "Warning" field background style */
+#define STYLE_INCORRECT "background:#FFFF80"
 /* Background style for active search in NetWatch */
 #define STYLE_ACTIVE "background:#00c000"
 

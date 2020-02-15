@@ -8,6 +8,7 @@
 #include <consensus/validation.h>
 #include <interfaces/chain.h>
 #include <interfaces/handler.h>
+#include <key_io.h>
 #include <policy/feerate.h>
 #include <policy/fees.h>
 #include <primitives/transaction.h>
@@ -32,6 +33,16 @@
 
 namespace interfaces {
 namespace {
+
+std::set<CScript> AddressesToKeys(std::vector<std::string> addresses)
+{
+    std::set<CScript> keys;
+    for (const auto& address : addresses) {
+        CScript scriptPubKey = GetScriptForDestination(DecodeDestination(address));
+        keys.insert(scriptPubKey);
+    }
+    return keys;
+}
 
 //! Construct wallet tx struct.
 WalletTx MakeWalletTx(interfaces::Chain::Lock& locked_chain, CWallet& wallet, const CWalletTx& wtx)
@@ -178,6 +189,24 @@ public:
     {
         LOCK(m_wallet->cs_wallet);
         return m_wallet->GetDestValues(prefix);
+    }
+    bool checkAddressForUsage(const std::vector<std::string>& addresses) const override
+    {
+        LOCK(m_wallet->cs_wallet);
+        return m_wallet->FindScriptPubKeyUsed(AddressesToKeys(addresses));
+    }
+    bool findAddressUsage(const std::vector<std::string>& addresses, std::function<void(const std::string&, const WalletTx&, uint32_t)> callback) const override
+    {
+        auto locked_chain = m_wallet->chain().lock();
+        LOCK(m_wallet->cs_wallet);
+        return m_wallet->FindScriptPubKeyUsed(AddressesToKeys(addresses), [&callback, &locked_chain, this](const CWalletTx& wtx, uint32_t output_index){
+            CTxDestination dest;
+            bool success = ExtractDestination(wtx.tx->vout[output_index].scriptPubKey, dest);
+            assert(success);  // It shouldn't be possible to end up here with anything unrecognised
+            std::string address = EncodeDestination(dest);
+            WalletTx interface_wtx = MakeWalletTx(*locked_chain, *m_wallet, wtx);
+            callback(address, interface_wtx, output_index);
+        });
     }
     void lockCoin(const COutPoint& output) override
     {
