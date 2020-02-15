@@ -58,6 +58,7 @@ public:
         Listen,                 // bool
         maxuploadtarget,
         peerbloomfilters,       // bool
+        peercfilters,           // bool
         OptionIDRowCount,
     };
 
