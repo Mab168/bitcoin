@@ -1432,7 +1432,7 @@ void static ProcessGetBlockData(CNode* pfrom, const CChainParams& chainparams, c
             // Fast-path: in this case it is possible to serve the block directly from disk,
             // as the network format matches the format on disk
             std::vector<uint8_t> block_data;
-            if (!ReadRawBlockFromDisk(block_data, pindex, chainparams.MessageStart())) {
+            if (!ReadRawBlockFromDisk(block_data, pindex, chainparams.MessageStart(), true)) {
                 assert(!"cannot load block from disk");
             }
             connman->PushMessage(pfrom, msgMaker.Make(NetMsgType::BLOCK, MakeSpan(block_data)));
@@ -1440,8 +1440,9 @@ void static ProcessGetBlockData(CNode* pfrom, const CChainParams& chainparams, c
         } else {
             // Send block from disk
             std::shared_ptr<CBlock> pblockRead = std::make_shared<CBlock>();
-            if (!ReadBlockFromDisk(*pblockRead, pindex, consensusParams))
+            if (!ReadBlockFromDisk(*pblockRead, pindex, consensusParams, true)) {
                 assert(!"cannot load block from disk");
+            }
             pblock = pblockRead;
         }
         if (pblock) {
@@ -2413,7 +2414,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         }
 
         CBlock block;
-        bool ret = ReadBlockFromDisk(block, pindex, chainparams.GetConsensus());
+        bool ret = ReadBlockFromDisk(block, pindex, chainparams.GetConsensus(), true);
         assert(ret);
 
         SendBlockTransactions(block, req, pfrom, connman);
@@ -3732,7 +3733,7 @@ bool PeerLogicValidation::SendMessages(CNode* pto)
                     }
                     if (!fGotBlockFromCache) {
                         CBlock block;
-                        bool ret = ReadBlockFromDisk(block, pBestIndex, consensusParams);
+                        bool ret = ReadBlockFromDisk(block, pBestIndex, consensusParams, true);
                         assert(ret);
                         CBlockHeaderAndShortTxIDs cmpctblock(block, state.fWantsCmpctWitness);
                         connman->PushMessage(pto, msgMaker.Make(nSendFlags, NetMsgType::CMPCTBLOCK, cmpctblock));
