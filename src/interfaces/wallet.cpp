@@ -379,9 +379,10 @@ public:
         bool& complete,
         int sighash_type = 1 /* SIGHASH_ALL */,
         bool sign = true,
-        bool bip32derivs = false) override
+        bool bip32derivs = false,
+        size_t* n_signed = nullptr) override
     {
-        return FillPSBT(m_wallet.get(), psbtx, complete, sighash_type, sign, bip32derivs);
+        return FillPSBT(m_wallet.get(), psbtx, complete, sighash_type, sign, bip32derivs, n_signed);
     }
     WalletBalances getBalances() override
     {
