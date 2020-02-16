@@ -15,6 +15,7 @@
 #include <sync.h>
 #include <ui_interface.h>
 
+#include <cstring>
 #include <deque>
 #include <memory>
 #include <stdio.h>
@@ -310,9 +311,10 @@ my_bind_socket_with_handle(struct evhttp *http, const char *address, ev_uint16_t
             return nullptr;
         }
     } else {
-        struct evutil_addrinfo hints = {};
+        struct evutil_addrinfo hints;
         int ai_result;
 
+        memset(&hints, 0, sizeof(hints));
         hints.ai_family = AF_UNSPEC;
         hints.ai_socktype = SOCK_STREAM;
         hints.ai_flags = EVUTIL_AI_PASSIVE|EVUTIL_AI_ADDRCONFIG;
