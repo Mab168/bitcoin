@@ -440,7 +440,9 @@ private:
     struct event *reconnect_ev;
     float reconnect_timeout;
     std::string m_execute{DEFAULT_TOR_EXECUTE};
+#ifdef HAVE_BOOST_PROCESS
     boost::process::child *m_process;
+#endif
     CService service;
     /** Cookie for SAFECOOKIE auth */
     std::vector<uint8_t> cookie;
@@ -500,10 +502,12 @@ TorController::~TorController()
     if (service.IsValid()) {
         RemoveLocal(service);
     }
+#ifdef HAVE_BOOST_PROCESS
     if (m_process) {
         conn.Command("SIGNAL SHUTDOWN");
         delete m_process;
     }
+#endif
 }
 
 void TorController::get_socks_cb(TorControlConnection& _conn, const TorControlReply& reply)
@@ -593,14 +597,20 @@ void TorController::auth_cb(TorControlConnection& _conn, const TorControlReply& 
     if (reply.code == 250) {
         LogPrint(BCLog::TOR, "tor: Authentication successful\n");
 
+#ifdef HAVE_BOOST_PROCESS
         if (m_process) {
             _conn.Command("TAKEOWNERSHIP");
         }
+#endif
 
         // Now that we know Tor is running setup the proxy for onion addresses
         // if -onion isn't set to something else.
         // NOTE: Our own private Tor doesn't do SOCKS, so don't configure it
-        if (gArgs.GetArg("-onion", "") == "" && !m_process) {
+        if (gArgs.GetArg("-onion", "") == ""
+#ifdef HAVE_BOOST_PROCESS
+            && !m_process
+#endif
+        ) {
             _conn.Command("GETINFO net/listeners/socks", std::bind(&TorController::get_socks_cb, this, std::placeholders::_1, std::placeholders::_2));
         }
 
